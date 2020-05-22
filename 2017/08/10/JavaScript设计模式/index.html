@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaScript最全设计模式详解 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Javascript,设计模式">
+    <meta name="description" content="简介让系统代码可重用、可扩展、可解耦、更容易被人理解且保证代码可靠性。设计模式使代码真正工程化。                                                                                              image              设计原则：  开闭原则： 对扩展开放，对修改关闭  里氏转换原则： 子类继承父">
+<meta name="keywords" content="Javascript,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript最全设计模式详解">
+<meta property="og:url" content="http://dpfblog.com/2017/08/10/JavaScript设计模式/index.html">
+<meta property="og:site_name" content="Davis&#39; Blog">
+<meta property="og:description" content="简介让系统代码可重用、可扩展、可解耦、更容易被人理解且保证代码可靠性。设计模式使代码真正工程化。                                                                                              image              设计原则：  开闭原则： 对扩展开放，对修改关闭  里氏转换原则： 子类继承父">
+<meta property="og:image" content="http://ot4esom84.bkt.clouddn.com/17-8-20/53954459.jpg">
+<meta property="og:updated_time" content="2017-08-21T02:54:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript最全设计模式详解">
+<meta name="twitter:description" content="简介让系统代码可重用、可扩展、可解耦、更容易被人理解且保证代码可靠性。设计模式使代码真正工程化。                                                                                              image              设计原则：  开闭原则： 对扩展开放，对修改关闭  里氏转换原则： 子类继承父">
+<meta name="twitter:image" content="http://ot4esom84.bkt.clouddn.com/17-8-20/53954459.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/avatar.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">没事放放牛</h5>
+          <a href="mailto:302804389@qq.com" title="302804389@qq.com" class="mail">302804389@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/pengfeidai" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript最全设计模式详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript最全设计模式详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-10T07:29:04.000Z" itemprop="datePublished" class="page-time">
+  2017-08-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单例模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">单例模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造函数模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">构造函数模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建造者模式"><span class="post-toc-number">4.</span> <span class="post-toc-text">建造者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项-2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-2"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工厂模式"><span class="post-toc-number">5.</span> <span class="post-toc-text">工厂模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-3"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项-3"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-3"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代理模式"><span class="post-toc-number">6.</span> <span class="post-toc-text">代理模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-4"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项-4"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-4"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令模式"><span class="post-toc-number">7.</span> <span class="post-toc-text">命令模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-5"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用和注意事项-5"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">作用和注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-5"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#策略模式"><span class="post-toc-number">8.</span> <span class="post-toc-text">策略模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-6"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-6"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#职责链模式"><span class="post-toc-number">9.</span> <span class="post-toc-text">职责链模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-7"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-7"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束语"><span class="post-toc-number">10.</span> <span class="post-toc-text">结束语</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript设计模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript最全设计模式详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-10 15:29:04" datetime="2017-08-10T07:29:04.000Z"  itemprop="datePublished">2017-08-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>让系统代码可重用、可扩展、可解耦、更容易被人理解且保证代码可靠性。设计模式使代码真正工程化。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ot4esom84.bkt.clouddn.com/17-8-20/53954459.jpg" alt="alt text" title="image">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>设计原则：</p>
+<ol>
+<li><p>开闭原则： 对扩展开放，对修改关闭</p>
+</li>
+<li><p>里氏转换原则： 子类继承父类，单独完全可以运行</p>
+</li>
+<li><p>依赖倒转原则： 引用一个对象，如果这个对象有底层类型，直接引用底层类型</p>
+</li>
+<li><p>接口隔离原则： 每一个接口应该是一种角色</p>
+</li>
+<li><p>合成/聚合复用原则： 新的对象应使用一些已有的对象，使之成为新对象的一部分</p>
+</li>
+<li><p>迪米特原则： 一个对象应对其他对象有尽可能少的了解</p>
+</li>
+</ol>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>保证一个类只有一个实例，实现方法是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，确保一个类只有一个实例对象。</p>
+<p>在 JavaScript 中，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Singleton = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> instantiated;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">/*这里定义单例代码*/</span></div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">publicProperty</span>: <span class="string">'test'</span></div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">getInstance</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (!instantiated) &#123;     <span class="comment">//确保只有一个实例</span></div><div class="line">                instantiated = init();  <span class="comment">//使用init方法，是使publicMethod和publicProperty只在要使用的时候才初始化;</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> instantiated;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">/*调用公有的方法来获取实例:*/</span></div><div class="line">Singleton.getInstance().publicMethod();  <span class="comment">// hello world</span></div></pre></td></tr></table></figure>
+<h3 id="作用和注意事项"><a href="#作用和注意事项" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>模块间通信</p>
+</li>
+<li><p>系统中某个类的对象只能存在一个</p>
+</li>
+<li><p>保护自己的属性和方法</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li><p>注意this的使用</p>
+</li>
+<li><p>闭包容易造成内存泄露，不需要的要赶快清除</p>
+</li>
+<li><p>注意new的成本。（继承）</p>
+</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>在网页上实现一个登陆弹框，无论我们点击多少次登陆按钮，界面上始终只会显示一个登陆弹框，无法再创建第二个。</p>
+<p><a href="https://github.com/pengfeidai/JavaScript" target="_blank" rel="external">源码下载</a> &nbsp;&nbsp;&nbsp; <a href="http://www.dpfblog.com/JavaScript/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" target="_blank" rel="external">demo演示</a></p>
+<p>（1）获取DOM对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> id === <span class="string">'string'</span> ? <span class="built_in">document</span>.getElementById(id) : id;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>为了便于之后关于DOM的一些操作，我们这里利用函数式编程的原理将获取目标 id 的元素对象方法封装了一下，直接利用 $(id) 就可以获取。</p>
+<p>（2）弹框构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Modal = <span class="function"><span class="keyword">function</span>(<span class="params">id, html</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.html = html;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.open = <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这里我们声明了一个 Modal 作为弹框的构造函数，并且再其内部定义了公有属性 html、id 和 open。html 用来定义弹框内部的内容，id 用来给弹框定义 id 名称，open 用于判断弹框是否打开。</p>
+<p>（3）open方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Modal.prototype.create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.open) &#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line"></div><div class="line">        modal.innerHTML = <span class="keyword">this</span>.html;</div><div class="line">        modal.id = <span class="keyword">this</span>.id;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(modal);</div><div class="line"></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            modal.classList.add(<span class="string">'show'</span>);</div><div class="line">        &#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.open = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在 Modal 的原型链上定义了 create 方法，方法内部我们创建并向 DOM 中插入弹框，同时给弹框加上一个 class 为 “show” 的动画效果。</p>
+<p>（4）close方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Modal.prototype.delete = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.open) &#123;</div><div class="line">        <span class="keyword">var</span> modal = $(<span class="keyword">this</span>.id);</div><div class="line"></div><div class="line">        modal.classList.add(<span class="string">'hide'</span>);</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">document</span>.body.removeChild(modal);</div><div class="line">        &#125;, <span class="number">200</span>);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.open = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>定义了 open 方法后我们这里定义关闭弹框的方法，在其内部给弹框对象添加 hide 类动画效果，最后在页面上移除弹框对象。</p>
+<p>（5）创建实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> createIntance = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> instance;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> instance || (instance = <span class="keyword">new</span> Modal(<span class="string">'modal'</span>, <span class="string">'这是一个弹框'</span>))</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>这是实现单例模式的重要部分:</p>
+<ol>
+<li>使用闭包封装了 instance 私有变量并返回一个函数</li>
+<li>利用 || 语法判断如果 instance 不存在则执行后者的实例化 Modal 方法，存在则直接返回 instance，确保了只存在一个弹框实例</li>
+</ol>
+<p>（6）按钮操作<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> operate = &#123;</div><div class="line">    <span class="attr">setModal</span>: <span class="literal">null</span>,</div><div class="line">    <span class="attr">open</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.setModal = createIntance();</div><div class="line">        <span class="keyword">this</span>.setModal.create();</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">delete</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.setModal ? <span class="keyword">this</span>.setModal.delete() : <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这里我们将按钮操作放在 operate 对象里，使得打开和关闭操作可以通过this获取实例setModal。</p>
+<p>（7）绑定事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'open'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    operate.open();</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$(<span class="string">'delete'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    operate.delete();</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>最后我们将打开和删除方法绑定到两个按钮上去，至此我们用单例模式实现的弹框demo就实现了。</p>
+<h2 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p> 构造函数用于创建特定类型的对象——不仅声明了使用过的对象，构造函数还可以接受参数以便第一次创建对象的时候设置对象的成员值。你可以自定义自己的构造函数，然后在里面声明自定义类型对象的属性或方法。</p>
+<h3 id="作用和注意事项-1"><a href="#作用和注意事项-1" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>用于创建特定类型的对象</p>
+</li>
+<li><p>第一次声明的时候给对象赋值</p>
+</li>
+<li><p>自己声明构造函数，赋予属性和方法</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li><p>声明函数的时候处理业务逻辑</p>
+</li>
+<li><p>区分和单例的区别，配合单例实现初始化</p>
+</li>
+<li><p>构造函数大写字母开头</p>
+</li>
+<li><p>注意 new 的成本 （继承）</p>
+</li>
+</ol>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>强制使用new<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Person)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person(name, age, job);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">    <span class="keyword">this</span>.job = job;</div><div class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">'is'</span> +  <span class="keyword">this</span>.age + <span class="string">'years old'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Davis"</span>, <span class="number">22</span>, <span class="string">"student"</span>);</div><div class="line"><span class="keyword">var</span> person2 = Person(<span class="string">"Faker"</span>, <span class="number">21</span>, <span class="string">"player"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(person1.sayName());  <span class="comment">// Davis is 22 years old</span></div><div class="line"><span class="built_in">console</span>.log(person2.sayName());  <span class="comment">// Faker is 21 years old</span></div></pre></td></tr></table></figure></p>
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p> 建造者模式可以将一个复杂的对象的构建与其表示相分离，使同样的构建过程可以创建不同的表示。如果我们用了建造者模式，那么用户就需要指定需要建造的类型就可以得到它们，而具体建造的过程和细节就不需要知道了。建造者模式实际就是一个指挥者，一个建造者，一个使用指挥者调用具体建造者工作得出结果的客户。主要用于“分步骤构建一个复杂的对象”。</p>
+<h3 id="作用和注意事项-2"><a href="#作用和注意事项-2" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>分步创建一个复杂的对象</p>
+</li>
+<li><p>解耦封装过程和具体创建组件</p>
+</li>
+<li><p>无需关心组件如何组装</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li><p>一定要一个稳定的算法进行支持（“分步骤”是一个稳定的算法）</p>
+</li>
+<li><p>加工工艺是暴露的</p>
+</li>
+</ol>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>一个土豪需要建一个别墅，然后直接找包工头，包工头再找工人把别墅建好。这里土豪不用直接一个一个工人的去找。只需包工头知道土豪需求，然后去找工人，工人干活，土豪也不需要知道房子具体怎么建，最后能拿到房就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.产出东西是房子</span></div><div class="line"><span class="comment">//2.包工头调用工人进行开工而且他要很清楚工人们具体的某一个大项</span></div><div class="line"><span class="comment">//3.工人是盖房子的 工人可以建厨房、卧室、建客厅</span></div><div class="line"><span class="comment">//4.包工头只是一个接口而已 他不干活 他只对外说我能建房子</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">House</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.kitchen = <span class="string">""</span>;</div><div class="line">    <span class="keyword">this</span>.bedroom = <span class="string">""</span>;</div><div class="line">    <span class="keyword">this</span>.livingroom = <span class="string">""</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Contractor</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.construct = <span class="function"><span class="keyword">function</span>(<span class="params">worker</span>) </span>&#123;</div><div class="line">        worker.construct_kitchen();</div><div class="line">        worker.construct_bedroom();</div><div class="line">        worker.construct_livingroom();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Worker</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.construct_kitchen =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"厨房建好了"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.construct_bedroom = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"卧室建好了"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.construct_livingroom = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="built_in">console</span>.log(<span class="string">"客厅建好了"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.submit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> _house = <span class="keyword">new</span> House();</div><div class="line">        _house.kitchen = <span class="string">"finished"</span>;</div><div class="line">        _house.bedroom = <span class="string">"finished"</span>;</div><div class="line">        _house.livingroom = <span class="string">"finished"</span>;</div><div class="line">        <span class="keyword">return</span> _house;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker();</div><div class="line"><span class="keyword">var</span> contractor = <span class="keyword">new</span> Contractor();</div><div class="line">contractor.construct(worker);</div><div class="line"><span class="comment">// 主人要房子</span></div><div class="line"><span class="keyword">var</span> myhouse = worker.submit();</div><div class="line"><span class="built_in">console</span>.log(myhouse);</div></pre></td></tr></table></figure>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h3><p>工厂模式定义一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类。而子类可以重写接口方法以便创建的时候指定自己的对象类型（抽象工厂）。</p>
+<h3 id="作用和注意事项-3"><a href="#作用和注意事项-3" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>对象构建十分复杂</p>
+</li>
+<li><p>需要依赖具体的环境创建不同的实例</p>
+</li>
+<li><p>处理大量具有相同属性的小对象</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<p>1、不能滥用工厂，有时候仅仅是给代码增加复杂度</p>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>简单工厂模式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> XMLHttpFactory = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line">XMLHttpFactory.createXMLHttp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> XMLHttp = <span class="literal">null</span>;</div><div class="line">    <span class="comment">// XMLHttpFactory.createXMLHttp()这个方法根据当前环境的具体情况返回一个XHR对象</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        XMLHttp = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</div><div class="line">        XMLHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> XMLHttp;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> AjaxHander = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> XMLHttp = XMLHttpFactory.createXMLHttp();</div><div class="line">    <span class="comment">/*...具体操作... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>抽象工厂模式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> XMLHttpFactory = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line">XMLHttpFactory.prototype = &#123;</div><div class="line"><span class="comment">// 如果真的要调用这个方法会抛出一个错误，它不能被实例化，只能用来派生子类</span></div><div class="line">    createFactory:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"This is an abstract class"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> XHRHandler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    XMLHttpFactory.call(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line">XHRHandler.prototype = <span class="keyword">new</span> XMLHttpFactory();</div><div class="line">XHRHandler.prototype.constructor = XHRHandler;  <span class="comment">// 重新定义 createFactory 方法</span></div><div class="line"></div><div class="line">XHRHandler.prototype.createFactory = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> XMLHttp = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        XMLHttp = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</div><div class="line">        XMLHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> XMLHttp;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> AjaxHander = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> XMLHttp = XMLHttpFactory.createXMLHttp();</div><div class="line">    <span class="comment">/*...具体操作... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>抽象工厂只留一个接口，不做具体的事，让别的子类来继承我这个类，然后做它自己的事。</p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h3><p>代理模式（Proxy），为其他对象提供一种代理以控制对这个对象的访问。代理模式使得代理对象控制具体对象的引用。代理几乎可以是任何对象：文件，资源，内存中的对象，或者是一些难以复制的东西。</p>
+<h3 id="作用和注意事项-4"><a href="#作用和注意事项-4" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>远程代理（一个对象将不同空间的对象进行局部代理）</p>
+</li>
+<li><p>虚拟代理（根据需要创建开销很大的对象，如图片预加载）</p>
+</li>
+<li><p>安全代理（控制真实对象的访问权限）</p>
+</li>
+<li><p>智能指引（调用对象代理处理另外一些事情，如垃圾回收机制）</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>不能滥用代理，有时候仅仅是给代码增加复杂度</li>
+</ol>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 代理模式需要三方</span></div><div class="line"><span class="comment">// 1.买家</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buyer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">"Davis"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2.中介</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">agent</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">agent.prototype.sell = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">new</span> seller(<span class="keyword">new</span> buyer()).sell(<span class="string">"50万"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 3.卖家  收钱</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">seller</span>(<span class="params">buyer</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.buyer_name = buyer.name;</div><div class="line">    <span class="keyword">this</span>.sell = <span class="function"><span class="keyword">function</span>(<span class="params">money</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"收到了来自"</span> +  <span class="keyword">this</span>.buyer_name + money + <span class="string">"人民币"</span>);  <span class="comment">// 收到了来自Davis50万人民币</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">(<span class="keyword">new</span> agent).sell();</div></pre></td></tr></table></figure>
+<p>虚拟代理实现图片预加载<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 图片加载函数</span></div><div class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> imgNode = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">  <span class="built_in">document</span>.body.appendChild(imgNode);</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;   <span class="comment">//  提供一个对外的setSrc接口，外界调用这个接口，可以给该img标签设置src属性</span></div><div class="line">    setSrc: <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</div><div class="line">      imgNode.src = src;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">// 引入代理对象</span></div><div class="line"><span class="keyword">var</span> proxyImage = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image;</div><div class="line">  img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 图片加载完成，正式加载图片</span></div><div class="line">    myImage.setSrc(<span class="keyword">this</span>.src);</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">setSrc</span>: <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</div><div class="line">      <span class="comment">// 图片未被载入时，加载一张提示图片</span></div><div class="line">      myImage.setSrc(<span class="string">"file://c:/loading.png"</span>);</div><div class="line">      img.src = src;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">// 调用代理对象加载图片</span></div><div class="line">proxyImage.setSrc(<span class="string">"http://images/water.jpg"</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><h3 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h3><p>将请求封装成对象，分离命令接受者和发起者之间的耦合。命令执行之前在执行对象中传入接受者，主要目的相互之间的解耦。简单而言分为三个对象：</p>
+<ol>
+<li><p>发起者：发出调用命令即可，具体如何执行，谁执行并不需要清楚。</p>
+</li>
+<li><p>接受者：有对应的接口处理不同的命令，至于命令是什么，谁发出的，不用关心。</p>
+</li>
+<li><p>命令对象：上面讲发起者和接受者分开了，二者之间需要个连接桥梁。这就是命令对象。命令对象接受发送者的调用，然后调用接受者的相应接口。</p>
+</li>
+</ol>
+<h3 id="作用和注意事项-5"><a href="#作用和注意事项-5" class="headerlink" title="作用和注意事项"></a>作用和注意事项</h3><p>模式作用：</p>
+<ol>
+<li><p>将函数的封装、请求、调用结合为一体</p>
+</li>
+<li><p>调用具体的函数解耦命令对象与接收对象</p>
+</li>
+<li><p>提高程序模块化的灵活性</p>
+</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>不需要借口一致，直接调用函数即可，以免造成浪费</li>
+</ol>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>场景如下：有个按钮button，点击之后，调用menu对象的refresh方法，输出“刷新”的内容。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 发送者</span></div><div class="line"><span class="keyword">var</span> setCommond = <span class="function"><span class="keyword">function</span>(<span class="params">button, fn</span>) </span>&#123;</div><div class="line">    button.onClick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        fn()</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 执行命令者</span></div><div class="line"><span class="keyword">var</span> menu = &#123;</div><div class="line">    <span class="attr">reFresh</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"刷新"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">add</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"增加"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">delete</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"删除"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 命令对象</span></div><div class="line"><span class="keyword">var</span> commondObj = <span class="function"><span class="keyword">function</span>(<span class="params">reciver</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        reciver.reFresh();</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> commondObj1 = commondObj(menu);</div><div class="line">setCommond(btn1, commondObj1);</div></pre></td></tr></table></figure>
+<p>发送者(setCommond)：不关心给哪个button，以及绑定什么事件，只要通过参数传入就好。</p>
+<p>命令对象(commondObj):只需要接收到接受者的参数，当发送者发出命令时，执行就好。</p>
+<p>接受者(menu):不用关心在哪里被调用被谁调用，只需要按需执行就好了。</p>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a>概念</h3><p>定义一系列方法，封装起来使他们可以相互替换。也就是将策略封装在策略类中，当发起请求时管理类将请求委托给对应策略类。</p>
+<ol>
+<li><p>发起者：发出调用命令即可，具体如何执行，谁执行并不需要清楚。</p>
+</li>
+<li><p>接受者：有对应的接口处理不同的命令，至于命令是什么，谁发出的，不用关心。</p>
+</li>
+<li><p>命令对象：上面讲发起者和接受者分开了，二者之间需要个连接桥梁。这就是命令对象。命令对象接受发送者的调用，然后调用接受者的相应接口。</p>
+</li>
+</ol>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>模式作用：</p>
+<ol>
+<li><p>策略模式利用组合，委托等技术和思想，有效的避免很多if条件语句。</p>
+</li>
+<li><p>策略模式提供了开放-封闭原则，使代码更容易理解和扩展。</p>
+</li>
+<li><p>策略模式中的代码可以复用。</p>
+</li>
+</ol>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>假设我们现在有这样一个需求：需要根据form表单元素的不同类型，当点击的时候输出对应的表单元素类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">/**</span></div><div class="line">  * 针对不同情况的策略算法封装在策略类fucs中，</div><div class="line">  * 从调用事件中去除繁琐的if或者switch逻辑判断。达到解耦的目的</div><div class="line">  * 加入后面再增加‘select’的选项增加对应的方法即可</div><div class="line">  */</div><div class="line"> <span class="keyword">var</span> funcs = &#123;</div><div class="line">   <span class="attr">text</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'this is text'</span>)</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">radio</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'this is radio'</span>)</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">checkbox</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'this is checkbox'</span>)</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">default</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'this is default'</span>)</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">var</span> renderDom = <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</div><div class="line">     <span class="comment">/**</span></div><div class="line">      * 只需要根据不同的入参，自行匹配策略类中的接口即可。</div><div class="line">      */</div><div class="line">     <span class="keyword">return</span> (funcs[type] || funcs[<span class="string">'default'</span>])()</div><div class="line"> &#125;</div><div class="line">renderDom(<span class="string">'checkbox'</span>)</div></pre></td></tr></table></figure>
+<ol>
+<li><p>策略对象就是funcs对象，里面的不同属性接口对应的方法就是策略。与逻辑判断分离开，如果有不同的情况的出现，对应的增加属性接口即可。</p>
+</li>
+<li><p>renderDom方法就是对应的管理类，只需要根据不同的type，去调用funcs不同的方法就ok了。如果type没有对应的接口，那就调用默认的default对应接口。</p>
+</li>
+<li><p>调用事件，就保持不变。将tyoe类型传过去就好了。</p>
+</li>
+</ol>
+<h2 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h2><h3 id="概念-7"><a href="#概念-7" class="headerlink" title="概念"></a>概念</h3><p>职责链由多个不同的对象组成，发送者是发送请求的对象，而接收者则是链中那些接收请求并且对其进行处理或传递的对象。请求本身有时候也可以是一个对象，它封装了和操作有关的所有数据，基本实现流程如下：</p>
+<ol>
+<li><p>发送者知道链中的第一个接收者，它向这个接收者发送该请求。</p>
+</li>
+<li><p>每一个接收者都对请求进行分析，然后要么处理它，要么它往下传递。</p>
+</li>
+<li><p>每一个接收者知道其他的对象只有一个，即它在链中的下家(successor)。</p>
+</li>
+<li><p>如果没有任何接收者处理请求，那么请求会从链中离开。</p>
+</li>
+</ol>
+<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>现有A、B、C、D四个生产线，生产总量为2100，每个生产线的生产量未知且在0~2100(包括0和2100，保证总量为2100即可)，生产完毕后，分6次进行运输，规定每台车辆只能运350，且装满后才能够出发，装车顺序为ABCD,即上一个生产线生产的东西装完后才能够装下一个生产线的东西，要求根据每条生产线的生产量，给出每台车辆的托运安排。</p>
+<p>例如： A：100 ， B：1400 ，C：500 ， D：100<br>托运安排：<br>第一辆车： A：100 ， B：250<br>第二辆车： A：0 ， B：350<br>第三辆车： A：0 ， B：350<br>第四辆车： A：0 ， B：350<br>第五辆车： A：0 ， B：100 ，C：250<br>第六辆车： A：0 ， B：0 ， C：250 ，D：100</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WearHouse</span></span>&#123;</div><div class="line">        <span class="keyword">constructor</span>(volume,wearHouse)&#123;</div><div class="line">            <span class="keyword">this</span>.volume=volume;</div><div class="line">            <span class="keyword">this</span>.wearHouse=wearHouse;</div><div class="line">            <span class="keyword">this</span>.outString=[];</div><div class="line">        &#125;</div><div class="line">        next(take)&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.wearHouse!=<span class="literal">undefined</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">this</span>.wearHouse.takeOut(take).forEach(<span class="function">(<span class="params">subT</span>) =&gt;</span> &#123;</div><div class="line">                    <span class="keyword">this</span>.outString.push(subT)</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        takeOut(num)&#123;</div><div class="line">            <span class="keyword">if</span>(num&gt;<span class="keyword">this</span>.volume)&#123;</div><div class="line">                num-=<span class="keyword">this</span>.volume;</div><div class="line">                <span class="keyword">var</span> temp=<span class="keyword">this</span>.volume;</div><div class="line">                <span class="keyword">this</span>.volume=<span class="number">0</span>;</div><div class="line">                <span class="keyword">this</span>.outString.push(<span class="keyword">this</span>.print(<span class="number">0</span>,temp));</div><div class="line">                <span class="keyword">this</span>.next(num);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">this</span>.volume-=num;</div><div class="line">                <span class="keyword">this</span>.outString.push(<span class="keyword">this</span>.print(<span class="keyword">this</span>.volume,num));</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">var</span> temOut=<span class="keyword">this</span>.outString;</div><div class="line">            <span class="keyword">this</span>.outString=[];</div><div class="line">            <span class="keyword">return</span> temOut;</div><div class="line">        &#125;</div><div class="line">        print(volumn,takeNum)&#123;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WearHouseA</span> <span class="keyword">extends</span> <span class="title">WearHouse</span></span>&#123;</div><div class="line">        print(volumn,takeNum)&#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">'A'</span>,takeNum];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WearHouseB</span> <span class="keyword">extends</span> <span class="title">WearHouse</span></span>&#123;</div><div class="line">        print(volumn,takeNum)&#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">'B'</span>,takeNum];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WearHouseC</span> <span class="keyword">extends</span> <span class="title">WearHouse</span></span>&#123;</div><div class="line">        print(volumn,takeNum)&#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">'C'</span>,takeNum];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WearHouseD</span> <span class="keyword">extends</span> <span class="title">WearHouse</span></span>&#123;</div><div class="line">        print(volumn,takeNum)&#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">'D'</span>,takeNum];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> D=<span class="keyword">new</span> WearHouseD(<span class="number">100</span>,<span class="literal">undefined</span>);</div><div class="line">    <span class="keyword">var</span> C=<span class="keyword">new</span> WearHouseC(<span class="number">500</span>,D);</div><div class="line">    <span class="keyword">var</span> B=<span class="keyword">new</span> WearHouseB(<span class="number">1400</span>,C);</div><div class="line">    <span class="keyword">var</span> A=<span class="keyword">new</span> WearHouseA(<span class="number">100</span>,B);</div><div class="line">    <span class="keyword">var</span> strSet=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> a=<span class="number">0</span>;a&lt;<span class="number">6</span>;a++)&#123;</div><div class="line">        strSet.push(...A.takeOut(<span class="number">350</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(strSet);</div></pre></td></tr></table></figure>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>使用设计模式的是为了提高我们解决问题的效率，不同的设计模式也是针对不同环境的特定方案，不仅仅是单独的某一种设计模式，大多数情况下都是多个模式共存的。切勿为了使用设计模式而强行引入，增加代码复杂度。</p>
+<p>学习资源：链接：<a href="http://pan.baidu.com/s/1i5BYiGH" target="_blank" rel="external">http://pan.baidu.com/s/1i5BYiGH</a> 密码：3s4v</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-21T02:54:02.000Z" itemprop="dateUpdated">2017-08-21 10:54:02</time>
+</span><br>
+
+
+        
+        原始文章链接：<a href="/2017/08/10/JavaScript设计模式/" target="_blank" rel="external">http://dpfblog.com/2017/08/10/JavaScript设计模式/</a>
+        
+    </div>
+    <footer>
+        <a href="http://dpfblog.com">
+            <img src="/img/avatar.jpg" alt="没事放放牛">
+            没事放放牛
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&title=《JavaScript最全设计模式详解》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&title=《JavaScript最全设计模式详解》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/08/10/JavaScript设计模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript最全设计模式详解》 — Davis' Blog&url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&via=http://dpfblog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/20/Angular-CLI/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学会使用Angular CLI命令行工具</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/05/cubic-bezier/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">cubic-bezier(贝塞尔曲线)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2138373"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <!-- <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>没事放放牛 &copy; 2015 - 2020</span>
+        </p>
+    </div>
+</footer> -->
+
+<footer class="footer">
+    <div class="top">
+        <!-- 总访客数：2124  总访问量：5726 -->
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>
+            <a target="_blank" href="mailto:302804389@qq.com" style="border-bottom:none">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDkwMTUwOTQ2NDk3IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjUzMjkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNTEyIDEwMDcuMjEzMTE1QzIzOC41MDgwNjYgMTAwNy4yMTMxMTUgMTYuNzg2ODg1IDc4NS40OTE5MzQgMTYuNzg2ODg1IDUxMiAxNi43ODY4ODUgMjM4LjUwODA2NiAyMzguNTA4MDY2IDE2Ljc4Njg4NSA1MTIgMTYuNzg2ODg1IDc4NS40OTE5MzQgMTYuNzg2ODg1IDEwMDcuMjEzMTE1IDIzOC41MDgwNjYgMTAwNy4yMTMxMTUgNTEyIDEwMDcuMjEzMTE1IDc4NS40OTE5MzQgNzg1LjQ5MTkzNCAxMDA3LjIxMzExNSA1MTIgMTAwNy4yMTMxMTVaTTUxMiA1MC4zNjA2NTZDMjU3LjA0MDc4NyA1MC4zNjA2NTYgNTAuMzYwNjU2IDI1Ny4wNDA3ODcgNTAuMzYwNjU2IDUxMiA1MC4zNjA2NTYgNzY2Ljk1OTIxMyAyNTcuMDQwNzg3IDk3My42MzkzNDQgNTEyIDk3My42MzkzNDQgNzY2Ljk1OTIxMyA5NzMuNjM5MzQ0IDk3My42MzkzNDQgNzY2Ljk1OTIxMyA5NzMuNjM5MzQ0IDUxMiA5NzMuNjM5MzQ0IDI1Ny4wNDA3ODcgNzY2Ljk1OTIxMyA1MC4zNjA2NTYgNTEyIDUwLjM2MDY1NlpNNzU1LjQwOTgzNiA3MjEuODM2MDY2IDI4NS4zNzcwNDkgNzIxLjgzNjA2NkMyNjYuODI3NTQxIDcyMS44MzYwNjYgMjUxLjgwMzI3OSA3MDcuOTcwMDk4IDI1MS44MDMyNzkgNjkwLjg0NzQ3NUwyNTEuODAzMjc5IDM0OS45Mzk0MUMyNTEuODAzMjc5IDMzMi44MzM1NzQgMjY2LjgyNzU0MSAzMTguOTUwODIgMjg1LjM3NzA0OSAzMTguOTUwODJMNzU1LjQwOTgzNiAzMTguOTUwODJDNzczLjk1OTM0NCAzMTguOTUwODIgNzg4Ljk4MzYwNyAzMzIuODMzNTc0IDc4OC45ODM2MDcgMzQ5LjkzOTQxTDc4OC45ODM2MDcgNjkwLjg0NzQ3NUM3ODguOTgzNjA3IDcwNy45NzAwOTggNzczLjk1OTM0NCA3MjEuODM2MDY2IDc1NS40MDk4MzYgNzIxLjgzNjA2NlpNNzU1LjQwOTgzNiAzNDkuOTM5NDEgMjg1LjM3NzA0OSAzNDkuOTM5NDEgMjg1LjM3NzA0OSAzNTAuOTYzNDEgNTIxLjkyMTA0OSA1NjkuMjkzNjM5IDc1NS40MDk4MzYgMzUzLjc2NjgyIDc1NS40MDk4MzYgMzQ5LjkzOTQxWk03NTUuNDA5ODM2IDM5Ny41OTczNzcgNTM4LjQzOTM0NCA1OTcuODY0OTE4IDUwNS4zODU5NjcgNTk3Ljg2NDkxOCAyODUuMzc3MDQ5IDM5NC43NzcxOCAyODUuMzc3MDQ5IDY5MC44NDc0NzUgNzU1LjQwOTgzNiA2OTAuODQ3NDc1IDc1NS40MDk4MzYgMzk3LjU5NzM3N1oiIHAtaWQ9IjUzMzAiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=" title="E-mail 联系" style="width:20px;height:20px;border:none;">
+            </a>
+            </span>
+
+            <span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=302804389&site=qq&menu=yes" style="border-bottom:none">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDkwMTUxNTc4MDQ0IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjUgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1MjE0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMC4xOTUzMTI1IiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNTE2Ljk3MSAzNC44MTJjLTI2Mi44MzYgMC00NzUuOTExIDIxMy4wNzEtNDc1LjkxMSA0NzUuOTExczIxMy4wNzUgNDc1LjkxIDQ3NS45MTEgNDc1LjkxYzI2Mi44MzggMCA0NzUuOTE1LTIxMy4wNzAgNDc1LjkxNS00NzUuOTEgMC0yNjIuODM5LTIxMy4wNzYtNDc1LjkxMS00NzUuOTE1LTQ3NS45MTF6TTUxNi45NzEgOTYwLjA5OGMtMjQ4LjE4MSAwLTQ0OS4zNzMtMjAxLjE5MS00NDkuMzczLTQ0OS4zNzVzMjAxLjE5Mi00NDkuMzcxIDQ0OS4zNzMtNDQ5LjM3MWMyNDguMTgyIDAgNDQ5LjM3NyAyMDEuMTg4IDQ0OS4zNzcgNDQ5LjM3MSAwIDI0OC4xODMtMjAxLjE5NiA0NDkuMzc1LTQ0OS4zNzcgNDQ5LjM3NXoiIHAtaWQ9IjE1MjE1IiBmaWxsPSIjZmZmZmZmIj48L3BhdGg+PHBhdGggZD0iTTc2Ni45ODYgNTY5LjI2M2wtMS43NDktOS4zMjMtMS4xNjUtNC42NjEtMS4xNjctNC42NjEtMS43NDctNC42NjItMS43NDgtNS4yNDQtMi4zMy01LjI0NC0yLjMzMi01LjI0NC00LjA3OC04LjE1Ny0zLjQ5Ni03LjU3NS0zLjQ5Ni02LjQxLTIuOTEzLTUuODI3LTMuNDk2LTUuODI2LTIuMzMxLTQuNjYyLTUuMjQ0LTguMTU4LTYuOTkyLTkuOTA2LTEuNzQ5LTIuOTEyLTAuNTgyLTAuNTgzIDAtMS4xNjYgMS4xNjYtMy40OTYgMS4xNjUtMi45MTQgMS43NDctNS44MjcgMC41ODMtMy40OTYgMC0yLjkxNCAwLjU4My0yLjMzMSAwLTIuOTEzLTAuNTgzLTIuOTEzLTAuNTgzLTIuOTE0LTAuNTgyLTQuNjYyLTEuMTY1LTQuNjYxLTEuNzQ5LTQuNjYyLTEuNzQ4LTQuMDc5LTEuNzQ4LTMuNDk3LTEuNzQ3LTMuNDk2LTEuNzQ4LTIuOTE0LTMuNDk2LTUuMjQ1LTAuNTgyLTEuNzQ3LTAuNTg0LTEuMTY2LTEuMTY0LTkuMzIzLTEuMTY2LTUuODI2LTAuNTgzLTcuNTc1LTEuNzQ4LTcuNTc1LTIuMzMxLTguNzQxLTEuMTY0LTUuMjQzLTEuMTY1LTQuMDc5LTEuNzQ5LTQuNjYxLTEuNzQ4LTUuMjQ1LTEuNzQ5LTUuMjQzLTEuNzQ3LTUuMjQ1LTQuNjYxLTkuOTA1LTIuMzMtNC42NjItMy40OTgtNS4yNDQtMi45MTItNC42NjItMi45MTQtNS4yNDMtNC4wNzgtNS4yNDUtMy40OTctNC42NjEtNC4wNzktNC42NjItNC42NjEtNC42NjEtNC4wNzktNC4wNzktNS4yNDMtNC4wOC0yLjkxNC0yLjMzMS0yLjMzLTEuNzQ4LTUuODI3LTQuMDc5LTYuNDEtNC4wNzktNi40MDgtNC4wNzktNy41NzUtMy40OTctNi45OTItMi45MTQtNi45OTItMi45MTMtNy41NzYtMi45MTQtNy41NzMtMS43NDgtNy41NzUtMS43NDgtOC4xNTctMS43NDgtNy41NzUtMS43NDgtNy41NzUtMS4xNjUtOC4xNTctMC41ODMtNy41NzYtMS4xNjYtOC4xNTcgMC03LjU3NSAwLTcuNTc0IDAtNy41NzUgMC41ODMtNy41NzQgMS4xNjctNy41NzUgMC41ODItNy41NzUgMS4xNjYtNi45OTIgMS4xNjUtNi45OTEgMS43NDgtNi45OTIgMi4zMzEtNi45OTMgMi4zMzItNi40MDkgMi4zMy02LjQxIDIuOTE0LTUuODI1IDIuMzMxLTUuODI4IDMuNDk3LTUuODI2IDMuNDk2LTUuMjQ1IDMuNDk2LTUuMjQzIDQuMDgtNC42NjIgMy40OTZMNDEwLjM4MyAyODJsLTUuODI3IDUuMjQ1LTUuMjQ0IDUuODI2LTQuNjYxIDUuODI3LTQuNjYxIDUuODI4LTQuMDc4IDUuMjQzLTMuNDk3IDUuODI3LTIuMzMxIDIuOTE0LTEuNzQ4IDIuOTEzLTMuNDk2IDUuMjQ1LTIuOTEzIDUuMjQ0LTIuMzMxIDUuMjQ0LTIuMzMgNS4yNDUtMi4zMzEgNC42NjEtMS43NDggNC42NjEtMS43NDggNS4yNDQtMS43NDggNC4wNzktMS43NDggOC4xNTgtMi4zMzEgOC4xNTgtMC41ODIgNi40MDktMS4xNjYgNS44MjcgMCA0LjA3OSAwIDMuNDk2IDAgMy40OTctMS4xNjUgMS43NDgtMS43NDggMS43NDgtMS4xNjYgMi4zMzEtMC41ODIgMi4zMy0xLjc0OSA0LjY2Mi0xLjE2NSA0LjY2MS0wLjU4MiAzLjQ5NiAwIDMuNDk3IDAgMi45MTMtMy40OTcgNC4wNzktMS43NDcgNC42NjItMi4zMzEgNC4wNzgtMS4xNjUgNC4wNzktMC41ODMgMy40OTctMS4xNjUgMy40OTYgMCAyLjkxNCAwIDMuNDk2IDAgMi4zMzEgMC41ODMgMi4zMzEgMS4xNjUgNC4wNzkgMC41ODMgMi45MTQtMS43NDggMS4xNjUtNC42NjIgMy40OTctNi40MDkgNS44MjctNC4wNzkgMy40OTYtNC4wNzggMy40OTctMi45MTQgMi4zMzEtMS43NDggMi4zMy00LjY2MSA1LjI0NS00LjY2MiA0LjY2Mi0zLjQ5NSA0LjY2Mi00LjA3OSA1LjgyNy00LjA3OSA1LjgyNi00LjA3OCA2LjQxLTMuNDk3IDUuMjQ0LTIuOTEzIDYuNDEtMi45MTMgNS44MjYtMS43NDggNS4yNDQtMi4zMzEgNS44MjctMS43NDggNS44MjYtMS43NDggNS44MjctMS43NDggNS4yNDQtMC41ODIgNS4yNDQtMC41ODMgNS4yNDQtMS4xNjUgNC42NjEtMC41ODMgOS4zMjMgMCA4Ljc0IDAgNC4wNzkgMC41ODMgNC4wNzggMC41ODEgNi40MSAwLjU4NCAzLjQ5NiAxLjE2NSAyLjkxMyAwLjU4MyAyLjkxNCAwLjU4MiAxLjc0OCAyLjMzMSAzLjQ5NiAwLjU4MiAxLjE2NSAxLjE2NiAxLjE2NCAxLjE2NSAwIDEuMTY2IDAuNTg0IDEuMTY1IDAgMS43NDgtMC41ODQgNC42NjEtMS4xNjQgMy40OTctMS4xNjUgMy40OTYtMi4zMyAyLjkxMy0yLjMzMiAzLjQ5NS0yLjMzIDIuOTE0LTIuOTE0IDIuMzMxLTIuOTE0IDIuOTEzLTIuOTEyIDIuMzMxLTIuOTEzIDEuNzQ4LTIuOTE0IDEuMTY1LTIuMzMxIDIuOTEzLTUuMjQ0IDAuNTgzLTEuNzQ3IDAuNTgzLTEuMTY2IDAuNTgyLTEuMTY2IDAuNTgzLTEuMTY0IDAuNTgzIDAgMC41ODMtMC41ODMgMC41ODIgMCAwIDAuNTgzIDAuNTgyIDAgMC41ODQgMCAxLjE2NSA2LjQwOCAxLjc0OCA1LjI0NCAyLjMzIDUuMjQ1IDIuMzMxIDQuNjYgMS43NDggNC42NjIgMi4zMzEgNC42NjIgMi4zMyA0LjA3OSAyLjMzMSA0LjA3OSAyLjMzMSAzLjQ5NSAyLjMzIDMuNDk3IDUuMjQ1IDYuNDA4IDQuNjYxIDUuMjQ1IDQuNjYxIDQuNjYxIDQuMDc5IDQuMDc4IDQuMDc5IDIuOTE0IDUuODI3IDEuNzQ3IDIuMzMgMS4xNjUgMC41ODIgMC41ODQgMCAwLjU4My0wLjU4MiAwLjU4MS0xLjE2NiAwLjU4NC00LjA3OCAwLjU4Mi00LjA3OSAwLTMuNDk2IDAuNTgzLTMuNDk2IDAuNTgzLTMuNDk2IDEuMTY1LTIuOTE0IDEuMTY1LTIuMzMgMS4xNjYtMi4zMzEgMS4xNjUtMi4zMyAwLjU4My0yLjMzMSAxLjc0OC0xLjE2NSAxLjE2Ni0yLjMzMSAxLjE2NC0yLjMzMSAyLjkxNC0xLjE2NSAxLjc0OC0xLjE2NSAxLjE2NS0xLjE2NiAyLjkxNC0wLjU4MiAyLjkxMi0xLjE2NiAyLjMzMi0wLjU4MiAyLjMzIDAgMi45MTMgMCAxLjE2Ni0wLjU4MyAyLjMzIDAgMi4zMyAwIDIuMzMyIDAgMS43NDggMCAyLjMzMSAwLjU4MyAxLjE2NSAxLjc0OCAzLjQ5NiAwLjU4MiAxLjc0NyAwLjU4MyAyLjMzMSAxLjc0OCAxLjc0OCAxLjE2NSAxLjE2NiAxLjc0OCAxLjc0NyAxLjE2NiAxLjE2NyA0LjA3OCAyLjMyOSA0LjA3OSAyLjkxNCA0LjA3OCAyLjMzIDUuMjQ1IDEuNzQ4IDUuMjQ0IDEuNzQ4IDUuMjQ0IDEuNzQ5IDUuODI2IDEuNzQ3IDUuODI3IDEuMTY3IDYuNDA5IDAuNTgxIDUuODI3IDEuMTY2IDYuOTkzIDEuMTY2IDEyLjgxNyAxLjE2NSAxMi44MiAwLjU4MiAxMi4yMzYgMCA1LjgyNiAwIDUuODI4IDAgNS4yNDMtMC41ODIgNC42NjEtMC41ODMgNS4yNDUtMC41ODIgNC4wNzggMCA2Ljk5My0xLjc0OCA1LjI0My0xLjE2NSA1LjI0NC0xLjE2NyA4Ljc0LTMuNDk2IDQuMDc5LTEuNzQ4IDQuMDc4LTEuNzQ4IDYuNDEtMy40OTUgNS44MjYtMi45MTQgNC4wNzgtMi45MTMgMy40OTctMi4zMzEgNC42NjIgMCAzLjQ5NSAwLjU4MyA3LjU3NiAwLjU4MyAzLjQ5NiAwIDIuOTEyIDAgMi4zMzEgMC41ODIgMi4zMyAwLjU4MyA0LjA4IDEuMTY1IDMuNDk2IDEuNzQ4IDguMTU3IDIuMzMxIDcuNTc1IDIuOTEzIDguMTU3IDEuNzQ4IDcuNTc0IDEuNzQ5IDguMTU4IDEuNzQ3IDguMTU4IDEuNzQ5IDguMTU3IDAuNTgyIDcuNTczIDAuNTgyIDcuNTc2IDEuMTY3IDcuNTc0IDAuNTgxIDcuNTc2IDAgNy41NzMgMCA2Ljk5MiAwIDYuOTkzLTEuMTY0IDYuOTkyLTAuNTg0IDYuNDEtMC41ODIgNi40MDgtMS4xNjUgNS44MjctMS43NDkgNS44MjYtMS4xNjQgMi4zMzItMC41ODQgMi45MTQtMS4xNjUgNS4yNDMtMS43NDggNC4wNzktMi4zMyA0LjY2Mi0xLjc0OCA0LjA3OC0yLjMzIDMuNDk1LTIuMzMyIDEuMTY3LTEuNzQ4IDEuNzQ3LTEuNzQ4IDIuMzMxLTIuMzMxIDEuNzQ3LTIuOTEzIDEuMTY2LTIuMzMgMC41ODItMS4xNjUgMC41ODQtMS43NDkgMC41ODItMS43NDggMC0xLjc0NyAwLjU4Mi0xLjc0OC0wLjU4Mi0yLjMzMi0wLjU4Mi0yLjMzLTAuNTg0LTIuMzMtMS4xNjUtMi4zMzItMS4xNjUtMi45MTMtMS43NDgtMS43NDctMS43NDgtMi4zMzItMi4zMy0xLjc0OC00LjY2Mi00LjA3OC01LjI0NC00LjA3OS01LjI0My0yLjkxMy01LjgyOC0yLjkxNC0xMi44MTgtNi40MDktMi41NDktMS41MjkgNC4yOTgtNC4yOTcgMi45MTItMi45MTQgMi4zMzEtMi45MTMgNC4wNzgtNS44MjYgNC4wNzktNi40MSAzLjQ5Ny01LjgyNyAyLjkxMy01LjI0NSA0LjY2MS0xMC40ODcgMy40OTYtOC43NCAxLjc0OC01LjgyNyAxLjc0Ny0yLjMzIDAuNTg0LTEuNzQ4IDEuMTY0LTAuNTgzIDAuNTg0IDAgMC41ODIgMCAyLjkxMyA2LjQwOSAyLjkxMyA1LjgyOCAyLjMzMiAzLjQ5NSAyLjMzIDMuNDk2IDIuMzMxIDMuNDk2IDIuMzMxIDMuNDk2IDIuMzMgMi4zMzEgMS4xNjUgMS4xNjQgMS4xNjYgMS43NDkgMS43NDggMC41ODQgMS4xNjQgMS4xNjQgMi4zMzIgMS4xNjUgMS43NDggMC41ODMgMC41ODIgMCAxLjE2NiAwIDEuNzQ3LTAuNTgzIDEuNzQ5LTEuMTY1IDEuNzQ4LTAuNTgzIDEuNzQ3LTEuMTY1IDEuMTY3LTEuNzQ5IDEuNzQ3LTEuNzQ2IDEuMTY2LTEuNzQ5IDEuMTY1LTIuMzMgMS43NDctMi4zMzIgMS4xNjctMi4zMyAwLjU4MS0yLjkxMyAxLjc0OS01LjgyNyAxLjc0OC02LjQxIDAuNTgyLTYuOTkxIDAuNTgzLTQuMDc4IDAtMy40OTcgMC0zLjQ5NiAwLTQuNjYxLTEuMTY1LTguMTU4TDc2Ni45ODYgNTY5LjI2M3pNNjgwLjc0OCA2NzAuNjQ5bC0wLjU4Mi0wLjU4MiAwLjk3MS0wLjk3MUw2ODAuNzQ4IDY3MC42NDl6IiBwLWlkPSIxNTIxNiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==" title="QQ 联系" style="width:22px;height:22px;border:none;"></a>
+            </span>
+
+            <span>
+            <a target="_blank" href="https://github.com/pengfeidai" style="border-bottom:none">
+            <img src="data:image/png;base64,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" alt="GitHub pengfeidai" title="GitHub 联系" style="width:19px;height:19px;border:none;"></a>
+                </span>
+        </p>
+    </div>
+</footer>
+
+
+
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&title=《JavaScript最全设计模式详解》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&title=《JavaScript最全设计模式详解》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/08/10/JavaScript设计模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript最全设计模式详解》 — Davis' Blog&url=http://dpfblog.com/2017/08/10/JavaScript设计模式/&via=http://dpfblog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/08/10/JavaScript设计模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3ay47iMBAF0P7/n2a2LQ0x97qgJZyTFSIh8QlSqR7++YmPx6/j/2/Wx+/rr3579ZQ3HxgYGF/LyBdxdXZNTe7QPvcJFQMD4waMqwi2/ry+z15Q3nsWBgYGxvqadllJ4MbAwMD4BGNdXeZ3xsDAwJgUseuCc33PvSV+pBbHwMD4Qkbedf/7zx+Zb2BgYHwV41EeSWm6Dpr5aypWhYGBcTQjD3Bta+xd9yx+i4GBcSijLTX3RgXtPZNg/eR/wMDAOJTRpnGTUnMy5kxGCBgYGGcz2kDZlqNJUtgOAC7XgIGBcSgjHw3und0bQ9abxjAwMA5lJBtJ2xDcpn1J8veCjYGBcTSjDaZ5qpcPKduit2i6YWBgHMHYE0/CZZLq1YkjBgbGDRh7hWjRrH9rSfxisoGBgXEcYxIo99iTDRz1W8HAwDiakSRte4E1B4z2jGBgYBzHSJK/tt2Wb0KdDAMwMDDuwMhDZ76UNq1sg/iT6zEwMI5m5KXsPGVsk8K2zYeBgXE24w1hrkwW91LGF68AAwPjNoz54/OgORmUYmBg3JMx37CVbwJrRwvRK8bAwDiU8SiP9mF5CG4L18v/AQMD4zjGJNhNGnNJm69tzGFgYJzNSIJsW+i2Tf+9kB1lphgYGAcx5kPHJNWbbLN4EfoxMDAwtoLvpD1X57MYGBgYg7ZXnji2CWW0ZwQDA+MgRtusz4vYSeFaJIgYGBhHM/LSce9s3krLt3SM5hsYGBjfxPgHbMNLqbqoJUcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '悄悄的我走了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)轻轻地我来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

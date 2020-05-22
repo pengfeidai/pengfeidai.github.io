@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ES6，你真的知道吗 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Javascript,ES6,gulp">
+    <meta name="description" content="ES6简介ECMAScript6（简称ES6）是 JavaScript 语言的下一代标准。在2015年6月正式发布，所以又称ES2015。由于目前并不是所有浏览器都能兼容 ES6 全部特性，但是 ES6 在实际项目中的广泛使用已成为一种趋势。所以作为一个前端开发者，ES6 的语法是我们必须掌握的。 在讲解 ES6 语法之前，我们得先了解下Babel。 BabelBabel是一个广泛使用的ES6转码">
+<meta name="keywords" content="Javascript,ES6,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6，你真的知道吗">
+<meta property="og:url" content="http://dpfblog.com/2017/07/16/浅谈ES6核心内容/index.html">
+<meta property="og:site_name" content="Davis&#39; Blog">
+<meta property="og:description" content="ES6简介ECMAScript6（简称ES6）是 JavaScript 语言的下一代标准。在2015年6月正式发布，所以又称ES2015。由于目前并不是所有浏览器都能兼容 ES6 全部特性，但是 ES6 在实际项目中的广泛使用已成为一种趋势。所以作为一个前端开发者，ES6 的语法是我们必须掌握的。 在讲解 ES6 语法之前，我们得先了解下Babel。 BabelBabel是一个广泛使用的ES6转码">
+<meta property="og:image" content="http://ot4esom84.bkt.clouddn.com/17-8-1/80019165.jpg">
+<meta property="og:updated_time" content="2017-08-21T02:53:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6，你真的知道吗">
+<meta name="twitter:description" content="ES6简介ECMAScript6（简称ES6）是 JavaScript 语言的下一代标准。在2015年6月正式发布，所以又称ES2015。由于目前并不是所有浏览器都能兼容 ES6 全部特性，但是 ES6 在实际项目中的广泛使用已成为一种趋势。所以作为一个前端开发者，ES6 的语法是我们必须掌握的。 在讲解 ES6 语法之前，我们得先了解下Babel。 BabelBabel是一个广泛使用的ES6转码">
+<meta name="twitter:image" content="http://ot4esom84.bkt.clouddn.com/17-8-1/80019165.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/avatar.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">没事放放牛</h5>
+          <a href="mailto:302804389@qq.com" title="302804389@qq.com" class="mail">302804389@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/pengfeidai" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6，你真的知道吗</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES6，你真的知道吗</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-16T14:33:25.000Z" itemprop="datePublished" class="page-time">
+  2017-07-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES6简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Babel"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Babel</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6常用特性"><span class="post-toc-number">2.</span> <span class="post-toc-text">ES6常用特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#let-与-const"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">let 与 const</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Set-和-Map-数据结构"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Set 和 Map 数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#class、extends、super"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">class、extends、super</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#arrow-function-箭头函数"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">arrow function 箭头函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#template-string-模板字符串"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">template string 模板字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#destructuring-解构"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">destructuring 解构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#default默认参数"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">default默认参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rest参数"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">rest参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Proxy-代理"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">Proxy 代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Promise"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">Promise</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generator"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">Generator</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#export、import"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">export、import</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">3.</span> <span class="post-toc-text">结语</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-浅谈ES6核心内容"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6，你真的知道吗</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-16 22:33:25" datetime="2017-07-16T14:33:25.000Z"  itemprop="datePublished">2017-07-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="ES6简介"><a href="#ES6简介" class="headerlink" title="ES6简介"></a>ES6简介</h2><p>ECMAScript6（简称ES6）是 JavaScript 语言的下一代标准。在2015年6月正式发布，所以又称ES2015。<br>由于目前并不是所有浏览器都能兼容 ES6 全部特性，但是 ES6 在实际项目中的广泛使用已成为一种趋势。所以作为一个前端开发者，ES6 的语法是我们必须掌握的。</p>
+<p>在讲解 ES6 语法之前，我们得先了解下Babel。</p>
+<h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><p>Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。可在Babel官网 (<a href="http://babeljs.io/" target="_blank" rel="external">http://babeljs.io/</a>) 查看：</p>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ot4esom84.bkt.clouddn.com/17-8-1/80019165.jpg" alt="alt text" title="image">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></center>
+
+<p><strong>使用Gulp 和 Babel 将 ES6 代码转换成 ES5 代码具体过程如下：</strong></p>
+<p><strong>安装依赖</strong></p>
+<ol>
+<li><p>安装全局 Gulp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g gulp</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装项目中使用的 Gulp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev gulp</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Gulp 上 Babel 的插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev gulp-babel</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Babel 上将 ES6 转换成 ES5 的插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-preset-es2015</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Gulp 配置</strong></p>
+<ol>
+<li><p>gulpfile.js 的内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">var</span> babel = <span class="built_in">require</span>(<span class="string">"gulp-babel"</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">"src/**/*.js"</span>)   <span class="comment">// ES6 源码存放的路径</span></div><div class="line">    .pipe(babel())</div><div class="line">    .pipe(gulp.dest(<span class="string">"dist"</span>));     <span class="comment">//转换成 ES5 存放的路径</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果要生成 Soucemap， 则用 gulp-sourcemaps</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">var</span> sourcemaps = <span class="built_in">require</span>(<span class="string">"gulp-sourcemaps"</span>);</div><div class="line"><span class="keyword">var</span> babel = <span class="built_in">require</span>(<span class="string">"gulp-babel"</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">"gulp-concat"</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">"src/**/*.js"</span>)</div><div class="line">    .pipe(sourcemaps.init())</div><div class="line">    .pipe(babel())</div><div class="line">    .pipe(concat(<span class="string">"all.js"</span>))</div><div class="line">    .pipe(sourcemaps.write(<span class="string">"."</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">"dist"</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Babel 配置</strong><br>在项目根路径创建文件 .babelrc。内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;es2015&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>执行转换</strong><br>命令行中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp</div></pre></td></tr></table></figure></p>
+<h2 id="ES6常用特性"><a href="#ES6常用特性" class="headerlink" title="ES6常用特性"></a>ES6常用特性</h2><p><code>let</code>, <code>const</code>, <code>class</code>, <code>extends</code>, <code>super</code>, <code>arrow functions</code>, <code>template string</code>, <code>destructuring</code>, <code>default</code>, <code>rest arguments</code> 这些是ES6最常用的几个语法，基本上学会它们，就可以满足我们日常的使用！下面就用用最通俗易懂的语言和例子来讲解它们。</p>
+<h3 id="let-与-const"><a href="#let-与-const" class="headerlink" title="let 与 const"></a>let 与 const</h3><p>这两个的用途与var类似，都是用来声明变量的，但在实际运用中都有各自的特殊用途。</p>
+<p>ES5只有全局作用域、函数作用域和eval作用域，没有块级作用域，这带来很多不合理的场景。</p>
+<p>第一种，变量提升：就是var关键字声明变量。无论声明在何处，都会被视为声明在函数的最顶部；不在函数内即在全局作用域的最顶部。这样就会引起一些误解。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">a = <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
+<p>而 let 就不会被变量提升<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// a is not defined</span></div><div class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
+<p>第二种场景就是内层变量覆盖外层变量。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'Faker'</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">'Davis'</span></div><div class="line">    <span class="built_in">console</span>.log(name)  <span class="comment">//Davis</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(name)  <span class="comment">//Davis</span></div></pre></td></tr></table></figure></p>
+<p>而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="string">'Faker'</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">let</span> name = <span class="string">'Davis'</span></div><div class="line">    <span class="built_in">console</span>.log(name)  <span class="comment">//Davis</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(name)  <span class="comment">//Faker</span></div></pre></td></tr></table></figure></p>
+<p>第三种场景就是用来计数的循环变量泄露为全局变量，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
+<p>上面代码中，变量 i 是 var 声明的，在全局范围内都有效。所以每一次循环，新的 i 值都会覆盖旧值，导致最后输出的是最后一轮的i的值。而使用 let 则不会出现这个问题。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[<span class="number">6</span>](); <span class="comment">// 6</span></div></pre></td></tr></table></figure></p>
+<p>const也用来声明变量，但是声明的是常量。一旦声明，常量的值就不能改变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="number">3.1415926</span>;</div><div class="line">PI = <span class="number">8</span>;</div><div class="line"><span class="built_in">console</span>.log(PI); <span class="comment">// invalid assignment to const `PI'</span></div></pre></td></tr></table></figure></p>
+<p>当我们尝试去改变用const声明的常量时，浏览器就会报错。const有一个很好的应用场景，就是当我们引用第三方库的时声明的变量，用const来声明可以避免未来不小心重命名而导致出现bug：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> monent = <span class="built_in">require</span>(<span class="string">'moment'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h3><p><strong>与 Array 增、删、改、查对比</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"><span class="keyword">let</span> array = [];</div><div class="line"></div><div class="line"><span class="comment">// 增</span></div><div class="line">map.set(<span class="string">'t'</span>, <span class="number">1</span>);</div><div class="line">set.add( &#123; <span class="attr">t</span> : <span class="number">1</span> &#125; );</div><div class="line">array.push( &#123; <span class="attr">t</span>:<span class="number">1</span> &#125; );</div><div class="line"></div><div class="line"><span class="built_in">console</span>.info( map, set, array );  <span class="comment">// Map &#123; 't' =&gt; 1 &#125;  Set &#123; &#123; t: 1 &#125; &#125;  [ &#123; t: 1 &#125; ]</span></div><div class="line"></div><div class="line"><span class="comment">// 查</span></div><div class="line"><span class="keyword">let</span> map_exist = map.has( <span class="string">'t'</span> );</div><div class="line"><span class="keyword">let</span> set_exist = set.has( &#123;<span class="attr">t</span>:<span class="number">1</span>&#125; );</div><div class="line"><span class="keyword">let</span> array_exist = array.find(<span class="function"><span class="params">item</span> =&gt;</span> item.t)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.info(map_exist, set_exist, array_exist);  <span class="comment">//true   false   &#123; t: 1 &#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 改</span></div><div class="line">map.set(<span class="string">'t'</span>, <span class="number">2</span>);</div><div class="line">set.forEach(<span class="function"><span class="params">item</span> =&gt;</span> item.t ? item.t = <span class="number">2</span>:<span class="string">''</span>);</div><div class="line">array.forEach(<span class="function"><span class="params">item</span> =&gt;</span> item.t ? item.t = <span class="number">2</span>:<span class="string">''</span>);</div><div class="line"><span class="built_in">console</span>.info(map, set, array);  <span class="comment">// Map &#123; 't' =&gt; 2 &#125;   Set &#123; &#123; t: 2 &#125; &#125;   [ &#123; t: 2 &#125; ]</span></div><div class="line"></div><div class="line"><span class="comment">// 删</span></div><div class="line">map.delete(<span class="string">'t'</span>);</div><div class="line">set.forEach(<span class="function"><span class="params">item</span> =&gt;</span> item.t ? set.delete(item):<span class="string">''</span>);</div><div class="line"><span class="keyword">let</span> index = array.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> item.t);</div><div class="line">array.splice(index,<span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.info(map, set, array);  <span class="comment">// Map &#123;&#125;   Set &#123;&#125;   []</span></div></pre></td></tr></table></figure></p>
+<h3 id="class、extends、super"><a href="#class、extends、super" class="headerlink" title="class、extends、super"></a>class、extends、super</h3><p>ES5中原型、构造函数，继承问题一直困扰我们。ES6引入了Class（类）的概念。新的class写法让对象原型的写法更加清晰、更像面向对象编程的语法，也更加通俗易懂。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">      &#125;</div><div class="line">     sleep() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">" is sleeping"</span>);</div><div class="line">      &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> man = <span class="keyword">new</span> Human(<span class="string">"Davis"</span>);</div><div class="line">man.sleep();     <span class="comment">//Davis is sleeping</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Boy</span> <span class="keyword">extends</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name, age) &#123;</div><div class="line">        <span class="keyword">super</span>()</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;</div><div class="line">    info()&#123;</div><div class="line">          <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'is '</span> + <span class="keyword">this</span>.age + <span class="string">'years old'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> son = <span class="keyword">new</span> Boy(<span class="string">'Faker'</span>,<span class="string">'8'</span>);</div><div class="line">son.sleep();    <span class="comment">// Faker is sleeping</span></div><div class="line">son.info();     <span class="comment">//  Faker is 8 years old</span></div></pre></td></tr></table></figure></p>
+<p>上面代码首先用class定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。简单地说，constructor内定义的方法和属性是实例对象自己的，而constructor外定义的方法和属性则是所有实例对象可以共享的。</p>
+<p>Class之间可以通过extends关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。上面定义了一个Boy类，该类通过extends关键字，继承了Human类的所有属性和方法。</p>
+<p>super关键字，它指代父类的实例（即父类的this对象）。子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象。</p>
+<p>ES6的继承机制，实质是先创造父类的实例对象this（所以必须先调用super方法），然后再用子类的构造函数修改this。</p>
+<h3 id="arrow-function-箭头函数"><a href="#arrow-function-箭头函数" class="headerlink" title="arrow function 箭头函数"></a>arrow function 箭头函数</h3><p>ES6中新增的箭头操作符 <code>=&gt;</code> 简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值，可以说是 ES6 最最常用的一个新特性了，看下面的实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>];</div><div class="line">arr.forEach (<span class="function"><span class="keyword">function</span>(<span class="params">val, key</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(val, key);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>];</div><div class="line">arr.forEach (</div><div class="line"><span class="function">(<span class="params">val, key</span>) =&gt;</span> <span class="built_in">console</span>.log(val, key)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>JavaScript语言的this对象指向是一个头疼的问题，在对象方法中使用this，必须非常小心。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">      &#125;</div><div class="line">     sleep() &#123;</div><div class="line">       setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">" is sleeping"</span>);</div><div class="line">        &#125;, <span class="number">1000</span>)</div><div class="line">      &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> man = <span class="keyword">new</span> Human(<span class="string">"Davis"</span>);</div><div class="line">man.sleep();    <span class="comment">//  is sleeping</span></div></pre></td></tr></table></figure></p>
+<p>上面代码之所以不能输出 Davis，这是因为setTimeout中的this指向的是全局对象。为了让它能够正确的运行，传统的解决方法有两种：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一种，将this传给self,再用self来指代this</span></div><div class="line">sleep() &#123;</div><div class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(self.name + <span class="string">" is sleeping"</span>);</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line"></div><div class="line"><span class="comment">// 第二种，是用bind(this)</span></div><div class="line">sleep() &#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       <span class="built_in">console</span>.log(self.name + <span class="string">" is sleeping"</span>)</div><div class="line">    &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>)</div></pre></td></tr></table></figure></p>
+<p>使用箭头函数，非常方便：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name)&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">    sleep() &#123;</div><div class="line">        setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"is sleeping"</span>);</div><div class="line">        &#125;, <span class="number">1000</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> man = <span class="keyword">new</span> Human(<span class="string">"Davis"</span>);</div><div class="line">man.sleep();    <span class="comment">// Davis is sleeping</span></div></pre></td></tr></table></figure></p>
+<p>当我们使用箭头函数时，函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，它的this是继承外面的，因此内部的this就是外层代码块的this。</p>
+<h3 id="template-string-模板字符串"><a href="#template-string-模板字符串" class="headerlink" title="template string 模板字符串"></a>template string 模板字符串</h3><p>ES6中允许使用反引号 ` 来创建字符串，此种方法创建的字符串里面可以包含由美元符号加花括号包裹的变量${vraible}。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = <span class="built_in">Math</span>.random();</div><div class="line"><span class="built_in">console</span>.log(<span class="string">` num is <span class="subst">$&#123;num&#125;</span>`</span>);  <span class="comment">//  num is xx</span></div></pre></td></tr></table></figure></p>
+<p>不再通过 \ 来做多行字符串拼接，模板字符串可以多行书写：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$("#main").html(`</div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>今天天气很好！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>产生一个随机数$&#123;num&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">`);</div></pre></td></tr></table></figure></p>
+<p>模板字符串中所有的空格、新行、缩进，都会原样输出在生成的字符串中。</p>
+<h3 id="destructuring-解构"><a href="#destructuring-解构" class="headerlink" title="destructuring 解构"></a>destructuring 解构</h3><p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构。</p>
+<p>用途一，交换变量的值，不再需要中间变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">[a, b] = [b, a];</div><div class="line"><span class="built_in">console</span>.log(a, b);  <span class="comment">// 2 1</span></div></pre></td></tr></table></figure></p>
+<p>用途二，提取JSON数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> jsonData = &#123;</div><div class="line">  <span class="attr">id</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">title</span>: <span class="string">"OK"</span>,</div><div class="line">  <span class="attr">data</span>: [<span class="number">5</span>, <span class="number">6</span>]</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;id, title, <span class="attr">data</span>:number&#125; = jsonData;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(id, title, number); <span class="comment">// 1, "OK", [5, 6]</span></div></pre></td></tr></table></figure></p>
+<p>用途三，函数参数的定义<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// 参数是一组有次序的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">[x, y, z]</span>) </span>&#123;</div><div class="line"> ...</div><div class="line"> &#125;</div><div class="line">f([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line"></div><div class="line"><span class="comment">// 参数是一组无次序的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">&#123;x, y, z&#125;</span>) </span>&#123;</div><div class="line">...</div><div class="line">&#125;</div><div class="line">f(&#123;<span class="attr">z</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">x</span>: <span class="number">1</span>&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="default默认参数"><a href="#default默认参数" class="headerlink" title="default默认参数"></a>default默认参数</h3><p>default很简单，就是默认值。现在可以在定义函数的时候指定参数的默认值，而不用像以前那样通过逻辑或操作符来达到目的了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  传统指定默认参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">say1</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = name || <span class="string">'Faker'</span>;</div><div class="line">    <span class="built_in">console</span>.log( <span class="string">'Hello '</span> + name );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//  ES6默认参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">say2</span>(<span class="params">name=<span class="string">'Davis'</span></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line">say1();         <span class="comment">// Hello Faker</span></div><div class="line">say1(<span class="string">'Tom'</span>);   <span class="comment">// Hello tom</span></div><div class="line">say2();        <span class="comment">//Hello Davis</span></div><div class="line">say2(<span class="string">'Bob'</span>);  <span class="comment">//  Hello Bob</span></div></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong> say2(name=’tom’)这里的等号，指的是没有传这个参数，则设置默认值Davis，而不是给参数赋值。</p>
+<h3 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h3><p>rest参数只包括那些没有给出名称的参数；</p>
+<p>rest参数是Array的实例，可以直接应用sort, map, forEach, pop等方法；</p>
+<p>rest参数之后不能再有其它参数（即，只能是最后一个参数）；</p>
+<p>函数的length属性，不包括rest参数；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x, y, ...rest</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(rest)</div><div class="line">&#125;</div><div class="line">fn(<span class="number">1</span>, <span class="string">"cat"</span>, <span class="string">"dog"</span>, <span class="number">2</span>);    <span class="comment">//["dog", 2]</span></div><div class="line"><span class="built_in">console</span>.log(fn.length);  <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
+<h3 id="Proxy-代理"><a href="#Proxy-代理" class="headerlink" title="Proxy 代理"></a>Proxy 代理</h3><p>Proxy可以监听对象身上发生了什么事情，并在这些事情发生后执行一些相应的操作。让我们对一个对象有了很强的追踪能力，同时在数据绑定方面也很有用处。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义被监听的目标对象</span></div><div class="line"><span class="keyword">let</span> man = &#123; <span class="attr">name</span>: <span class="string">'Davis'</span>, <span class="attr">age</span>: <span class="number">21</span> &#125;;</div><div class="line"><span class="comment">//定义处理程序</span></div><div class="line"><span class="keyword">let</span> handle = &#123;</div><div class="line">      set(receiver, property, value) &#123;</div><div class="line">        <span class="built_in">console</span>.log(property, <span class="string">'is changed to'</span>, value);</div><div class="line">        receiver[property] = value;</div><div class="line">      &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//创建代理以进行侦听</span></div><div class="line">man = <span class="keyword">new</span> <span class="built_in">Proxy</span>(man, handle);</div><div class="line"><span class="comment">//做一些改动来触发代理</span></div><div class="line">man.age = <span class="number">22</span>;  <span class="comment">//age is change to  22</span></div><div class="line">man.name = <span class="string">"Faker"</span>;  <span class="comment">// name is change to  Faker</span></div></pre></td></tr></table></figure></p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p><strong>Promise对象状态</strong></p>
+<p>Promise/A+规范, 规定Promise对象是一个有限状态机。它三个状态：</p>
+<ul>
+<li>pending（执行中）</li>
+<li>Resolved（已完成）</li>
+<li>Rejected（已失败）</li>
+</ul>
+<p>其中pending为初始状态，Resolved和rejected为结束状态（表示promise的生命周期已结束）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> val = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="comment">// 我们假设step1, step2, step3都是ajax调用后端或者是在Node.js上查询数据库的异步操作</span></div><div class="line"><span class="comment">// 每个步骤都有对应的失败和成功处理回调</span></div><div class="line"><span class="comment">// step1、step2、step3必须按顺序执行</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">step1</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'步骤一：执行'</span>);</div><div class="line">    <span class="keyword">if</span> (val &gt;= <span class="number">1</span>) &#123;</div><div class="line">        resolve(<span class="string">'Hello I am No.1'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val === <span class="number">0</span>) &#123;</div><div class="line">        reject(val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">step2</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'步骤二：执行'</span>);</div><div class="line">    <span class="keyword">if</span> (val === <span class="number">1</span>) &#123;</div><div class="line">        resolve(<span class="string">'Hello I am No.2'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val === <span class="number">0</span>) &#123;</div><div class="line">        reject(val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'步骤三：执行'</span>);</div><div class="line">    <span class="keyword">if</span> (val === <span class="number">1</span>) &#123;</div><div class="line">        resolve(<span class="string">'Hello I am No.3'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val === <span class="number">0</span>) &#123;</div><div class="line">        reject(val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(step1).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.info(val);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(step2);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.info(val);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(step3);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.info(val);</div><div class="line">    <span class="keyword">return</span> val;</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.info(val);</div><div class="line">    <span class="keyword">return</span> val;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 执行之后将会打印</span></div><div class="line">步骤一：执行</div><div class="line">Hello I am No<span class="number">.1</span></div><div class="line">步骤二：执行</div><div class="line">Hello I am No<span class="number">.2</span></div><div class="line">步骤三：执行</div><div class="line">Hello I am No<span class="number">.3</span></div><div class="line">Hello I am No<span class="number">.3</span></div></pre></td></tr></table></figure></p>
+<p><strong>常用关键点：</strong></p>
+<ol>
+<li><p>在Promise定义时，函数已经执行了；Promise构造函数只接受一个参数，即带有异步逻辑的函数。这个函数在 new Promise 时已经执行了。只不过在没有调用 then 之前不会 resolve 或 reject。</p>
+</li>
+<li><p>在then方法中通常传递两个参数，一个 resolve 函数，一个 reject 函数。reject就是出错的时候运行的函数。resolve 函数必须返回一个值才能把链式调用进行下去。</p>
+</li>
+</ol>
+<ul>
+<li>resolve 返回一个新 Promise<br>返回一个新Promise之后再调用的then就是新Promise中的逻辑了。</li>
+<li>resolve 返回一个值<br>返回一个值会传递到下一个then的resolve方法参数中。</li>
+</ul>
+<h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><p>Generator函数跟普通函数的写法有非常大的区别：</p>
+<ol>
+<li>function关键字与函数名之间有一个 *；</li>
+<li>函数体内部使用yield语句，定义不同的内部状态；</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">'a'</span>;</div><div class="line">    <span class="keyword">yield</span> <span class="string">'b'</span>;</div><div class="line">    <span class="keyword">yield</span> <span class="string">'c'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="string">'ending'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> fn = f();</div><div class="line"><span class="built_in">console</span>.log(fn.next()); <span class="comment">// &#123; value: 'a', done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(fn.next()); <span class="comment">// &#123; value: 'b', done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(fn.next()); <span class="comment">// &#123; value: 'c', done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(fn.next()); <span class="comment">// &#123; value: 'ending', done: true &#125;</span></div></pre></td></tr></table></figure>
+<p>第一次输出fn.next()返回一个简单的对象{value: “a”, done: false}，’a’就是f函数执行到第一个yield语句之后得到的值，false表示f函数还没有执行完，只是在这暂停。</p>
+<p>第二次，返回的就是{value: “b”, done: false}，说明f函数运行到了第二个yield语句，返回的是该yield语句的返回值’b’。返回之后依然是暂停。</p>
+<p>第三次，第四次同理，这样整个f函数就运行完毕了。</p>
+<p><strong>异步操作的同步化写法</strong><br>Generator函数的暂停执行的效果，意味着可以把异步操作写在yield语句里面，等到调用next方法时再往后执行。这实际上等同于不需要写回调函数了，因为异步操作的后续操作可以放在yield语句下面，反正要等到调用next方法时再执行。所以，Generator函数的一个重要实际意义就是用来处理异步操作，改写回调函数。</p>
+<p>例子：假设我在测试服务器的某目录建了4个文件，分别是’test.html’、’a.html’、’b.html’、’c.html’，后三个文件的文件内容跟文件名相同，现在我编辑’test.html’的代码，想要先ajax-get相对网址’a.html’，然后再回调里ajax-get相对网址’b.html’，然后在回调里ajax-get相对网址’c.html’。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">req</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">  $.get(url, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">    it.next(res);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 生成器函数</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">ajaxs</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">yield</span> req(<span class="string">'a.html'</span>));</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">yield</span> req(<span class="string">'b.html'</span>));</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">yield</span> req(<span class="string">'c.html'</span>));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> it = ajaxs();  <span class="comment">// 遍历器对象</span></div><div class="line"></div><div class="line">it.next();</div><div class="line"></div><div class="line"><span class="comment">// a.html</span></div><div class="line"><span class="comment">// b.html</span></div><div class="line"><span class="comment">// c.html</span></div></pre></td></tr></table></figure>
+<p><strong>强调：</strong>只有当yield后面跟的函数先执行完，无论执行体里面有多少异步回调，都要等所有回调先执行完，才会执行等号赋值，以及再后面的操作。这也是yield最大的特性。</p>
+<h3 id="export、import"><a href="#export、import" class="headerlink" title="export、import"></a>export、import</h3><p>export用于对外输出本模块（一个文件可以理解为一个模块）变量的接口；</p>
+<p>import用于在一个模块中加载另一个含有export接口的模块。</p>
+<p><strong>导出一组对象</strong></p>
+<p>导出模块文件app.js：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Human&#123;</div><div class="line">    constructor(name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">    sleep() &#123;</div><div class="line">        console.log(this.name + &quot; is sleeping&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function walk() &#123;</div><div class="line">    console.log(&apos;i am walking&apos;);</div><div class="line">&#125;</div><div class="line">function play() &#123;</div><div class="line">    console.log(&apos;i am playing&apos;);</div><div class="line">&#125;</div><div class="line">export &#123; Human, walk &#125;</div></pre></td></tr></table></figure></p>
+<p>模块导出了两个对象：Human类和walk函数，能被其他文件使用。而play函数没有导出，为此模块私有，不能被其他文件使用。</p>
+<p>main.js导入app.js模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; Human, walk &#125; from &apos;app.js&apos;;</div></pre></td></tr></table></figure></p>
+<p><strong>Default导出</strong><br>使用关键字default，可将对象标注为default对象导出。default关键字在每一个模块中只能使用一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... //类，函数等</div><div class="line">export default App;</div></pre></td></tr></table></figure></p>
+<p>main.js导入app.js模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import App from &apos;app.js&apos;;</div></pre></td></tr></table></figure></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上这些是ES6最常用的几个语法，基本上学会它们，就可以满足我们日常的使用！ES6的新语法特性让前端和后端的差异越来越小了，我们必须要了解这些新的前沿知识（虽然ES8已经到来，但我相信目前还是ES6的时代），才能更好运用于项目中。</p>
+<p>项目源码：<a href="https://github.com/pengfeidai/lottery-es6" target="_blank" rel="external">https://github.com/pengfeidai/lottery-es6</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-21T02:53:16.000Z" itemprop="dateUpdated">2017-08-21 10:53:16</time>
+</span><br>
+
+
+        
+        原始文章链接：<a href="/2017/07/16/浅谈ES6核心内容/" target="_blank" rel="external">http://dpfblog.com/2017/07/16/浅谈ES6核心内容/</a>
+        
+    </div>
+    <footer>
+        <a href="http://dpfblog.com">
+            <img src="/img/avatar.jpg" alt="没事放放牛">
+            没事放放牛
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&title=《ES6，你真的知道吗》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&title=《ES6，你真的知道吗》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6，你真的知道吗》 — Davis' Blog&url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&via=http://dpfblog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/20/ES6编码风格/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ES6编码风格</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/07/11/响应式网页开发应注意的那些事儿/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">响应式网页开发你不知道的那些事</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2138373"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <!-- <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>没事放放牛 &copy; 2015 - 2020</span>
+        </p>
+    </div>
+</footer> -->
+
+<footer class="footer">
+    <div class="top">
+        <!-- 总访客数：2124  总访问量：5726 -->
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>
+            <a target="_blank" href="mailto:302804389@qq.com" style="border-bottom:none">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDkwMTUwOTQ2NDk3IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjUzMjkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNTEyIDEwMDcuMjEzMTE1QzIzOC41MDgwNjYgMTAwNy4yMTMxMTUgMTYuNzg2ODg1IDc4NS40OTE5MzQgMTYuNzg2ODg1IDUxMiAxNi43ODY4ODUgMjM4LjUwODA2NiAyMzguNTA4MDY2IDE2Ljc4Njg4NSA1MTIgMTYuNzg2ODg1IDc4NS40OTE5MzQgMTYuNzg2ODg1IDEwMDcuMjEzMTE1IDIzOC41MDgwNjYgMTAwNy4yMTMxMTUgNTEyIDEwMDcuMjEzMTE1IDc4NS40OTE5MzQgNzg1LjQ5MTkzNCAxMDA3LjIxMzExNSA1MTIgMTAwNy4yMTMxMTVaTTUxMiA1MC4zNjA2NTZDMjU3LjA0MDc4NyA1MC4zNjA2NTYgNTAuMzYwNjU2IDI1Ny4wNDA3ODcgNTAuMzYwNjU2IDUxMiA1MC4zNjA2NTYgNzY2Ljk1OTIxMyAyNTcuMDQwNzg3IDk3My42MzkzNDQgNTEyIDk3My42MzkzNDQgNzY2Ljk1OTIxMyA5NzMuNjM5MzQ0IDk3My42MzkzNDQgNzY2Ljk1OTIxMyA5NzMuNjM5MzQ0IDUxMiA5NzMuNjM5MzQ0IDI1Ny4wNDA3ODcgNzY2Ljk1OTIxMyA1MC4zNjA2NTYgNTEyIDUwLjM2MDY1NlpNNzU1LjQwOTgzNiA3MjEuODM2MDY2IDI4NS4zNzcwNDkgNzIxLjgzNjA2NkMyNjYuODI3NTQxIDcyMS44MzYwNjYgMjUxLjgwMzI3OSA3MDcuOTcwMDk4IDI1MS44MDMyNzkgNjkwLjg0NzQ3NUwyNTEuODAzMjc5IDM0OS45Mzk0MUMyNTEuODAzMjc5IDMzMi44MzM1NzQgMjY2LjgyNzU0MSAzMTguOTUwODIgMjg1LjM3NzA0OSAzMTguOTUwODJMNzU1LjQwOTgzNiAzMTguOTUwODJDNzczLjk1OTM0NCAzMTguOTUwODIgNzg4Ljk4MzYwNyAzMzIuODMzNTc0IDc4OC45ODM2MDcgMzQ5LjkzOTQxTDc4OC45ODM2MDcgNjkwLjg0NzQ3NUM3ODguOTgzNjA3IDcwNy45NzAwOTggNzczLjk1OTM0NCA3MjEuODM2MDY2IDc1NS40MDk4MzYgNzIxLjgzNjA2NlpNNzU1LjQwOTgzNiAzNDkuOTM5NDEgMjg1LjM3NzA0OSAzNDkuOTM5NDEgMjg1LjM3NzA0OSAzNTAuOTYzNDEgNTIxLjkyMTA0OSA1NjkuMjkzNjM5IDc1NS40MDk4MzYgMzUzLjc2NjgyIDc1NS40MDk4MzYgMzQ5LjkzOTQxWk03NTUuNDA5ODM2IDM5Ny41OTczNzcgNTM4LjQzOTM0NCA1OTcuODY0OTE4IDUwNS4zODU5NjcgNTk3Ljg2NDkxOCAyODUuMzc3MDQ5IDM5NC43NzcxOCAyODUuMzc3MDQ5IDY5MC44NDc0NzUgNzU1LjQwOTgzNiA2OTAuODQ3NDc1IDc1NS40MDk4MzYgMzk3LjU5NzM3N1oiIHAtaWQ9IjUzMzAiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=" title="E-mail 联系" style="width:20px;height:20px;border:none;">
+            </a>
+            </span>
+
+            <span>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=302804389&site=qq&menu=yes" style="border-bottom:none">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDkwMTUxNTc4MDQ0IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjUgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1MjE0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMC4xOTUzMTI1IiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNTE2Ljk3MSAzNC44MTJjLTI2Mi44MzYgMC00NzUuOTExIDIxMy4wNzEtNDc1LjkxMSA0NzUuOTExczIxMy4wNzUgNDc1LjkxIDQ3NS45MTEgNDc1LjkxYzI2Mi44MzggMCA0NzUuOTE1LTIxMy4wNzAgNDc1LjkxNS00NzUuOTEgMC0yNjIuODM5LTIxMy4wNzYtNDc1LjkxMS00NzUuOTE1LTQ3NS45MTF6TTUxNi45NzEgOTYwLjA5OGMtMjQ4LjE4MSAwLTQ0OS4zNzMtMjAxLjE5MS00NDkuMzczLTQ0OS4zNzVzMjAxLjE5Mi00NDkuMzcxIDQ0OS4zNzMtNDQ5LjM3MWMyNDguMTgyIDAgNDQ5LjM3NyAyMDEuMTg4IDQ0OS4zNzcgNDQ5LjM3MSAwIDI0OC4xODMtMjAxLjE5NiA0NDkuMzc1LTQ0OS4zNzcgNDQ5LjM3NXoiIHAtaWQ9IjE1MjE1IiBmaWxsPSIjZmZmZmZmIj48L3BhdGg+PHBhdGggZD0iTTc2Ni45ODYgNTY5LjI2M2wtMS43NDktOS4zMjMtMS4xNjUtNC42NjEtMS4xNjctNC42NjEtMS43NDctNC42NjItMS43NDgtNS4yNDQtMi4zMy01LjI0NC0yLjMzMi01LjI0NC00LjA3OC04LjE1Ny0zLjQ5Ni03LjU3NS0zLjQ5Ni02LjQxLTIuOTEzLTUuODI3LTMuNDk2LTUuODI2LTIuMzMxLTQuNjYyLTUuMjQ0LTguMTU4LTYuOTkyLTkuOTA2LTEuNzQ5LTIuOTEyLTAuNTgyLTAuNTgzIDAtMS4xNjYgMS4xNjYtMy40OTYgMS4xNjUtMi45MTQgMS43NDctNS44MjcgMC41ODMtMy40OTYgMC0yLjkxNCAwLjU4My0yLjMzMSAwLTIuOTEzLTAuNTgzLTIuOTEzLTAuNTgzLTIuOTE0LTAuNTgyLTQuNjYyLTEuMTY1LTQuNjYxLTEuNzQ5LTQuNjYyLTEuNzQ4LTQuMDc5LTEuNzQ4LTMuNDk3LTEuNzQ3LTMuNDk2LTEuNzQ4LTIuOTE0LTMuNDk2LTUuMjQ1LTAuNTgyLTEuNzQ3LTAuNTg0LTEuMTY2LTEuMTY0LTkuMzIzLTEuMTY2LTUuODI2LTAuNTgzLTcuNTc1LTEuNzQ4LTcuNTc1LTIuMzMxLTguNzQxLTEuMTY0LTUuMjQzLTEuMTY1LTQuMDc5LTEuNzQ5LTQuNjYxLTEuNzQ4LTUuMjQ1LTEuNzQ5LTUuMjQzLTEuNzQ3LTUuMjQ1LTQuNjYxLTkuOTA1LTIuMzMtNC42NjItMy40OTgtNS4yNDQtMi45MTItNC42NjItMi45MTQtNS4yNDMtNC4wNzgtNS4yNDUtMy40OTctNC42NjEtNC4wNzktNC42NjItNC42NjEtNC42NjEtNC4wNzktNC4wNzktNS4yNDMtNC4wOC0yLjkxNC0yLjMzMS0yLjMzLTEuNzQ4LTUuODI3LTQuMDc5LTYuNDEtNC4wNzktNi40MDgtNC4wNzktNy41NzUtMy40OTctNi45OTItMi45MTQtNi45OTItMi45MTMtNy41NzYtMi45MTQtNy41NzMtMS43NDgtNy41NzUtMS43NDgtOC4xNTctMS43NDgtNy41NzUtMS43NDgtNy41NzUtMS4xNjUtOC4xNTctMC41ODMtNy41NzYtMS4xNjYtOC4xNTcgMC03LjU3NSAwLTcuNTc0IDAtNy41NzUgMC41ODMtNy41NzQgMS4xNjctNy41NzUgMC41ODItNy41NzUgMS4xNjYtNi45OTIgMS4xNjUtNi45OTEgMS43NDgtNi45OTIgMi4zMzEtNi45OTMgMi4zMzItNi40MDkgMi4zMy02LjQxIDIuOTE0LTUuODI1IDIuMzMxLTUuODI4IDMuNDk3LTUuODI2IDMuNDk2LTUuMjQ1IDMuNDk2LTUuMjQzIDQuMDgtNC42NjIgMy40OTZMNDEwLjM4MyAyODJsLTUuODI3IDUuMjQ1LTUuMjQ0IDUuODI2LTQuNjYxIDUuODI3LTQuNjYxIDUuODI4LTQuMDc4IDUuMjQzLTMuNDk3IDUuODI3LTIuMzMxIDIuOTE0LTEuNzQ4IDIuOTEzLTMuNDk2IDUuMjQ1LTIuOTEzIDUuMjQ0LTIuMzMxIDUuMjQ0LTIuMzMgNS4yNDUtMi4zMzEgNC42NjEtMS43NDggNC42NjEtMS43NDggNS4yNDQtMS43NDggNC4wNzktMS43NDggOC4xNTgtMi4zMzEgOC4xNTgtMC41ODIgNi40MDktMS4xNjYgNS44MjcgMCA0LjA3OSAwIDMuNDk2IDAgMy40OTctMS4xNjUgMS43NDgtMS43NDggMS43NDgtMS4xNjYgMi4zMzEtMC41ODIgMi4zMy0xLjc0OSA0LjY2Mi0xLjE2NSA0LjY2MS0wLjU4MiAzLjQ5NiAwIDMuNDk3IDAgMi45MTMtMy40OTcgNC4wNzktMS43NDcgNC42NjItMi4zMzEgNC4wNzgtMS4xNjUgNC4wNzktMC41ODMgMy40OTctMS4xNjUgMy40OTYgMCAyLjkxNCAwIDMuNDk2IDAgMi4zMzEgMC41ODMgMi4zMzEgMS4xNjUgNC4wNzkgMC41ODMgMi45MTQtMS43NDggMS4xNjUtNC42NjIgMy40OTctNi40MDkgNS44MjctNC4wNzkgMy40OTYtNC4wNzggMy40OTctMi45MTQgMi4zMzEtMS43NDggMi4zMy00LjY2MSA1LjI0NS00LjY2MiA0LjY2Mi0zLjQ5NSA0LjY2Mi00LjA3OSA1LjgyNy00LjA3OSA1LjgyNi00LjA3OCA2LjQxLTMuNDk3IDUuMjQ0LTIuOTEzIDYuNDEtMi45MTMgNS44MjYtMS43NDggNS4yNDQtMi4zMzEgNS44MjctMS43NDggNS44MjYtMS43NDggNS44MjctMS43NDggNS4yNDQtMC41ODIgNS4yNDQtMC41ODMgNS4yNDQtMS4xNjUgNC42NjEtMC41ODMgOS4zMjMgMCA4Ljc0IDAgNC4wNzkgMC41ODMgNC4wNzggMC41ODEgNi40MSAwLjU4NCAzLjQ5NiAxLjE2NSAyLjkxMyAwLjU4MyAyLjkxNCAwLjU4MiAxLjc0OCAyLjMzMSAzLjQ5NiAwLjU4MiAxLjE2NSAxLjE2NiAxLjE2NCAxLjE2NSAwIDEuMTY2IDAuNTg0IDEuMTY1IDAgMS43NDgtMC41ODQgNC42NjEtMS4xNjQgMy40OTctMS4xNjUgMy40OTYtMi4zMyAyLjkxMy0yLjMzMiAzLjQ5NS0yLjMzIDIuOTE0LTIuOTE0IDIuMzMxLTIuOTE0IDIuOTEzLTIuOTEyIDIuMzMxLTIuOTEzIDEuNzQ4LTIuOTE0IDEuMTY1LTIuMzMxIDIuOTEzLTUuMjQ0IDAuNTgzLTEuNzQ3IDAuNTgzLTEuMTY2IDAuNTgyLTEuMTY2IDAuNTgzLTEuMTY0IDAuNTgzIDAgMC41ODMtMC41ODMgMC41ODIgMCAwIDAuNTgzIDAuNTgyIDAgMC41ODQgMCAxLjE2NSA2LjQwOCAxLjc0OCA1LjI0NCAyLjMzIDUuMjQ1IDIuMzMxIDQuNjYgMS43NDggNC42NjIgMi4zMzEgNC42NjIgMi4zMyA0LjA3OSAyLjMzMSA0LjA3OSAyLjMzMSAzLjQ5NSAyLjMzIDMuNDk3IDUuMjQ1IDYuNDA4IDQuNjYxIDUuMjQ1IDQuNjYxIDQuNjYxIDQuMDc5IDQuMDc4IDQuMDc5IDIuOTE0IDUuODI3IDEuNzQ3IDIuMzMgMS4xNjUgMC41ODIgMC41ODQgMCAwLjU4My0wLjU4MiAwLjU4MS0xLjE2NiAwLjU4NC00LjA3OCAwLjU4Mi00LjA3OSAwLTMuNDk2IDAuNTgzLTMuNDk2IDAuNTgzLTMuNDk2IDEuMTY1LTIuOTE0IDEuMTY1LTIuMzMgMS4xNjYtMi4zMzEgMS4xNjUtMi4zMyAwLjU4My0yLjMzMSAxLjc0OC0xLjE2NSAxLjE2Ni0yLjMzMSAxLjE2NC0yLjMzMSAyLjkxNC0xLjE2NSAxLjc0OC0xLjE2NSAxLjE2NS0xLjE2NiAyLjkxNC0wLjU4MiAyLjkxMi0xLjE2NiAyLjMzMi0wLjU4MiAyLjMzIDAgMi45MTMgMCAxLjE2Ni0wLjU4MyAyLjMzIDAgMi4zMyAwIDIuMzMyIDAgMS43NDggMCAyLjMzMSAwLjU4MyAxLjE2NSAxLjc0OCAzLjQ5NiAwLjU4MiAxLjc0NyAwLjU4MyAyLjMzMSAxLjc0OCAxLjc0OCAxLjE2NSAxLjE2NiAxLjc0OCAxLjc0NyAxLjE2NiAxLjE2NyA0LjA3OCAyLjMyOSA0LjA3OSAyLjkxNCA0LjA3OCAyLjMzIDUuMjQ1IDEuNzQ4IDUuMjQ0IDEuNzQ4IDUuMjQ0IDEuNzQ5IDUuODI2IDEuNzQ3IDUuODI3IDEuMTY3IDYuNDA5IDAuNTgxIDUuODI3IDEuMTY2IDYuOTkzIDEuMTY2IDEyLjgxNyAxLjE2NSAxMi44MiAwLjU4MiAxMi4yMzYgMCA1LjgyNiAwIDUuODI4IDAgNS4yNDMtMC41ODIgNC42NjEtMC41ODMgNS4yNDUtMC41ODIgNC4wNzggMCA2Ljk5My0xLjc0OCA1LjI0My0xLjE2NSA1LjI0NC0xLjE2NyA4Ljc0LTMuNDk2IDQuMDc5LTEuNzQ4IDQuMDc4LTEuNzQ4IDYuNDEtMy40OTUgNS44MjYtMi45MTQgNC4wNzgtMi45MTMgMy40OTctMi4zMzEgNC42NjIgMCAzLjQ5NSAwLjU4MyA3LjU3NiAwLjU4MyAzLjQ5NiAwIDIuOTEyIDAgMi4zMzEgMC41ODIgMi4zMyAwLjU4MyA0LjA4IDEuMTY1IDMuNDk2IDEuNzQ4IDguMTU3IDIuMzMxIDcuNTc1IDIuOTEzIDguMTU3IDEuNzQ4IDcuNTc0IDEuNzQ5IDguMTU4IDEuNzQ3IDguMTU4IDEuNzQ5IDguMTU3IDAuNTgyIDcuNTczIDAuNTgyIDcuNTc2IDEuMTY3IDcuNTc0IDAuNTgxIDcuNTc2IDAgNy41NzMgMCA2Ljk5MiAwIDYuOTkzLTEuMTY0IDYuOTkyLTAuNTg0IDYuNDEtMC41ODIgNi40MDgtMS4xNjUgNS44MjctMS43NDkgNS44MjYtMS4xNjQgMi4zMzItMC41ODQgMi45MTQtMS4xNjUgNS4yNDMtMS43NDggNC4wNzktMi4zMyA0LjY2Mi0xLjc0OCA0LjA3OC0yLjMzIDMuNDk1LTIuMzMyIDEuMTY3LTEuNzQ4IDEuNzQ3LTEuNzQ4IDIuMzMxLTIuMzMxIDEuNzQ3LTIuOTEzIDEuMTY2LTIuMzMgMC41ODItMS4xNjUgMC41ODQtMS43NDkgMC41ODItMS43NDggMC0xLjc0NyAwLjU4Mi0xLjc0OC0wLjU4Mi0yLjMzMi0wLjU4Mi0yLjMzLTAuNTg0LTIuMzMtMS4xNjUtMi4zMzItMS4xNjUtMi45MTMtMS43NDgtMS43NDctMS43NDgtMi4zMzItMi4zMy0xLjc0OC00LjY2Mi00LjA3OC01LjI0NC00LjA3OS01LjI0My0yLjkxMy01LjgyOC0yLjkxNC0xMi44MTgtNi40MDktMi41NDktMS41MjkgNC4yOTgtNC4yOTcgMi45MTItMi45MTQgMi4zMzEtMi45MTMgNC4wNzgtNS44MjYgNC4wNzktNi40MSAzLjQ5Ny01LjgyNyAyLjkxMy01LjI0NSA0LjY2MS0xMC40ODcgMy40OTYtOC43NCAxLjc0OC01LjgyNyAxLjc0Ny0yLjMzIDAuNTg0LTEuNzQ4IDEuMTY0LTAuNTgzIDAuNTg0IDAgMC41ODIgMCAyLjkxMyA2LjQwOSAyLjkxMyA1LjgyOCAyLjMzMiAzLjQ5NSAyLjMzIDMuNDk2IDIuMzMxIDMuNDk2IDIuMzMxIDMuNDk2IDIuMzMgMi4zMzEgMS4xNjUgMS4xNjQgMS4xNjYgMS43NDkgMS43NDggMC41ODQgMS4xNjQgMS4xNjQgMi4zMzIgMS4xNjUgMS43NDggMC41ODMgMC41ODIgMCAxLjE2NiAwIDEuNzQ3LTAuNTgzIDEuNzQ5LTEuMTY1IDEuNzQ4LTAuNTgzIDEuNzQ3LTEuMTY1IDEuMTY3LTEuNzQ5IDEuNzQ3LTEuNzQ2IDEuMTY2LTEuNzQ5IDEuMTY1LTIuMzMgMS43NDctMi4zMzIgMS4xNjctMi4zMyAwLjU4MS0yLjkxMyAxLjc0OS01LjgyNyAxLjc0OC02LjQxIDAuNTgyLTYuOTkxIDAuNTgzLTQuMDc4IDAtMy40OTcgMC0zLjQ5NiAwLTQuNjYxLTEuMTY1LTguMTU4TDc2Ni45ODYgNTY5LjI2M3pNNjgwLjc0OCA2NzAuNjQ5bC0wLjU4Mi0wLjU4MiAwLjk3MS0wLjk3MUw2ODAuNzQ4IDY3MC42NDl6IiBwLWlkPSIxNTIxNiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==" title="QQ 联系" style="width:22px;height:22px;border:none;"></a>
+            </span>
+
+            <span>
+            <a target="_blank" href="https://github.com/pengfeidai" style="border-bottom:none">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAc6UlEQVR4Xu1djdHttBG1KyBUAKkAqCBQAVABUAGkgkAFQAXwKoBXQaCCQAWBCpJUoMy5rD50fW1rz0qrK9vyzJ1v5j1ZllZ7tL9azdN4BgUGBTYpMA/aDAoMCmxTYABkcMegwA4FBkCc2COE8PY0TW9N04S/+OF5P/ncu9M0/UX5+Z+Sdr9N04Qfntu/z/P8s7Kf0YykwAAISbBl8xACGB1AwN/4i4Ao7J16/b/TNP0iPwDolwEcin6rjQdACBqGELDjvyOSANIglQhET02bAjSQNPj78zzPUfo0HcRRPzYAklk5kRAfTtP0kUiIo651HDcAAsD8KICB5BnPBgUGQFYIE0KIgAAotHbCUZksguX1kC6PSzgAIjS5GCi2wAw17PtpmgZYhEKXBoh4mj6fpunTC0gKVsJBBft+nufX7Itnan9JgIQQPpmm6YuT2BTe/AgbBVLl2yuqYJcBiHigIC0AjLPbFV6gAVBezfOcxmW8vtVFv6cHiKhR/xA1qguin2AQAAjUr1cnmMvuFE4LkE6AESPccceFERzdqr9pVZYQwloEPkboEZx840mMCpfxZ2eWKKcDyJOA8WsSwQYY1Mxfi7EFRABNjOb/rVbfin4w56/OCJTTAKSxjQHJEKPTP83z3GWwTYKcMeKPv96SBjT5+zzPkJSneE4BEPFKfZkkBdZenN+T6HO3gMhNWgCD4Cd+SJnxer4RidLlxsFM+tAAkQX/2iknCqCIsYDT7IiROUQVBVAQA/IAC8Dx5TzP3zIM2VvbwwIkhADPFKRGzed/AopvzqQm5AiUgAUucGQm13ygdsGQP2SS5OEAIsbod5XVKRjZUAt+7NWeqMmxe30JfSFVEEyt+UCafFWzwxZ9HQogIQSoU9jlaj3w48Off5nAl5Zw4vQArfGrZdxDVYU0OYzKegiAiK0BqQEXZo0HwMCOdkixX4MATB8hBEgUqLM11K9D2SbdA0QWB5KjRnrIAAaDjEXbykCBAwTSpGtPV7cAEREPYGD3Kn0GMEopmLxfESiQ4B/3rHJ1CRDxqvxQQaVCQO+LnhegIt827SqxUeBNLHkgQRBcRCJkd093ABEvCsBRolIhhgFgQIyPx5ECspnBA4hTmCUPXOt/L+nA492uACKiG8Z4yQNXIojdtW5bMsEe35WNDVKgxJDvzi7pBiAVXLiIZXw61KnnwUfULni7cO7G+sAF/EEvG1wXAAkhQGqUGOPIJK0dVbcu8OXfqyBNIP0BkqfHS54KENlxAA7kBFke2Bof9UBIy+DP/I6sLWwTa0S+C5A8DSBCwH8WeKrguoUhPmyNjpEWQsDmB9vEEo1/OkieApAK4ECAqUu3YMe8+rShSSYE1suSNQyQIFbylHSg5gApBAeybd8fKtXTeN38YVl3gMTqDn7vGeveFCCF4ICXCuAYKpWZTZ//YggByY/IkGCfp6hbrQECm8NS8HnYGyw7ddy+IN7VHCTNAFLgykXBspop7h2zznWGJnYJ7ArWeG8KkiYAKQDHMMZPjJkCkCDJETaJu7rtDpACcTrAcWJwxKkVeLiaRNxdATLAcQEOrzBFcd5A3WLdwDgN+lmFIWx24QYQ2RlglLNZuUNyeK54p30XgMQ1zcgFIDLZfxkKKwxwdMrALYZVABIEEl2ONngBBOc52PyqInCIxIJHBBIrGm+/j3Pnfqyd3Nm4/MivVgPaaLi7ebaqAySEgKxa9pQZLSbloA6isoir5MAI/fb2Gze/2gEjNEfN31jOdO82X3iasKvjugQqK9cIEhejvSpAJM0ZdgfzgIB0qnsIAcS3pC2YF46Z1FnaipQAnUsuHPorK8mNvFTdaK8GEKPdgWuJ6ci67GT/rsCE2HVw+vD091ywtBIGRao6vXmtfIvWENCH0Qta1R6pCRDW7jDnVhXk82zxCXRYnF1A1N49+MQya8v2cpkppAW9ce2ME9dB/NUyD4PKjvVDELFKzbMqAJGcfwBE+xRl5YYQ4CGrVUQuHTOIC9UNVTYuBZQGFfLN2bghBNiPzH0nsDU/0DLjXrtigIhqBXWHiXeYxWBF9WqPLpeRKA2AEelszqkTHoM6zBSEwCYHraDoqQEQVrUyE0r0Umu6tIVQN6DUKrocQoi7IDYTRgJiHNETZHahpgQQGwPexpqq1B6NzWqWrDvoxSQ3VlG1igBiUK2wuAxjPBDcUb3aXVzNXXwi3bDLgekiCDBfRroyQAbDRPDc7j/MubFljDiPkXONM+PQtjWrWcbNEdX6P9YObq2dGSAGrxXsjndLjCf55n9KJlz47stdF8JoyB0CAGJcoLD7aq8DLPEHT+FN+sidKs+8BtvkzVpIPta9b1bn8d0SgLABwaJIuSwwdj2tMwBeMjb5TcOh2LHx2wuSafpp3QZeHY8xo7IMHo198Hqe5yLJJZsk5qI9R1KUGm8CiMFQLiaMAEQLypf4iqiB8V4+LVFbM+/Rvvc63tkIjYBQtaECvlk6WeJ78VNmyWUFCGOYF6tWcZaEu2+VIBJ4QuCLcRmWrudZ3oekQNEFRKvvYgyk6ktH1dcISGZSmA12GiCGFIAq7jaRIEHJbajKt1kmRnJ9oItbi5oph3GKZgAGLhvaLbMUQoCdo1Fpi1Vt4QU4PhhVy5TSZAEIU3jBlEqyxVYhBBVA5nlWzUtURahtAyiPRMfVEXBxq9LIQwgAkIaOZnVnOURDKgotvVSMlKg48NYwyYhFbr2F90L7baS4U8boAMod66kkxgqzau3DojjYyneZKDvt9mUBwkiP2oTQAsQstUR9xEJf0UaBrQhVyhR9Jgxn8/ps2CJwsyP1SPvsqt/LTtQAIQiAb4DYb9fMZyISFItFuMwVjKJxXWoXBu2wO0cDlymlCYkYpaIHeL8VcJjzzwjbtCpAxB7RqndoTuVpMQBhEgSrGeaJeqcV4cUASYxAy10XiL8ABDFQB9cmAwYV4MTRAEMVkjUCiAVPtTtVngwQ1mBXq/4qgBCTv+2SrA2g4Qgi7bkKQBJgQoRvFV6GpIynFX/xAIKGNgtbDWCJkX38XZOCRepUoROlugSRDU27gaK52qOlBQhje1Rx4xUYgVUBsiLBYpAMopo6Ssoye432EqOIx5LxF9INN3FVOS+xAKfGy+gFEFaKqDxaWYCQUXMX6UHuEC4AqcGsZ+6DCBa6AITkETRXOZE0AGEMIBfpQU5+AOQJSCTUcE+AMFIEDglIkV3HxC5AyMNQbtJDAIIUEc0NuFXyvp7AY4f+ZA8AITdSNM9u6DmAaJkSH3PduXtZgENzsePgCTe8mwQRgMBJoS3oAcfKe3tkyQFE69qtHvdYMdLVASFtqokjv1yu6xAC4kaa659dN1IBCWMW7Lp8NwEifnZthFJl8JRyjTYXS6padO9hKqVHT+8TJz2rx8hKNtOcsb4HEO2OgPGpAy8li0pkjLovQsk8zvYu4cHC1KlUDyutCF7ZPaOyBxDocZqkv+Jz5loiEBmjWd1S+83RLk8BJqu2lfrLjElu0V3NWl4FCKleZT0BeRLrWpCTVgWCdF8erfYoEELQBpJdDfR0jOTR3M3I+hZAtOqVu3G+mLR2IfBaE7vo6tAhA8nN1HHSWN9Us7YAolWv1DktpYxE5GLFT1U5/1w67rO/T3ivIilcqrCv0ZnMQF+tfvIAEFK9KiqpomUeIgaSdtkMvNp5nLEdyYSRBNWrsG/RNoSASLmmWMcqv6wBRJsV+b95nr0Kot3NN4SglWjxvWa67hmZnp0TaRvG7lt5s7QxkdXKj2sA0QYHm+zQBtXKXDWeZYzR/k8KEJH0+FJRKVIt7Unt4yFccQcQ0p/t7r0SAxCA1UqqaiWGtAsw2t2BRLtbx5fco+pirGvVrIf42RIgTOXCN3OZkKXMQ8Q94qeaBCxL53Xm94kAHcigyqgtpRdRQ+sh0XUJEK171z04aHAfNtmNShfr7O/LusFTpTGMQQ73dSNspAfP5xIgWvujxaQYce0O2LMzds35kfaIuxQhN9s7LWQJEM2RSdDS1QNB2kIYz4ia1+TwCn0RZWLxNffcuRACjhhrqtTcjeUFIIy1751PQ+5ATbxpFXjmUl0w/IQKMLlzGaXEI+zZO35KAaKNf7jHGIi4R9NUl9JFutr7BFOCNK4OFsIOuXM/pwDRXkzimuNERvKH9OgYdeRadsNXqYaUAkRroLuml5Dq1bA9OgaIxCC0tXPdA4fEgbsXGzsFiNZA9xaFWqCO4gydg0MAwsTWvHlLC9aXIPgNIIwo9DTQSe+VeyT/APx3iCESO7erN4vIPH5R9yJAtCh3NdBJz4d7JP8Q3HeAQZZEsmtOj1DfX/g8AkTrwXI1ionERFeg1lyU0ddNQ9GWj3K1Q4gN+MXtHAGiTTFxjaATO42rx2MwdV0KkJFsN82AUeGjKREBQhsvdUn4R29E6RhXT5rH3K7eJ3FwyTtLQ+uMugE1AkTrOepl8MO9ezDEEaknrpsfkW184/UIEC2qXBlT6+3w9KQdjO8OM1zCg+Stxmu1JR4gnoxJGFCuRbIPw3EHGyjhgPEGiDZL/DYOSoJ0ApDhwToYOMS+1HqyevGU/gEQYud2PXNBjGMA5JgAcb+lWEMWVpIxAHFlzAEQzfIet00v60sEC2+SbADkuDx3qJF3BBBKkg2AHIrNjjvYAZDCteuFgIXTGK9vUKCX9WXHwUgQ1/RyduCDE49FASIfy9vNS6tY2kTFrgZ+LPYYo2W9R14UYzdiSJAvpmn6WjEgb4BoL190P+CvoMVoQlLgyAChRA5JF6r5SDWhyHWoxgMgFZZrAKQCETvtgjjK4H2qkBIIjJHuGiiUdARtcS/XrOJOeezQwyKyeV3X1mKDUIjyXKVeiOg5x6v2TdQ68y7cQOWE9SZBqEzLqzLbEefdi/rM2kK9AUTrch5Hbg+EEqJqjvutZRaA4HKa/yjo7X4pJhFMGq5exYL10oRY1xZ2rnYT7us8iBjpWnto8jyb0gtjnWUcxGlC17MgwmOUGh8PTGmvqHI1oGQC2uO/rt6OszBnD/MgnC/uxQCJsdwduaXO6XoSnZiAa2Tfc45X6pspteNd4V02YO2NySaAtEC4tkbXsEMOgDTC/nA30BkNZVkXizJcPNeFvJjetcqK5zyv0jdxR0gLA12b7/di43ZVelQQrp5Ei6u7rsLIXvMMIcBDqrnG211lJqLoL/UXIkC03iN3lAtIcEvqO4pFG2qWgkjPakJqAy0cQNoo+kPxai1AmrhXiRR8rP1Qs56FgMx3Qwj/nKYJvJV7mtQ6I9zN99cfMMZLI08Do2a5+85zqzv+/5ECZMHqJpkRhIf0JaM4vWFKq9a4e7JINWtIkQ4RShjnGL27ekUKgdUr2LQRxlZo1550xNybjKlDPuxySKT0aKVevTtNE4q0Z5+tSzy1DNnKUNfmiMUJD1sku/RtGhC2BwbkekAqzpiIx9xVEE1VrK4MdRGJWqmG5j/N8/xBGxYYX9miAOFKRRfN7rknDPQ7m/YFIKSO1kpnZIz1ZrvRgMc6BSStBGoM1k3zuMc+EgmivQPnTqItAaI11FtOjJEiSLqEgYV5jKcxBUIIP0zThAthNU9L6cFstHdJsEuAaJmxWYCONPiwMDjXDgkHsIynEQWIg0hxRC03WW2A8CHOtwSI9jpoTNLtssXlmhL6Y3x12CONgCGquZoBZVjNpIeM78dpmj5UkOSheugSIIznyPUuuXQyottCbXpLMcnY5Pt5nj8j2o+mBgoQ3qG092a8IwDR5oM9eNTuACKdae2QphFsMq8nLgbmAp1yqFsG5s+9YgSHa43nFe1DHf9YC1iuAUSb+u566fva4hDFx9LXARLsWLBNxlOJAiGEf0zTBF5hHqhW77ZcC0I9Xw1YrgGEQVzTY6+iauH0oybTN104SBCkyEAXHU8BBWQN4K3SJCEuv9RUtRKNSHuCcFUjegCIdKo9o95UzZKxAcAAyRuGdcZpRXhPhsplIF4I4ZNpmkBDzfmO5Reaea3ih4lyQ3hlFbxbANG6e8FoSPFoynBGeyTSDWP9Yp7nVwYeueQr4mr/zig1QLPmG6lsplo+RvNVr+wWQBh3b1F2bwjhbwuuQy5MFnBGAzH9FGySLwdQtjEvwICtATeu9fkVwNKsqfUDW+8Rpxk3HQerACHVLNorIaIayZFQl9YeMC/UKMQzNnf6CiDBt29AmaYJ88gCs/Yi9tifrA9AYbEz0ik9ExxMbGbTNtoDiLa6CAiiyqQVnRCnzBgdFkwL4xo67IMnqhJI4qLiO4ifvO6RcT3HFEJAIA2AAGMx67M1rKeBQzZ4bXBwt5rKHkAYb1bWADOCY0l8TBrBnDugVAZJChZIMaT3ny63S9QnqLcABVTqGqCItHuKzRE/TqYn7Z4l2gSIoFAbNMwa6+QZgdxmCdvhq7SRANDq3cp9D/MDLdA//sJnfhjQCMMgCwFgwMaHnzbjNkeb5f9nN0u2Q7Z9zdOMOYBoD1FhDpvGOulu09IDDIpvvjCq+OghZZaGv7ZPth2+DfAAOHjiX5Wjgf3YXvvE2QHmhzSIf0vtCO0wEQT8aJ7nSAPte1XbCQ8g9qGRiNnTjDmAMLlZm5F1JxUIhF0NAEpVFBjellhJzQWDKohflEAvIJrn+Wfth1aYH7s/fhEI2q682sFm+7QHJweZVZw9zbgLEFGzGF/yqhQhB21ZxIfvilqBsbeSJsy4Kdc4qTIw4yht+7vElLrJUCBcu5h7NiNdAxD1UdytY6/kMUzrom2BE+OHNOkFKBQ4IjEcpbCF3lCn4OX8pgepYaSRypGQBYhIEW31dzR/yM8iK3xbFiy+s3kUWBgMNhWbx1UynvRdMBUCZmbjXjIIIBWfpTp2CYwEINq8K7yiCk1oAcJIkdXThg3ULEw6e5pQpBmAojlA0w04EiYoyUWzzgeqFKTwjz1JjHQyZDVOlfRA/yqAiBTRunzRfM0mgEEJBvbe/bCIH+c4QWwU+P8BFuYgVq7r5f8jYAYD1iw5lh0WZDUzY4e0gG0BNara2JkBaNuSnit0qy46wgCECd2v7uTOsYqUnlQavowLYMGvpgrmFk0WpoC6VVMSRlBgk+nG8M4BhdROqLpuaoCIFAHja3fb1YBRI5BkVa0tootkgUoZf9r5rkkO9yS9Qg8XAHHLeRMHS9eSYm3NyKj5qo28B0AWIIwU2YyuNwJJlXKkslNDsiDdW/uodVxth3vtDB4uxC2Q8n/4U5bkBkFJD8oGSYxExhbZZBQnFWHJRyaX6orOzyRu3pWurAEATR+kkdr8uLRmDmwbQ/iAUr2tAGE8WlmRJpOEvuthvFcpJEcEn5qfuU6Ziijvj9eaH39lAZCRmnD6MFUcTVKdUrESKaJNJcYrWXvA2StTBBJyl3pqoh6pj5sYpiaTl/RFFGPAZ8wblxUgTClHDDBrDzSwSx4ygDULRCxE02JoO04GbWrQYdUsQ/KreeMyAQSLQzBOXMus/kfu1hr+XrahjtnKQqCChyY1vIsdmaShKppsIbTnOyEEbSHqKD3etgY4SwDCBv6yqpYReJa1iKcU4XBIXZsxSxbRathampRp9QZgGajlnRCCtipNFSeGZYzWd8iYBz5TNEczQISZmfMieCVbDtRYZtRK72rvpbcSVevU2BHh+jSrHsahFb1GSkd8i3brLgdYBBABCWOwqxBdWNanaBGMLxcvhPG7q68RLl+64EbNcTJ9GdJJzIZ5Oq4aAGFVLXw/mwtDuiwZWnu0zTohPD661Sex0za7xqJ0/qTdgc9lD0NpxlQMEJEiTB0tvJK1R4hFvolSsRdq5lFp6BfbVFkM5oN7bRl3b0+q4Q7gmUBtFdUqjqUKQIyqVvYOD1KKvAcbp3KyoZZnsx46bUe12oUQgqav3gFiSKOpolp5AMSiau2qJqQtcgOcwf2s4aO9NjgrgaTErvKazgAQY6moqtK8mgQxqlp4bdcNF0JgMohvXjJRzyCWPVWu2yGieZ4htbp7jg4QIziqO0uqAkRAwuqLuyAhPDKRScGw2EX+K+IZJ+GsKetLxo/nJQDEp5a3ySHyyAARjxUqcG6Vpl2bPjYs3D1StXxsdYAISJgz7HGyq3q8EIs9iYjgH0ByY2KRKLHWLAsWEB79HO0Q0SFtECM4is/7b204XgCBPcLeKbiZVGiInsb5grEh0SB6bzuLeHjS6oJpGsmyfhXcoKs7ktSqipUKEXDr6rDRUSWIwZ2bVdNz0nbv/10AIoxoKS6wBxLmHMranBHQjOVDUbBYxdBJ2c4Iqvg3/cbwYpVwobwbQsChNPaqBdcYlBtABCTMCcRI4lWQGDI4NUsWKx+utWVKdg6AaKi90UbUqq8N4KhulC+H6AoQAYk2/Tod2xZILIArWDr1qwMgalLdNzTaHOikyfECd4AUggSn3u68RYbAkXHpqNcGQChy/dG4EBxFRfi0w20CECGGxbO1aoB1CJIBEC3H/WlvwJHDunKj5GgCDnysJUBAEMsVzhgnKnB8m66BgAQeKo+z7ORyP5ZbZTuo3b5nL5bYkzDImThHc3A0BUgiUq0geThL0lEF9yFBlAiX9CGAgzmMFnsvOvykHOJds2YSJH61sEADXLNgxrvYhEPEnKXlAIiCYiEE3JiLzAbL0xwczSVIAhIE5xCXsORK7cVK4OV6RgX3AZAdlpdNEVIDxyIsz1PA8TSAVFC3Vu2SBIDQbWNqiQWE7CIOgGxQrMDeeJpalU6luYqVfrxQ3UJXsGfgCt5MUJNvxJSQGPyrfZnOAMgKQEIIn4tKZbE3urjz8KkASSRJSZXy1XsKNSJAjPzVkj6IvxAHtgZAEoILXaFSMdkI6ZK5JR9q+KIbCbKQJpaIe9oFbBroqtXSnQdAWHa6Bf+g2iJtxCI18MFuwPFUG2SN9BVOAyK3CmnuVe62GADRA0SkBoBhNcTxMdyngqukuzmd+XQVa7kElQKAsE0AFFXG7hYbDIDkASI2XrQ18i9st3glAeFqGkDJYOK73QFE7BJ4oSAF2MNNS5og0o6zGiaiD4Dss1gI4RMxwjWlWfc6q3qOvAYwugZIJeM9zhHgwNnxu1QVDREHQNapJCc0EfSzGuGx4y48VXu80KUEWRjviLxiMUofqnC1gFRbNfISXqyKwOjS3lhjsO4BIoyKnQperlKVC90BKOgLJ9F2VS/iqG93KkLNZMXKwMAaHKYm8CEAkqhckCYwCGs8AAdslE2gEADpbsFrACSEgBt0kbpTqkrF9UIBDFyJ3XVFmJS5DgOQOGjJBoUEqJnmjv5wv8fycJZWvTsNQMRdC+Mb8YxS4zvlNdiAsAVNDpMaO6Klj8MBpLIBv6RZVL8Alt+uJEHEIxXvirfw0tY7h5Mah5YgCwMeCwo1qYZtslxgGOiIBmvUi8NKEKEfpIU18r0Hpq/Q/9GkxmkAkqhdUIWgK9dUu5hdtLsbY7U2CDNJou1p7mE/pIq1tlAS0YU0gf7c+unRzVtaR8xCQ6SK4Hj0YYzw3CRPA5BEmiAKD6DUTmnfo+WbvakRxDVsOR7R/D8CfgBGl4W8NRPYanM6gCRAge0A1csbKF1eY0ZeHWHlIQADm9Gh7Yy9yZ8WIAugwD6BT9/j6U69SubupWZ1ffVDzUU+PUASZoFPHxKlpo3Sxd3oWwxBXmOn4avLACMS4zIAWQAFEgUu4hL3MAxSFDDrOvBVqcgevFJQo05jfGt2A7S5HEBSwoiejhgAq36BYZAy0TU4kk0Bc2SL7GEDgNGNemSHmKeW6Zl2lwZIwkAIkoGJ8NurggKmwU56OG+NpJDkVMx4gxbmWHTYjGHCntsOgCxWR8rUwFWc5iEhBQWXhHZzFLSEqcQ2WWYIYH6XU6FydBwAyVFo/P+lKTAAcunlH5PPUWAAJEeh8f+XpsD/Ab9l6Jv9kqzuAAAAAElFTkSuQmCC" alt="GitHub pengfeidai" title="GitHub 联系" style="width:19px;height:19px;border:none;"></a>
+                </span>
+        </p>
+    </div>
+</footer>
+
+
+
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&title=《ES6，你真的知道吗》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&title=《ES6，你真的知道吗》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6，你真的知道吗》 — Davis' Blog&url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/&via=http://dpfblog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/07/16/浅谈ES6核心内容/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aQW7DQAgF0N7/0ummuyj2B9xIxs+rKHHHPFdCM8DPT3y93q73X4/vzD+/r3/ZhYGBcVvG6/DKg/u0cvKU/LkfqRgYGA9gJEEcL50kzSRxJ68JAwMDo7qBq4ae3I+BgYExZ1S3g9VvMDAwMHqH2GparL6OL53FMTAwbsjIq+7f//wv/Q0MDIxbMXrF+mijFhTX5vH8rYmBgbGakSe4i7doh0W6ajwYGBhPYPTCPT6C5kfiXsvhhIqBgbGOUR35yofGkkCrpbfCfwADA2MdY/LgZMwrT6y9lgMGBsZuRq+INg83b2r2WqcYGBibGNWF5mW1+fG40GXFwMBYwSgU3FubwvxQOrkfAwPjOYzjEv+80tUbUW02UDEwMFYwekWu3nH0qi3px2kRDAyMpYxq8X1S4k8AvQIfBgbGbkZeSpuU8ictgeh+DAyMxzDmZfpq+T4f4zh5uRgYGKsZ1XJ/XpLLV6v+7QkSAwNjKaMXbq9JmWw0m4OtGBgYD2BUxyCqm7nqWFjSRv3Y5cDAwFjKmG8Qk2RdbT/k6R4DA+MJjEJqG3yTv6C8kYmBgbGb0UxtQVl/UowrD6thYGCsZlST3WTMIg8laQM0SRgYGLdlVFNkr51ZbRs0e7AYGBirGZNEmTc1q83OQlQYGBgYlzYPein+5FkYGBgYcVktb17m30epHAMD4wGMPKx8SOKqLWbUBMXAwFjNmM9r9MYsks1ib5gDAwNjEeMX5P2TYTz49joAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '悄悄的我走了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)轻轻地我来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
