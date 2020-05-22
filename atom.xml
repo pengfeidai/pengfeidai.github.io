@@ -4,9 +4,9 @@
   <subtitle>专注于Golang、Node.js技术</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://dpfblog.com/"/>
+  <link href="https://pengfeidai.github.io/"/>
   <updated>2017-09-30T15:18:30.000Z</updated>
-  <id>http://dpfblog.com/</id>
+  <id>https://pengfeidai.github.io/</id>
   
   <author>
     <name>没事放放牛</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>javascript数组方法总结</title>
-    <link href="http://dpfblog.com/2017/09/20/array/"/>
-    <id>http://dpfblog.com/2017/09/20/array/</id>
+    <link href="https://pengfeidai.github.io/2017/09/20/array/"/>
+    <id>https://pengfeidai.github.io/2017/09/20/array/</id>
     <published>2017-09-20T14:02:52.000Z</published>
     <updated>2017-09-30T15:18:30.000Z</updated>
     
@@ -62,14 +62,14 @@
     </summary>
     
     
-      <category term="Javascript" scheme="http://dpfblog.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
   </entry>
   
   <entry>
     <title>MongoDB学习笔记</title>
-    <link href="http://dpfblog.com/2017/09/10/MongoDB/"/>
-    <id>http://dpfblog.com/2017/09/10/MongoDB/</id>
+    <link href="https://pengfeidai.github.io/2017/09/10/MongoDB/"/>
+    <id>https://pengfeidai.github.io/2017/09/10/MongoDB/</id>
     <published>2017-09-10T13:58:21.000Z</published>
     <updated>2017-09-27T09:36:54.000Z</updated>
     
@@ -205,18 +205,18 @@
     </summary>
     
     
-      <category term="Node.js" scheme="http://dpfblog.com/tags/Node-js/"/>
+      <category term="Node.js" scheme="https://pengfeidai.github.io/tags/Node-js/"/>
     
-      <category term="MongoDB" scheme="http://dpfblog.com/tags/MongoDB/"/>
+      <category term="MongoDB" scheme="https://pengfeidai.github.io/tags/MongoDB/"/>
     
-      <category term="mongoose" scheme="http://dpfblog.com/tags/mongoose/"/>
+      <category term="mongoose" scheme="https://pengfeidai.github.io/tags/mongoose/"/>
     
   </entry>
   
   <entry>
     <title>在线竞拍网站</title>
-    <link href="http://dpfblog.com/2017/08/25/auction-angular/"/>
-    <id>http://dpfblog.com/2017/08/25/auction-angular/</id>
+    <link href="https://pengfeidai.github.io/2017/08/25/auction-angular/"/>
+    <id>https://pengfeidai.github.io/2017/08/25/auction-angular/</id>
     <published>2017-08-25T14:49:53.000Z</published>
     <updated>2017-10-16T04:09:02.000Z</updated>
     
@@ -279,18 +279,18 @@
     </summary>
     
     
-      <category term="Angular" scheme="http://dpfblog.com/tags/Angular/"/>
+      <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
     
-      <category term="Bootstrap" scheme="http://dpfblog.com/tags/Bootstrap/"/>
+      <category term="Bootstrap" scheme="https://pengfeidai.github.io/tags/Bootstrap/"/>
     
   </entry>
   
   <entry>
     <title>Angular4.0http通讯，nodejs搭建服务器</title>
-    <link href="http://dpfblog.com/2017/08/25/Angular4-0http%EF%BC%8Cnodejs/"/>
-    <id>http://dpfblog.com/2017/08/25/Angular4-0http，nodejs/</id>
+    <link href="https://pengfeidai.github.io/2017/08/25/Angular4-0http%EF%BC%8Cnodejs/"/>
+    <id>https://pengfeidai.github.io/2017/08/25/Angular4-0http，nodejs/</id>
     <published>2017-08-25T08:54:14.000Z</published>
-    <updated>2017-09-02T09:00:28.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习 Angular4.0，在学习过程中学到一些 http 服务端通讯以及跨域知识，将之记录下来。下面将附上实现步骤以及项目源码。</p>
 <h2 id="搭建一个服务器"><a href="#搭建一个服务器" class="headerlink" title="搭建一个服务器"></a>搭建一个服务器</h2><p>第一步：创建一个新的文件夹，取名为 server。</p>
@@ -330,7 +330,7 @@
 
 
 <h2 id="创建Angular应用"><a href="#创建Angular应用" class="headerlink" title="创建Angular应用"></a>创建Angular应用</h2><p>利用命令行工具 Angular CLI 创建一个名为 client 的 Angular 项目，并使用 <code>ng g</code> 命令自动生成模板文件。</p>
-<p>如何生成 Angular 项目，请看另一篇文章：<a href="http://www.dpfblog.com/2017/08/15/%E5%AD%A6%E4%BC%9A%E4%BD%BF%E7%94%A8Angular-CLI%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" target="_blank" rel="external">学会使用Angular CLI命令行工具</a></p>
+<p>如何生成 Angular 项目，请看另一篇文章：<a href="http://https://pengfeidai.github.io/2017/08/15/%E5%AD%A6%E4%BC%9A%E4%BD%BF%E7%94%A8Angular-CLI%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" target="_blank" rel="external">学会使用Angular CLI命令行工具</a></p>
 <ol>
 <li>首先app.module.ts里要引入http模块</li>
 </ol>
@@ -375,20 +375,20 @@
     </summary>
     
     
-      <category term="Angular" scheme="http://dpfblog.com/tags/Angular/"/>
+      <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
     
-      <category term="http" scheme="http://dpfblog.com/tags/http/"/>
+      <category term="http" scheme="https://pengfeidai.github.io/tags/http/"/>
     
-      <category term="Node.js" scheme="http://dpfblog.com/tags/Node-js/"/>
+      <category term="Node.js" scheme="https://pengfeidai.github.io/tags/Node-js/"/>
     
-      <category term="跨域" scheme="http://dpfblog.com/tags/%E8%B7%A8%E5%9F%9F/"/>
+      <category term="跨域" scheme="https://pengfeidai.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
     
   </entry>
   
   <entry>
     <title>学会使用Angular CLI命令行工具</title>
-    <link href="http://dpfblog.com/2017/08/20/Angular-CLI/"/>
-    <id>http://dpfblog.com/2017/08/20/Angular-CLI/</id>
+    <link href="https://pengfeidai.github.io/2017/08/20/Angular-CLI/"/>
+    <id>https://pengfeidai.github.io/2017/08/20/Angular-CLI/</id>
     <published>2017-08-20T08:26:24.000Z</published>
     <updated>2017-08-31T08:57:28.000Z</updated>
     
@@ -435,18 +435,18 @@
     </summary>
     
     
-      <category term="Angular" scheme="http://dpfblog.com/tags/Angular/"/>
+      <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
     
-      <category term="Angular CLI" scheme="http://dpfblog.com/tags/Angular-CLI/"/>
+      <category term="Angular CLI" scheme="https://pengfeidai.github.io/tags/Angular-CLI/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript最全设计模式详解</title>
-    <link href="http://dpfblog.com/2017/08/10/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://dpfblog.com/2017/08/10/JavaScript设计模式/</id>
+    <link href="https://pengfeidai.github.io/2017/08/10/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://pengfeidai.github.io/2017/08/10/JavaScript设计模式/</id>
     <published>2017-08-10T07:29:04.000Z</published>
-    <updated>2017-08-21T02:54:02.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>让系统代码可重用、可扩展、可解耦、更容易被人理解且保证代码可靠性。设计模式使代码真正工程化。</p>
 <figure class="image-bubble">
@@ -493,7 +493,7 @@
 </li>
 </ol>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>在网页上实现一个登陆弹框，无论我们点击多少次登陆按钮，界面上始终只会显示一个登陆弹框，无法再创建第二个。</p>
-<p><a href="https://github.com/pengfeidai/JavaScript" target="_blank" rel="external">源码下载</a> &nbsp;&nbsp;&nbsp; <a href="http://www.dpfblog.com/JavaScript/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" target="_blank" rel="external">demo演示</a></p>
+<p><a href="https://github.com/pengfeidai/JavaScript" target="_blank" rel="external">源码下载</a> &nbsp;&nbsp;&nbsp; <a href="http://https://pengfeidai.github.io/JavaScript/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" target="_blank" rel="external">demo演示</a></p>
 <p>（1）获取DOM对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> id === <span class="string">'string'</span> ? <span class="built_in">document</span>.getElementById(id) : id;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>为了便于之后关于DOM的一些操作，我们这里利用函数式编程的原理将获取目标 id 的元素对象方法封装了一下，直接利用 $(id) 就可以获取。</p>
 <p>（2）弹框构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Modal = <span class="function"><span class="keyword">function</span>(<span class="params">id, html</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.html = html;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.open = <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
@@ -667,18 +667,18 @@
     </summary>
     
     
-      <category term="Javascript" scheme="http://dpfblog.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
-      <category term="设计模式" scheme="http://dpfblog.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="https://pengfeidai.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>cubic-bezier(贝塞尔曲线)</title>
-    <link href="http://dpfblog.com/2017/08/05/cubic-bezier/"/>
-    <id>http://dpfblog.com/2017/08/05/cubic-bezier/</id>
+    <link href="https://pengfeidai.github.io/2017/08/05/cubic-bezier/"/>
+    <id>https://pengfeidai.github.io/2017/08/05/cubic-bezier/</id>
     <published>2017-08-05T08:58:46.000Z</published>
-    <updated>2017-08-18T14:07:20.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>cubic-bezier</code> 又称三次贝塞尔，主要是为 animation 生成速度曲线的函数, CSS3 动画速度的控制通过三次贝塞尔曲线函数实现，定义规则为： <code>cubic-bezier (x1, y1, x2, y2)</code>。</p>
 <p><strong>cubic-bezier：</strong><a href="http://cubic-bezier.com/" target="_blank" rel="external">http://cubic-bezier.com/</a></p>
@@ -702,7 +702,7 @@
 </ul>
 <p>其中 X 轴的取值范围是 [0, 1]，当取值超出范围时 cubic-bezier 将失效；Y 轴的取值没有规定，当然也毋须超过 [0, 1] 过大。</p>
 <p>我们需要关注的是 B 和 C 两点的取值，这两点就是所要动态操控的两个点了,对应cubic-bezier (x1,y1,x2,y2)中的四个参数。</p>
-<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>下面用一个简单的实例来看看效果：<a href="http://www.dpfblog.com/CSS3-demo/cubic-bezier" target="_blank" rel="external">demo演示</a></p>
+<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>下面用一个简单的实例来看看效果：<a href="http://https://pengfeidai.github.io/CSS3-demo/cubic-bezier" target="_blank" rel="external">demo演示</a></p>
 <p>html 部分<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"normal"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"custom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.normal</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#ff0000</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">-webkit-transition</span>:  all <span class="number">2s</span>;</div><div class="line">     <span class="attribute">-moz-transition</span>:  all <span class="number">2s</span>;</div><div class="line">       <span class="attribute">-o-transition</span>:  all <span class="number">2s</span>;</div><div class="line">          <span class="attribute">transition</span>:  all <span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.normal</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">-webkit-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">     <span class="attribute">-moz-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">       <span class="attribute">-o-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">          <span class="attribute">transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.custom</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">  <span class="attribute">-webkit-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">     <span class="attribute">-moz-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">       <span class="attribute">-o-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">          <span class="attribute">transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.custom</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">-webkit-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">     <span class="attribute">-moz-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">       <span class="attribute">-o-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">          <span class="attribute">transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>红色小球采用默认的速度曲线是 ease，蓝色小球采用自定义cubic-bezier(.94,-0.25,.32,1.31),呈现蓄力加速效果。</p>
@@ -759,14 +759,14 @@
     </summary>
     
     
-      <category term="CSS3" scheme="http://dpfblog.com/tags/CSS3/"/>
+      <category term="CSS3" scheme="https://pengfeidai.github.io/tags/CSS3/"/>
     
   </entry>
   
   <entry>
     <title>深入理解Javascript面向对象</title>
-    <link href="http://dpfblog.com/2017/07/28/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
-    <id>http://dpfblog.com/2017/07/28/JS面向对象编程/</id>
+    <link href="https://pengfeidai.github.io/2017/07/28/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
+    <id>https://pengfeidai.github.io/2017/07/28/JS面向对象编程/</id>
     <published>2017-07-28T06:52:56.000Z</published>
     <updated>2017-08-21T02:54:00.000Z</updated>
     
@@ -809,18 +809,18 @@
     </summary>
     
     
-      <category term="Javascript" scheme="http://dpfblog.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
-      <category term="oop" scheme="http://dpfblog.com/tags/oop/"/>
+      <category term="oop" scheme="https://pengfeidai.github.io/tags/oop/"/>
     
   </entry>
   
   <entry>
     <title>Vue实现轮播图组件</title>
-    <link href="http://dpfblog.com/2017/07/22/Vue-Carousel/"/>
-    <id>http://dpfblog.com/2017/07/22/Vue-Carousel/</id>
+    <link href="https://pengfeidai.github.io/2017/07/22/Vue-Carousel/"/>
+    <id>https://pengfeidai.github.io/2017/07/22/Vue-Carousel/</id>
     <published>2017-07-22T13:37:50.000Z</published>
-    <updated>2017-09-19T06:20:48.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>最近在学习 Vue，看到大多数项目首页都有轮播效果，然后自己也是做了一个轮播图，希望分享给大家。</p>
 <h2 id="主要技术"><a href="#主要技术" class="headerlink" title="主要技术"></a>主要技术</h2><ol>
@@ -831,7 +831,7 @@
 <li>组件交互: 父组件通过 props 将数据传递给子组件</li>
 </ol>
 <h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><p>轮播图中，它显示的那张图片在浏览器中可以看到有dom元素。隐藏的是没有dom元素的。所以如果显示一张图片，实际上，轮播列表中只有一个元素是存在的，其他的都被删掉了。按照这个思路，就很简单了。想要轮播，设置：enter：右边→enter-to：正常位置，并且过渡完成→leave：正常位置→leave-to：左边，并且过渡完成。</p>
-<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2><p>👉<a href="http://www.dpfblog.com/Carousel/" target="_blank" rel="external">http://www.dpfblog.com/Carousel/</a></p>
+<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2><p>👉<a href="http://https://pengfeidai.github.io/Carousel/" target="_blank" rel="external">http://https://pengfeidai.github.io/Carousel/</a></p>
 <h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>项目源码：👉<a href="https://github.com/pengfeidai/Carousel" target="_blank" rel="external">https://github.com/pengfeidai/Carousel</a></p>
 ]]></content>
     
@@ -843,16 +843,16 @@
     </summary>
     
     
-      <category term="Vue" scheme="http://dpfblog.com/tags/Vue/"/>
+      <category term="Vue" scheme="https://pengfeidai.github.io/tags/Vue/"/>
     
-      <category term="Carousel" scheme="http://dpfblog.com/tags/Carousel/"/>
+      <category term="Carousel" scheme="https://pengfeidai.github.io/tags/Carousel/"/>
     
   </entry>
   
   <entry>
     <title>ES6编码风格</title>
-    <link href="http://dpfblog.com/2017/07/20/ES6%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    <id>http://dpfblog.com/2017/07/20/ES6编码风格/</id>
+    <link href="https://pengfeidai.github.io/2017/07/20/ES6%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    <id>https://pengfeidai.github.io/2017/07/20/ES6编码风格/</id>
     <published>2017-07-20T14:18:06.000Z</published>
     <updated>2017-09-26T02:35:16.000Z</updated>
     
@@ -911,16 +911,16 @@
     </summary>
     
     
-      <category term="Javascript" scheme="http://dpfblog.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
-      <category term="ES6" scheme="http://dpfblog.com/tags/ES6/"/>
+      <category term="ES6" scheme="https://pengfeidai.github.io/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>ES6，你真的知道吗</title>
-    <link href="http://dpfblog.com/2017/07/16/%E6%B5%85%E8%B0%88ES6%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9/"/>
-    <id>http://dpfblog.com/2017/07/16/浅谈ES6核心内容/</id>
+    <link href="https://pengfeidai.github.io/2017/07/16/%E6%B5%85%E8%B0%88ES6%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9/"/>
+    <id>https://pengfeidai.github.io/2017/07/16/浅谈ES6核心内容/</id>
     <published>2017-07-16T14:33:25.000Z</published>
     <updated>2017-08-21T02:53:16.000Z</updated>
     
@@ -1049,20 +1049,20 @@
     </summary>
     
     
-      <category term="Javascript" scheme="http://dpfblog.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
-      <category term="ES6" scheme="http://dpfblog.com/tags/ES6/"/>
+      <category term="ES6" scheme="https://pengfeidai.github.io/tags/ES6/"/>
     
-      <category term="gulp" scheme="http://dpfblog.com/tags/gulp/"/>
+      <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
     
   </entry>
   
   <entry>
     <title>响应式网页开发你不知道的那些事</title>
-    <link href="http://dpfblog.com/2017/07/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
-    <id>http://dpfblog.com/2017/07/11/响应式网页开发应注意的那些事儿/</id>
+    <link href="https://pengfeidai.github.io/2017/07/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
+    <id>https://pengfeidai.github.io/2017/07/11/响应式网页开发应注意的那些事儿/</id>
     <published>2017-07-11T14:52:28.000Z</published>
-    <updated>2017-09-02T14:14:04.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>响应式网页设计通过使用弹性网格和布局、响应式图片、CSS media query等技术手段，使页面能够自动切换分辨率、图片尺寸及相关脚本功能，以适应不同设备，来满足用户在各种设备环境下的需求。响应式网页设计就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。</p>
 <figure class="image-bubble">
@@ -1150,7 +1150,7 @@
 <p>执行gulp之后，你会在新建的 dist 文件夹中看到打包生成的文件，目录如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dist/</div><div class="line">├── css/</div><div class="line">│   ├──combined-3f8e363e08.css   //  打包合并后的css文件</div><div class="line">│   └──combined-56ca943019.css</div><div class="line">├── img/</div><div class="line">├── js/</div><div class="line">│   └── combined-7762fa2c22.js   //  打包合并后的js文件</div><div class="line">└── index.html</div></pre></td></tr></table></figure></p>
 <p>这时候 css, js 文件都被压缩合并成了一个文件，看起来更加轻量。如果你修改了源代码中的内容，只需再次执行<code>gulp</code> ，则会生成另一个心得css或js文件，版本号会更新，不会覆盖之前的文件。如上面生成新的 <code>combined-56ca943019.css</code> 文件，也保留之前的 <code>combined-3f8e363e08.css</code>。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇文章包含了响应式网站开发中常见的问题及解决方案，希望对热爱前端开发的同学有所帮助，能让你们在以后的响应式开发中少走弯路。</p>
-<p>在线演示：<a href="http://www.dpfblog.com/responsive-lichaibao/dist/index" target="_blank" rel="external">http://www.dpfblog.com/responsive-lichaibao/dist/index</a></p>
+<p>在线演示：<a href="http://https://pengfeidai.github.io/responsive-lichaibao/dist/index" target="_blank" rel="external">http://https://pengfeidai.github.io/responsive-lichaibao/dist/index</a></p>
 <p>项目源码：<a href="https://github.com/pengfeidai/responsive-lichaibao" target="_blank" rel="external">https://github.com/pengfeidai/responsive-lichaibao</a></p>
 ]]></content>
     
@@ -1161,24 +1161,24 @@
     </summary>
     
     
-      <category term="HTML" scheme="http://dpfblog.com/tags/HTML/"/>
+      <category term="HTML" scheme="https://pengfeidai.github.io/tags/HTML/"/>
     
-      <category term="CSS" scheme="http://dpfblog.com/tags/CSS/"/>
+      <category term="CSS" scheme="https://pengfeidai.github.io/tags/CSS/"/>
     
-      <category term="gulp" scheme="http://dpfblog.com/tags/gulp/"/>
+      <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
     
-      <category term="响应式网站" scheme="http://dpfblog.com/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99/"/>
+      <category term="响应式网站" scheme="https://pengfeidai.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
   <entry>
     <title>响应式理财网站</title>
-    <link href="http://dpfblog.com/2017/07/11/licaibao-responsive/"/>
-    <id>http://dpfblog.com/2017/07/11/licaibao-responsive/</id>
+    <link href="https://pengfeidai.github.io/2017/07/11/licaibao-responsive/"/>
+    <id>https://pengfeidai.github.io/2017/07/11/licaibao-responsive/</id>
     <published>2017-07-11T14:09:46.000Z</published>
-    <updated>2017-09-02T14:42:58.000Z</updated>
+    <updated>2020-05-22T12:14:57.000Z</updated>
     
-    <content type="html"><![CDATA[<p>在线演示：<a href="http://www.dpfblog.com/responsive-lichaibao/dist/index" target="_blank" rel="external">http://www.dpfblog.com/responsive-lichaibao/dist/index</a></p>
+    <content type="html"><![CDATA[<p>在线演示：<a href="http://https://pengfeidai.github.io/responsive-lichaibao/dist/index" target="_blank" rel="external">http://https://pengfeidai.github.io/responsive-lichaibao/dist/index</a></p>
 <p>项目源码：<a href="https://github.com/pengfeidai/responsive-lichaibao" target="_blank" rel="external">https://github.com/pengfeidai/responsive-lichaibao</a></p>
 <p>这是一个响应式的理财网站，运用CSS 媒体查询，响应式图片，相对长度单位等前端技术，可以适配不同的设备环境，最后用gulp打包发布。</p>
 <figure class="image-bubble">
@@ -1205,14 +1205,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;在线演示：&lt;a href=&quot;http://www.dpfblog.com/responsive-lichaibao/dist/index&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.dpfblog.com/responsive-li
+      &lt;p&gt;在线演示：&lt;a href=&quot;http://https://pengfeidai.github.io/responsive-lichaibao/dist/index&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://https://pengfeid
     
     </summary>
     
     
-      <category term="HTML" scheme="http://dpfblog.com/tags/HTML/"/>
+      <category term="HTML" scheme="https://pengfeidai.github.io/tags/HTML/"/>
     
-      <category term="CSS" scheme="http://dpfblog.com/tags/CSS/"/>
+      <category term="CSS" scheme="https://pengfeidai.github.io/tags/CSS/"/>
     
   </entry>
   

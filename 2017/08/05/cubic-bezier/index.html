@@ -24,11 +24,11 @@
 <meta name="keywords" content="CSS3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cubic-bezier(贝塞尔曲线)">
-<meta property="og:url" content="http://dpfblog.com/2017/08/05/cubic-bezier/index.html">
+<meta property="og:url" content="https://pengfeidai.github.io/2017/08/05/cubic-bezier/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
 <meta property="og:description" content="简介cubic-bezier 又称三次贝塞尔，主要是为 animation 生成速度曲线的函数, CSS3 动画速度的控制通过三次贝塞尔曲线函数实现，定义规则为： cubic-bezier (x1, y1, x2, y2)。 cubic-bezier：http://cubic-bezier.com/ css3中常用的几个动画效果： 12345ease: cubic-bezier(0.25, 0.1">
 <meta property="og:image" content="http://ot4esom84.bkt.clouddn.com/17-8-18/96108401.jpg">
-<meta property="og:updated_time" content="2017-08-18T14:07:20.000Z">
+<meta property="og:updated_time" content="2020-05-22T12:14:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cubic-bezier(贝塞尔曲线)">
 <meta name="twitter:description" content="简介cubic-bezier 又称三次贝塞尔，主要是为 animation 生成速度曲线的函数, CSS3 动画速度的控制通过三次贝塞尔曲线函数实现，定义规则为： cubic-bezier (x1, y1, x2, y2)。 cubic-bezier：http://cubic-bezier.com/ css3中常用的几个动画效果： 12345ease: cubic-bezier(0.25, 0.1">
@@ -213,7 +213,7 @@
 </ul>
 <p>其中 X 轴的取值范围是 [0, 1]，当取值超出范围时 cubic-bezier 将失效；Y 轴的取值没有规定，当然也毋须超过 [0, 1] 过大。</p>
 <p>我们需要关注的是 B 和 C 两点的取值，这两点就是所要动态操控的两个点了,对应cubic-bezier (x1,y1,x2,y2)中的四个参数。</p>
-<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>下面用一个简单的实例来看看效果：<a href="http://www.dpfblog.com/CSS3-demo/cubic-bezier" target="_blank" rel="external">demo演示</a></p>
+<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>下面用一个简单的实例来看看效果：<a href="http://https://pengfeidai.github.io/CSS3-demo/cubic-bezier" target="_blank" rel="external">demo演示</a></p>
 <p>html 部分<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"normal"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"custom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.normal</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#ff0000</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">-webkit-transition</span>:  all <span class="number">2s</span>;</div><div class="line">     <span class="attribute">-moz-transition</span>:  all <span class="number">2s</span>;</div><div class="line">       <span class="attribute">-o-transition</span>:  all <span class="number">2s</span>;</div><div class="line">          <span class="attribute">transition</span>:  all <span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.normal</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">-webkit-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">     <span class="attribute">-moz-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">       <span class="attribute">-o-transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">          <span class="attribute">transform</span>:  <span class="built_in">translateX</span>(150px);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.custom</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">  <span class="attribute">-webkit-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">     <span class="attribute">-moz-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">       <span class="attribute">-o-transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">          <span class="attribute">transition</span>:  all <span class="number">2s</span> <span class="built_in">cubic-bezier</span>(.94,-0.25,.32,1.31);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.custom</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">-webkit-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">     <span class="attribute">-moz-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">       <span class="attribute">-o-transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">          <span class="attribute">transform</span>:  <span class="built_in">translateX</span>(300px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>红色小球采用默认的速度曲线是 ease，蓝色小球采用自定义cubic-bezier(.94,-0.25,.32,1.31),呈现蓄力加速效果。</p>
@@ -268,16 +268,16 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-18T14:07:20.000Z" itemprop="dateUpdated">2017-08-18 22:07:20</time>
+    最后更新时间：<time datetime="2020-05-22T12:14:57.000Z" itemprop="dateUpdated">2020-05-22 20:14:57</time>
 </span><br>
 
 
         
-        原始文章链接：<a href="/2017/08/05/cubic-bezier/" target="_blank" rel="external">http://dpfblog.com/2017/08/05/cubic-bezier/</a>
+        原始文章链接：<a href="/2017/08/05/cubic-bezier/" target="_blank" rel="external">https://pengfeidai.github.io/2017/08/05/cubic-bezier/</a>
         
     </div>
     <footer>
-        <a href="http://dpfblog.com">
+        <a href="https://pengfeidai.github.io">
             <img src="/img/avatar.jpg" alt="没事放放牛">
             没事放放牛
         </a>
@@ -303,7 +303,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -313,22 +313,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/08/05/cubic-bezier/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2017/08/05/cubic-bezier/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&url=http://dpfblog.com/2017/08/05/cubic-bezier/&via=http://dpfblog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/08/05/cubic-bezier/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -498,7 +498,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://dpfblog.com/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&pic=http://dpfblog.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -508,22 +508,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://dpfblog.com/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&title=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://dpfblog.com/2017/08/05/cubic-bezier/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2017/08/05/cubic-bezier/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&url=http://dpfblog.com/2017/08/05/cubic-bezier/&via=http://dpfblog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cubic-bezier(贝塞尔曲线)》 — Davis' Blog&url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://dpfblog.com/2017/08/05/cubic-bezier/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2017/08/05/cubic-bezier/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -534,7 +534,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3awW4DIQxF0fz/T6dStxHkPptWGnNnNZqmwGFhYZvXCz/v32f1nT+fo32+r+Y68MiQIeOxjHTi/X+R3+8XvfrNai4ZMmTcw9gH2f1yCTL9K1+bDBkyZKTvtS8yZMiQcTbg8lBLMk2+fTJkyJBBklKSXvI6WLpZx3JxGTJkPJCRNgb+8/0P+xsyZMh4CKPTgEwPhaRJUFyVDBkyRjNIwWv/PS3x75G18pwMGTJmMzotgRRWa4iSDZIhQ8ZsxqnklpfheMANWgIyZMi4nsEvQ5y6ClZrasqQIWMq4+zQnQsWJJQvR5MhQ8YFjAMDlQpnaXK73EoZMmSMZqTnq3647IDRJsqQIWM0gxTL0uYBv7rBf4+2SYYMGeMYvDGZHh/51qSJtAwZMm5j1JJJnnDyMEraAF+OmzJkyBjHSC80cF66LH7QDKqGMmTIGMRIJ65975TY0HFQhgwZQxm80NaZhhfdDlQNZciQcQGjNj0JtWlTs3b9QoYMGfMYPJzx8FcL02lCG0d6GTJkPJzBL0zUFsFH5qMte7AyZMgYx+BHsX5rkzcDeCVNhgwZNzDe4cOptaNhbXwZMmTMZvAnDZ18Ar5Q0jCQIUPGVEbaAOhcyCDguKchQ4aMaxi1VmJ6IawWlNHGyZAhQ0bYVuQNgGMnWRkyZMgoLbe/BaQkJ0OGjHsYvBlAUs3axYvW8VSGDBmjGZ0Esr9ocijstx9kyJDxWMYPSdCyUP/f234AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aO3LDMAwFwNz/0k6bhvQDSGVG5KrKxJLCdYHg9/MTX58/1/ye0f2jZ+dPbb4wMDBey/hMr9E982eTL2L+zvxsGBgY9zCSUFj987uo87NhYGBg5AlcHhyT4I6BgYHxdMCdvz//gjAwMDCqRWweLpNrfoYHa3EMDIwXMvKu+////Mh8AwMD41WMT/FamRtWk8XCqTAwMI5m5AFuntKtJHlRgZqcBwMD41DG+mByfY0sHzkMf4OBgXEBY2U82as0e6ThpxgYGEczkrZaEpSroTZv6m0bAGBgYLyWkRScvfvXk84kTRx2DTEwMI5j5ClaD7C3iB1ui2BgYBzNyF+XJ3b5IfLG3Lb/GxgYGC9n9AaNSSrZXPlKQjMGBsbRjF4yV00r8xQzD99f8lwMDIzjGOVUbHqsaqKZfInbphwYGBgvZFSD4K5mWW91o5zhYmBgHMfIO+0r6WAv4H6BYWBgHM2oJoXV1DBvw+XFahSmMTAwDmXsGgBUD715wICBgXEoY+WgyZ15grg0PMDAwLiYkZSpCbX6KQYGBsaI0WzNx2OD9XWx4VMYGBiHMnotsy+Br7VelgfuwrIFBgbGEYzqsDBfjKgG6JWlNAwMjBsY1SC7suZVHV4W3oOBgXEBo7qwtTKYXC9iMTAwMHpBdlseGuOb2yIYGBjXMHrF7UrzLipiMTAwjmY8sRIxXzLLBxWb220YGBgvZFRb/L1Sttp0SwpXDAyMCxi/cx0ZBrKmNL8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
