@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengfeidai.github.io/"/>
-  <updated>2017-09-30T15:18:30.000Z</updated>
+  <updated>2020-05-24T14:45:06.000Z</updated>
   <id>https://pengfeidai.github.io/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新机器nginx安装机器使用</title>
+    <link href="https://pengfeidai.github.io/2020/05/24/%E6%96%B0%E6%9C%BA%E5%99%A8nginx%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://pengfeidai.github.io/2020/05/24/新机器nginx安装及其使用/</id>
+    <published>2020-05-24T14:52:28.000Z</published>
+    <updated>2020-05-24T14:45:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1. 安装依赖"></a>1. 安装依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>gcc安装，nginx源码编译需要</div><div class="line">yum install gcc-c++</div><div class="line"><span class="meta"></span></div><div class="line">#PCRE pcre-devel 安装，nginx 的 http 模块使用 pcre 来解析正则表达式</div><div class="line">yum install -y pcre pcre-devel</div><div class="line"><span class="meta"></span></div><div class="line">#zlib安装，nginx 使用zlib对http包的内容进行gzip</div><div class="line">yum install -y zlib zlib-devel</div><div class="line"><span class="meta"></span></div><div class="line">#OpenSSL 安装，强大的安全套接字层密码库，nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http）</div><div class="line">yum install -y openssl openssl-devel</div></pre></td></tr></table></figure>
+<h3 id="2-使用wget命令下载（推荐）"><a href="#2-使用wget命令下载（推荐）" class="headerlink" title="2. 使用wget命令下载（推荐）"></a>2. 使用wget命令下载（推荐）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 版本自行选择稳定版即可</div><div class="line">wget -c https://nginx.org/download/nginx-1.16.1.tar.gz</div></pre></td></tr></table></figure>
+<h3 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 解压到指定目录</div><div class="line">tar -zxvf nginx-1.16.1.tar.gz -C /opt/bin</div><div class="line"><span class="meta"></span></div><div class="line"># 进入目录</div><div class="line">cd /opt/bin/nginx-1.16.1</div><div class="line"><span class="meta"></span></div><div class="line">#使用默认配置</div><div class="line">./configure</div><div class="line"><span class="meta"></span></div><div class="line">#编译安装</div><div class="line">make</div><div class="line">make install</div><div class="line"><span class="meta"></span></div><div class="line"># 查找安装路径，默认都是这个路径</div><div class="line">[root@VM_0_3_centos nginx-1.16.1]# whereis nginx</div><div class="line">nginx: /usr/local/nginx</div><div class="line"><span class="meta"></span></div><div class="line"># 启动、停止nginx</div><div class="line">cd /usr/local/nginx/sbin/</div><div class="line">./nginx  #启动</div><div class="line">./nginx -s stop  #停止，直接查找nginx进程id再使用kill命令强制杀掉进程</div><div class="line">./nginx -s quit  #退出停止，等待nginx进程处理完任务再进行停止</div><div class="line">./nginx -s reload  #重新加载配置文件，修改nginx.conf后使用该命令，新配置即可生效</div><div class="line"><span class="meta"></span></div><div class="line">#重启nginx，建议先停止，再启动</div><div class="line">./nginx -s stop</div><div class="line">./nginx</div><div class="line"><span class="meta"></span></div><div class="line">#查看nginx进程</div><div class="line">[root@VM_0_12_centos ~]# ps aux|grep nginx</div><div class="line">root     21888  0.0  0.0  20556   616 ?        Ss   21:24   0:00 nginx: master process ./nginx</div><div class="line">nobody   21889  0.0  0.0  23092  1636 ?        S    21:24   0:00 nginx: worker process</div><div class="line">root     25687  0.0  0.0 112712   960 pts/0    R+   21:52   0:00 grep --color=auto nginx</div></pre></td></tr></table></figure>
+<h3 id="4-设置开机自启动"><a href="#4-设置开机自启动" class="headerlink" title="4. 设置开机自启动"></a>4. 设置开机自启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 第一步</div><div class="line">vi /etc/rc.local</div><div class="line"><span class="meta"></span></div><div class="line"># 增加一行</div><div class="line">/usr/local/nginx/sbin/nginx</div><div class="line"><span class="meta"></span></div><div class="line">#设置执行权限</div><div class="line">cd /etc</div><div class="line">chmod 755 rc.local</div></pre></td></tr></table></figure>
+<p>此时浏览器输入服务器ip即可访问 <code>nginx</code> 页面。</p>
+<h3 id="5-配置域名映射"><a href="#5-配置域名映射" class="headerlink" title="5. 配置域名映射"></a>5. 配置域名映射</h3><p>nginx 配置文件都在 <code>/usr/local/nginx/conf/</code> 目录下，文件名称是 <code>nginx.conf</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 进入nginx配置文件目录</div><div class="line">cd /usr/local/nginx/conf</div><div class="line"><span class="meta"></span></div><div class="line"># 修改配置文件</div><div class="line">vi nginx.conf</div></pre></td></tr></table></figure>
+<p><strong>域名配置：</strong></p>
+<p>只需要修改 <code>server_name</code> 和 <code>location</code> 里面的内容即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">listen       80;</div><div class="line"><span class="meta">#</span> 域名</div><div class="line">server_name  www.example.com;</div><div class="line"><span class="meta">#</span> 访问地址的设置</div><div class="line">location / &#123;</div><div class="line">proxy_pass http://localhost:9000; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改完成后，重新加载配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/sbin/</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<h3 id="6-静态资源访问（图片为例）"><a href="#6-静态资源访问（图片为例）" class="headerlink" title="6. 静态资源访问（图片为例）"></a>6. 静态资源访问（图片为例）</h3><ol>
+<li>创建一个存储images的目录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /opt/nginx/www/images</div></pre></td></tr></table></figure>
+<ol>
+<li>编辑配置</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># 修改用户权限</div><div class="line">user  root;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">server &#123;</div><div class="line">  listen   8000;</div><div class="line">  server_name  localhost;</div><div class="line"></div><div class="line">  location ~ .*\.(gif|jpg|jpeg|png)$ &#123;</div><div class="line">    root /opt/nginx/www/images/;</div><div class="line">    autoindex on;  # 打开浏览功能</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>重启nginx服务</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart nginx 或 nginx -s reload</div></pre></td></tr></table></figure>
+<ol>
+<li>在浏览器访问测试</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-安装依赖&quot;&gt;&lt;a href=&quot;#1-安装依赖&quot; class=&quot;headerlink&quot; title=&quot;1. 安装依赖&quot;&gt;&lt;/a&gt;1. 安装依赖&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;g
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://pengfeidai.github.io/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript数组方法总结</title>
@@ -282,162 +329,6 @@
       <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
     
       <category term="Bootstrap" scheme="https://pengfeidai.github.io/tags/Bootstrap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Angular4.0http通讯，nodejs搭建服务器</title>
-    <link href="https://pengfeidai.github.io/2017/08/25/Angular4-0http%EF%BC%8Cnodejs/"/>
-    <id>https://pengfeidai.github.io/2017/08/25/Angular4-0http，nodejs/</id>
-    <published>2017-08-25T08:54:14.000Z</published>
-    <updated>2020-05-22T12:14:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习 Angular4.0，在学习过程中学到一些 http 服务端通讯以及跨域知识，将之记录下来。下面将附上实现步骤以及项目源码。</p>
-<h2 id="搭建一个服务器"><a href="#搭建一个服务器" class="headerlink" title="搭建一个服务器"></a>搭建一个服务器</h2><p>第一步：创建一个新的文件夹，取名为 server。</p>
-<p>第二步： 右键打开 <code>Git Bash Here</code>，然后 <code>npm init -y</code>, ide自动生成一个package.json文件，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;server&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;keywords&quot;: [],</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第三步： 生成node_modules文件夹和package-lock.json文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i @types/node --save</div></pre></td></tr></table></figure>
-<p>作用：引入 node 的类型定义文件，可以在typesscript里用JavaScript的库</p>
-<p>第四步： 创建一个新的tsconfig.json文件，用来告诉编译器如何将typesscript编译成javascript</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "compilerOptions": &#123;</div><div class="line">    "target": "es5",    // 编译成 es5 规范的脚本</div><div class="line">    "module": "commonjs",   //  用的 commonjs 模块规范</div><div class="line">    "emitDecoratorMetadata": true,</div><div class="line">    "experimentalDecorators": true,</div><div class="line">    "outDir": "build",   // 编译完后 js 文件存放的目录是 build</div><div class="line">    "lib": ["es6"]  //</div><div class="line">  &#125;,</div><div class="line">  "exclude": [</div><div class="line">    "node_modules"</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第五步： 安装 express 框架，简化配置操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install espress --save</div></pre></td></tr></table></figure>
-<p>第六步： 引入 espress 的类型定义文件，可以使用 typesscript 来开发</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install @types/espress --save</div></pre></td></tr></table></figure>
-<p>此时，package.json 文件下会多出安装的几个依赖，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;server&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;keywords&quot;: [],</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;@types/express&quot;: &quot;^4.0.37&quot;,</div><div class="line">    &quot;@types/node&quot;: &quot;^8.0.25&quot;,</div><div class="line">    &quot;express&quot;: &quot;^4.15.4&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第七步： 配置好了，就开始写一个简单的程序，创建一个server文件夹，auction_server.ts</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> express <span class="keyword">from</span> <span class="string">'express'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> Product &#123;</div><div class="line">  <span class="keyword">constructor</span>(<span class="params"></span></div><div class="line">    <span class="keyword">public</span> id: <span class="built_in">number</span>,</div><div class="line">    <span class="keyword">public</span> title: <span class="built_in">string</span>,</div><div class="line">    <span class="keyword">public</span> price: <span class="built_in">number</span>,</div><div class="line">    <span class="keyword">public</span> rating: <span class="built_in">number</span>,</div><div class="line">    <span class="keyword">public</span> desc: <span class="built_in">string</span>,</div><div class="line">    <span class="keyword">public</span> imgUrl: <span class="built_in">string</span>,</div><div class="line">    <span class="keyword">public</span> categories: <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;</div><div class="line">  ) &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> products: Product [] = [</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">1</span>, <span class="string">'华为荣耀8'</span>, <span class="number">1999</span>, <span class="number">3.5</span>, <span class="string">'这是第一部手机，是我在学习Angular入门实战时创的'</span>, <span class="string">'../assets/images/1.jpg'</span>, [<span class="string">'电子产品'</span>, <span class="string">'手机'</span>]),</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">2</span>, <span class="string">'vivo x9s'</span>, <span class="number">2999</span>, <span class="number">2.5</span>, <span class="string">'这是第二部手机，是我在学习Angular入门实战时创建的'</span>, <span class="string">'../assets/images/2.jpg'</span>, [<span class="string">'手机'</span>,<span class="string">'硬件设备'</span>]),</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">3</span>, <span class="string">'魅蓝note6'</span>, <span class="number">3999</span>, <span class="number">4.5</span>, <span class="string">'这是第三部手机，是我在学习Angular入门实战时创建的'</span>, <span class="string">'../assets/images/3.jpg'</span>, [<span class="string">'电子产品'</span>]),</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">4</span>, <span class="string">'Iphone 8'</span>, <span class="number">1899</span>, <span class="number">3.5</span>, <span class="string">'这是第四部手机，是我在学习Angular入门实战时创建的'</span>, <span class="string">'../assets/images/4.jpg'</span>, [<span class="string">'电子产品'</span>, <span class="string">'手机'</span>]),</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">5</span>, <span class="string">'红米4X'</span>, <span class="number">5999</span>, <span class="number">3.5</span>, <span class="string">'这是第五部手机，是我在学习Angular入门实战时创建的'</span>, <span class="string">'../assets/images/5.jpg'</span>, [<span class="string">'硬件设备'</span>]),</div><div class="line">  <span class="keyword">new</span> Product(<span class="number">6</span>, <span class="string">'三星 S8'</span>, <span class="number">3899</span>, <span class="number">2.5</span>, <span class="string">'这是第六部手机，是我在学习Angular入门实战时创建的'</span>, <span class="string">'../assets/images/6.jpg'</span>, [<span class="string">'电子产品'</span>])</div><div class="line">];</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">    res.send(<span class="string">'Hello Express!'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/api/products'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">    res.json(products);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/api/product/:id'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">    res.json(products.find(<span class="function">(<span class="params">product</span>) =&gt;</span> product.id == req.params.id));</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = app.listen(<span class="number">8000</span>, <span class="string">"localhost"</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'服务器已启动！'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>编译会自动生成一个build文件夹下的 auction_server.js文件，只修改ts文件就可以了。</p>
-<p>第八步： 启动服务器（普通）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node build/auction_server.js</div></pre></td></tr></table></figure>
-<p>第九步： 安装 nodemon（简便）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g nodemon</div></pre></td></tr></table></figure>
-<p>作用：监控代码，自动重启node服务器，更新浏览器页面，不用每次更改代码都启动</p>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nodemon  build/auction_server.js</div></pre></td></tr></table></figure>
-<ol>
-<li>效果图展示</li>
-</ol>
-<center><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ot4esom84.bkt.clouddn.com/17-8-31/39251611.jpg" alt="alt text" title="image">
-                </div>
-                <div class="image-caption">image</div>
-            </figure></center>
-
-
-<h2 id="创建Angular应用"><a href="#创建Angular应用" class="headerlink" title="创建Angular应用"></a>创建Angular应用</h2><p>利用命令行工具 Angular CLI 创建一个名为 client 的 Angular 项目，并使用 <code>ng g</code> 命令自动生成模板文件。</p>
-<p>如何生成 Angular 项目，请看另一篇文章：<a href="http://https://pengfeidai.github.io/2017/08/15/%E5%AD%A6%E4%BC%9A%E4%BD%BF%E7%94%A8Angular-CLI%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" target="_blank" rel="external">学会使用Angular CLI命令行工具</a></p>
-<ol>
-<li>首先app.module.ts里要引入http模块</li>
-</ol>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</div><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123; AppComponent &#125; <span class="keyword">from</span> <span class="string">'./app.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123; ProductComponent &#125; <span class="keyword">from</span> <span class="string">'./product/product.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123; FormsModule &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>;</div><div class="line"><span class="keyword">import</span> &#123; HttpModule &#125; <span class="keyword">from</span> <span class="string">'@angular/http'</span>;</div><div class="line"></div><div class="line"><span class="meta">@NgModule</span>(&#123;</div><div class="line">  declarations: [</div><div class="line">    AppComponent,</div><div class="line">    ProductComponent</div><div class="line">  ],</div><div class="line">  imports: [</div><div class="line">    BrowserModule,</div><div class="line">    FormsModule,</div><div class="line">    HttpModule</div><div class="line">  ],</div><div class="line">  providers: [],</div><div class="line">  bootstrap: [AppComponent]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123; &#125;</div></pre></td></tr></table></figure>
-<p>2.product.component.ts<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Http, Headers &#125; <span class="keyword">from</span> <span class="string">'@angular/http'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Observable &#125; <span class="keyword">from</span> <span class="string">'rxjs'</span>;</div><div class="line"><span class="keyword">import</span> <span class="string">'rxjs/Rx'</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-product'</span>,</div><div class="line">  templateUrl: <span class="string">'./product.component.html'</span>,</div><div class="line">  styleUrls: [<span class="string">'./product.component.css'</span>]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> ProductComponent <span class="keyword">implements</span> OnInit &#123;</div><div class="line"></div><div class="line">  products: Observable&lt;<span class="built_in">any</span>&gt;;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> http: Http</span>) &#123;</div><div class="line">      <span class="keyword">let</span> myHeaders: Headers = <span class="keyword">new</span> Headers();</div><div class="line">      myHeaders.append(<span class="string">'Authorization'</span>, <span class="string">'Basic 123456'</span>);</div><div class="line"></div><div class="line">      <span class="keyword">this</span>.products = <span class="keyword">this</span>.http.get(<span class="string">'/api/products'</span>, &#123;headers: myHeaders&#125;)</div><div class="line">        .map(<span class="function">(<span class="params">res</span>) =&gt;</span> res.json());</div><div class="line">   &#125;</div><div class="line"></div><div class="line"></div><div class="line">  ngOnInit() &#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3.product.compoent.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">  商品信息</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li *ngFor=&quot;let product of products | async&quot;&gt;</div><div class="line">    &#123;&#123;product.title&#125;&#125;</div><div class="line">  &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
-<p>以上应用已经完成，这时候你启动服务器，商品信息并没有出来，商品请求报了 404 问题，这是什么原因呢？</p>
-<center><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ot4esom84.bkt.clouddn.com/17-8-31/93195515.jpg" alt="alt text" title="image">
-                </div>
-                <div class="image-caption">image</div>
-            </figure></center>
-
-<p>这是因为服务的请求发往的是当前应用的相对路径，默认发送的请求是 <a href="http://localhost:4200，而服务运行在" target="_blank" rel="external">http://localhost:4200，而服务运行在</a> 8000 端口，为了让 http 发送的请求发往一个指定的路径，则需要以下配置。</p>
-<h2 id="Angular实现跨域请求"><a href="#Angular实现跨域请求" class="headerlink" title="Angular实现跨域请求"></a>Angular实现跨域请求</h2><p>1.在 client 目录下中，创建一个 proxy.conf.json 的文件，配置如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"/api"</span>: &#123;</div><div class="line">    <span class="attr">"target"</span>: <span class="string">"http://localhost:8000"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当应用发出去的请求是以 <code>/api</code> 开头时，把这些请求全部转发到 <code>http://localhost:8000</code> 这个地址。</p>
-<p>2.在package.json文件的start里添一段代码<code>--proxy-config proxy.conf.json</code>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;start&quot;: &quot;ng serve --proxy-config proxy.conf.json&quot;,</div></pre></td></tr></table></figure>
-<p>3.启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run start</div></pre></td></tr></table></figure></p>
-<p><strong>注意：</strong>切勿使用 <code>ng s</code>。</p>
-<p>这时候，商品信息都能显示出来，以上问题得到解决。</p>
-<center><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ot4esom84.bkt.clouddn.com/17-8-31/10721156.jpg" alt="alt text" title="image">
-                </div>
-                <div class="image-caption">image</div>
-            </figure></center>
-
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>本篇文章涉及到的 http 通讯和搭建 nodejs 服务器内容可能只是一些初级知识，但希望对新手有所帮助，各位大佬们不喜勿喷。</p>
-<p>项目源码：<a href="https://github.com/pengfeidai/auction-Angular" target="_blank" rel="external">https://github.com/pengfeidai/auction-Angular</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在学习 Angular4.0，在学习过程中学到一些 http 服务端通讯以及跨域知识，将之记录下来。下面将附上实现步骤以及项目源码。&lt;/
-    
-    </summary>
-    
-    
-      <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
-    
-      <category term="http" scheme="https://pengfeidai.github.io/tags/http/"/>
-    
-      <category term="Node.js" scheme="https://pengfeidai.github.io/tags/Node-js/"/>
-    
-      <category term="跨域" scheme="https://pengfeidai.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学会使用Angular CLI命令行工具</title>
-    <link href="https://pengfeidai.github.io/2017/08/20/Angular-CLI/"/>
-    <id>https://pengfeidai.github.io/2017/08/20/Angular-CLI/</id>
-    <published>2017-08-20T08:26:24.000Z</published>
-    <updated>2017-08-31T08:57:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>官方文档：<a href="https://angular.cn/guide/quickstart" target="_blank" rel="external">https://angular.cn/guide/quickstart</a></p>
-<h2 id="步骤1-设置开发环境"><a href="#步骤1-设置开发环境" class="headerlink" title="步骤1. 设置开发环境"></a>步骤1. 设置开发环境</h2><p>如果你的机器上还没有 <code>Node.js</code> 和 <code>npm</code>，请先安装它们。</p>
-<p>全局安装 Angular CLI<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g @angular/cli</div></pre></td></tr></table></figure></p>
-<h2 id="步骤2-创建新项目"><a href="#步骤2-创建新项目" class="headerlink" title="步骤2. 创建新项目"></a>步骤2. 创建新项目</h2><p>打开终端窗口。</p>
-<p>运行下列命令来生成一个新项目以及应用的骨架代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng new my-app</div></pre></td></tr></table></figure></p>
-<h2 id="步骤3-启动开发服务器"><a href="#步骤3-启动开发服务器" class="headerlink" title="步骤3. 启动开发服务器"></a>步骤3. 启动开发服务器</h2><p>进入项目目录，并启动服务器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd my-app</div><div class="line">ng serve --open</div><div class="line"></div><div class="line">// 或者</div><div class="line">npm run start</div></pre></td></tr></table></figure></p>
-<p>ng serve命令会启动开发服务器，监听文件变化，并在修改这些文件时重新构建此应用。</p>
-<p>使用 <code>--open</code>（或-o）参数可以自动打开浏览器并访问 <a href="http://localhost:4200/。" target="_blank" rel="external">http://localhost:4200/。</a></p>
-<h2 id="步骤4-编辑我们的第一个Angular组件"><a href="#步骤4-编辑我们的第一个Angular组件" class="headerlink" title="步骤4. 编辑我们的第一个Angular组件"></a>步骤4. 编辑我们的第一个Angular组件</h2><p>这个CLI为我们创建了第一个 Angular 组件。 它就是名叫 app-root 的根组件。 你可以在<code>./src/app/app.component.ts</code> 目录下找到它。</p>
-<ol>
-<li>打开这个组件文件，可以修改 title 属性，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export class AppComponent &#123;</div><div class="line">  title = &apos;My First Angular App&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>浏览器会自动刷新，而我们会看到修改之后的标题。</p>
-<ol>
-<li>打开 src/app/app.component.css 可以给这个组件设置一些样式，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">h1 &#123;</div><div class="line">  color: #369;</div><div class="line">  font-family: Arial, Helvetica, sans-serif;</div><div class="line">  font-size: 250%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="步骤5-打包测试"><a href="#步骤5-打包测试" class="headerlink" title="步骤5. 打包测试"></a>步骤5. 打包测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ng build --prod    //默认生成/dist目录，并将打包后的结果存放在此</div><div class="line"></div><div class="line">ng test  //使用 karma 运行单元测试。</div></pre></td></tr></table></figure>
-<h2 id="爬坑"><a href="#爬坑" class="headerlink" title="爬坑"></a>爬坑</h2><p>==打包编译后 html 空白问题解决：==</p>
-<ol>
-<li><p>在package.json文件的scripts中修改命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;build&quot;:&quot;ng build --base-href ./&quot;   //–base-href后面替换成打包后的base路径</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>注意</strong>： 切勿使用 <code>ng s</code>启动。</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p><strong>ng new</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng new my-app --routing   // 路由</div></pre></td></tr></table></figure></p>
-<p><strong>ng g</strong></p>
-<p>==自动生成组件==，在 src/app 目录下生成4个 xx 模板文件，并更新 app.module.ts 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng g component xx</div></pre></td></tr></table></figure></p>
-<p>==生成服务：==<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng g service productService</div></pre></td></tr></table></figure></p>
-<p>==自定义管道，生成管道：==<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng g pipe pipe/multiple</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;官方文档：&lt;a href=&quot;https://angular.cn/guide/quickstart&quot; target=&quot;_blank&quot; rel
-    
-    </summary>
-    
-    
-      <category term="Angular" scheme="https://pengfeidai.github.io/tags/Angular/"/>
-    
-      <category term="Angular CLI" scheme="https://pengfeidai.github.io/tags/Angular-CLI/"/>
     
   </entry>
   
