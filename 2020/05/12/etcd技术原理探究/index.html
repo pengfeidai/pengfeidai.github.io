@@ -13,26 +13,27 @@
     
     
     
-    <title>响应式理财网站 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <title>etcd技术原理探究 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="HTML,CSS">
-    <meta name="description" content="在线演示：http://https://pengfeidai.github.io/responsive-lichaibao/dist/index 项目源码：https://github.com/pengfeidai/responsive-lichaibao 这是一个响应式的理财网站，运用CSS 媒体查询，响应式图片，相对长度单位等前端技术，可以适配不同的设备环境，最后用gulp打包发布。">
-<meta name="keywords" content="HTML,CSS">
+    <meta name="keywords" content="Golang,etcd,分布式">
+    <meta name="description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta name="keywords" content="Golang,etcd,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="响应式理财网站">
-<meta property="og:url" content="https://pengfeidai.github.io/2017/07/11/licaibao-responsive/index.html">
+<meta property="og:title" content="etcd技术原理探究">
+<meta property="og:url" content="https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
-<meta property="og:description" content="在线演示：http://https://pengfeidai.github.io/responsive-lichaibao/dist/index 项目源码：https://github.com/pengfeidai/responsive-lichaibao 这是一个响应式的理财网站，运用CSS 媒体查询，响应式图片，相对长度单位等前端技术，可以适配不同的设备环境，最后用gulp打包发布。">
-<meta property="og:image" content="http://ot4esom84.bkt.clouddn.com/17-9-2/66401314.jpg">
-<meta property="og:updated_time" content="2020-05-22T12:14:57.000Z">
+<meta property="og:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta property="og:image" content="http://150.158.113.204:9000/etcd.jpg">
+<meta property="og:image" content="http://150.158.113.204:9000/etcd_pc.png">
+<meta property="og:updated_time" content="2020-05-25T17:07:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="响应式理财网站">
-<meta name="twitter:description" content="在线演示：http://https://pengfeidai.github.io/responsive-lichaibao/dist/index 项目源码：https://github.com/pengfeidai/responsive-lichaibao 这是一个响应式的理财网站，运用CSS 媒体查询，响应式图片，相对长度单位等前端技术，可以适配不同的设备环境，最后用gulp打包发布。">
-<meta name="twitter:image" content="http://ot4esom84.bkt.clouddn.com/17-9-2/66401314.jpg">
+<meta name="twitter:title" content="etcd技术原理探究">
+<meta name="twitter:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta name="twitter:image" content="http://150.158.113.204:9000/etcd.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
     
@@ -123,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">响应式理财网站</div>
+        <div class="flex-col header-title ellipsis">etcd技术原理探究</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -145,11 +146,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">响应式理财网站</h1>
+        <h1 class="title">etcd技术原理探究</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-07-11T14:09:46.000Z" itemprop="datePublished" class="page-time">
-  2017-07-11
+                <time datetime="2020-05-12T14:52:28.000Z" itemprop="datePublished" class="page-time">
+  2020-05-12
 </time>
 
 
@@ -168,17 +169,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#技术栈"><span class="post-toc-number">1.</span> <span class="post-toc-text">技术栈</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#收获"><span class="post-toc-number">2.</span> <span class="post-toc-text">收获</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcd简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">etcd简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">存储特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcd应用场景"><span class="post-toc-number">3.</span> <span class="post-toc-text">etcd应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务发现（Service-Discovery）"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">服务发现（Service Discovery）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#etcd架构图"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">etcd架构图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#消息发布与订阅"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">消息发布与订阅</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户从集群中哪个节点读写数据？"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">用户从集群中哪个节点读写数据？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何选举Leader节点"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">如何选举Leader节点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断写入是否成功"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">判断写入是否成功</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-licaibao-responsive"
+<article id="post-etcd技术原理探究"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">响应式理财网站</h1>
+        <h1 class="post-card-title">etcd技术原理探究</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-07-11 22:09:46" datetime="2017-07-11T14:09:46.000Z"  itemprop="datePublished">2017-07-11</time>
+            <time class="post-time" title="2020-05-12 22:52:28" datetime="2020-05-12T14:52:28.000Z"  itemprop="datePublished">2020-05-12</time>
 
             
 
@@ -191,29 +192,75 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>在线演示：<a href="http://https://pengfeidai.github.io/responsive-lichaibao/dist/index" target="_blank" rel="external">http://https://pengfeidai.github.io/responsive-lichaibao/dist/index</a></p>
-<p>项目源码：<a href="https://github.com/pengfeidai/responsive-lichaibao" target="_blank" rel="external">https://github.com/pengfeidai/responsive-lichaibao</a></p>
-<p>这是一个响应式的理财网站，运用CSS 媒体查询，响应式图片，相对长度单位等前端技术，可以适配不同的设备环境，最后用gulp打包发布。</p>
+            <h2 id="etcd简介"><a href="#etcd简介" class="headerlink" title="etcd简介"></a>etcd简介</h2><p>etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 <code>raft协议</code> 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。</p>
+<p>主要具有以下几个特点：</p>
+<ul>
+<li>简单：安装配置简单，易于部署，易使用。基于 HTTP 的 API 让你用 curl 就可以轻松使用。</li>
+<li>安全：支持 SSL 证书验证。</li>
+<li>键值对存储：将数据存储在分层组织的目录中，如同在标准文件系统中。</li>
+<li>监测变更：监测特定的键或目录以进行更改，并对值的更改做出反应。</li>
+<li>快速：根据官方提供的 benchmark 数据，单实例支持每秒 2k+ 读操作。</li>
+<li>可靠：采用raft算法，实现分布式系统数据的可用性和一致性。</li>
+</ul>
+<h2 id="存储特点"><a href="#存储特点" class="headerlink" title="存储特点"></a>存储特点</h2><p>etcd 是一个 <strong>键值存储</strong> 的组件，其他的应用都是基于其键值存储的功能展开。etcd 的存储有如下特点：</p>
+<ul>
+<li>采用kv型数据存储，一般情况下比关系型数据库快。</li>
+<li>支持动态存储(内存)以及静态存储(磁盘)。</li>
+<li>分布式存储，可集成为多节点集群。</li>
+<li>存储方式，采用类似目录结构。<ul>
+<li>只有叶子节点才能真正存储数据，相当于文件。</li>
+<li>叶子节点的父节点一定是目录，目录不能存储数据。</li>
+</ul>
+</li>
+</ul>
+<h2 id="etcd应用场景"><a href="#etcd应用场景" class="headerlink" title="etcd应用场景"></a>etcd应用场景</h2><p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该 <strong>尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</strong></p>
+<h3 id="服务发现（Service-Discovery）"><a href="#服务发现（Service-Discovery）" class="headerlink" title="服务发现（Service Discovery）"></a>服务发现（Service Discovery）</h3><p>服务发现要解决的是分布式系统中最常见的问题之一，即在同一个分布式集群中的进程或服务，要如何才能找到对方并建立连接。本质上来说，服务发现就是想要了解集群中是否有进程在监听 udp 或 tcp 端口，并且通过名字就可以查找和连接。</p>
+<p>要解决服务发现的问题，需要具备下面三种必备属性：</p>
+<ol>
+<li><strong>一个强一致性、高可用的服务存储目录。</strong> 基于Ralf算法的etcd天生就是这样一个强一致性、高可用的服务存储目录。</li>
+<li><strong>一种注册服务和监控服务健康状态的机制。</strong> 用户可以在etcd中注册服务，并且对注册的服务配置 <code>key TTL</code>，定时保持服务的心跳以达到监控健康状态的效果。</li>
+<li><strong>一种查找和连接服务的机制。</strong> 通过在 etcd 指定的主题（由服务名称构成的服务目录）下注册的服务也能在对应的主题下查找到。</li>
+</ol>
+<h3 id="etcd架构图"><a href="#etcd架构图" class="headerlink" title="etcd架构图"></a>etcd架构图</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://150.158.113.204:9000/etcd.jpg" alt="images" title="">
+                </div>
+                <div class="image-caption">images</div>
+            </figure>
+<p>从上图中我们可以看到，etcd 主要分为四个部分。</p>
+<ul>
+<li><code>HTTP Server</code>：用于处理用户发送的 API 请求以及其它 etcd 节点的同步与心跳信息请求。</li>
+<li><code>Store</code>：用于处理 etcd 支持的各类功能的事务，包括数据索引、节点状态变更、监控与反馈、事件处理与执行等等，是 etcd 对用户提供的大多数 API 功能的具体实现。</li>
+<li><code>Raft</code>：Raft 强一致性算法的具体实现，是 etcd 的核心。</li>
+<li><code>WAL</code>：Write Ahead Log（预写式日志），是 etcd 的数据存储方式。除了在内存中存有所有数据的状态以及节点的索引以外，etcd 就通过 WAL 进行持久化存储。WAL 中，所有的数据提交前都会事先记录日志。Snapshot 是为了防止数据过多而进行的状态快照；Entry 表示存储的具体日志内容。</li>
+</ul>
+<p>通常，一个用户的请求发送过来，会经由 HTTP Server 转发给 Store 进行具体的事务处理，如果涉及到节点的修改，则交给 Raft 模块进行状态的变更、日志的记录，然后再同步给别的 etcd 节点以确认数据提交，最后进行数据的提交，再次同步。</p>
+<h3 id="消息发布与订阅"><a href="#消息发布与订阅" class="headerlink" title="消息发布与订阅"></a>消息发布与订阅</h3><p>在分布式系统中，最适用的一种组件间通信方式就是消息发布与订阅。即构建一个 <code>配置共享中心</code>，数据提供者在这个配置中心发布消息，而消息使用者则订阅他们关心的主题，一旦主题有消息发布，就会实时通知订阅者。通过这种方式可以做到分布式系统配置的集中式管理与动态更新。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ot4esom84.bkt.clouddn.com/17-9-2/66401314.jpg" alt="alt text" title="image">
+                    <img src="http://150.158.113.204:9000/etcd_pc.png" alt="images" title="">
                 </div>
-                <div class="image-caption">image</div>
+                <div class="image-caption">images</div>
             </figure>
-<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
-<li>HTML：实现基本的 HTML 结构</li>
-<li>CSS：渐进增强 or 优雅降级；利用 normalize.css 来统一页面初始样式；相对单位 rem；媒体查询；清除浮动等</li>
-<li>JS：通过简单js代码配合轮播图插件实现轮播效果；解决了一些浏览器兼容性问题；</li>
-<li>OwlCarousel2.js：响应式轮播图插件</li>
-<li>Gulp：自动化构建工具，使用Gulp进行自动化打包发布</li>
+<p>应用中用到的一些 <strong>配置信息</strong> 放到etcd上进行集中管理。使用方式：应用在启动的时候主动从etcd获取一次配置信息，同时，在etcd节点上注册一个Watcher并等待，以后每次配置有更新的时候，etcd都会实时通知订阅者，以此达到获取最新配置信息的目的。</p>
+<p><strong>分布式搜索服务中</strong>，索引的元信息和服务器集群机器的节点状态存放在etcd中，供各个客户端订阅使用。使用etcd的key TTL功能可以确保机器状态是实时更新的。</p>
+<p><strong>分布式日志收集系统</strong>，这个系统的核心工作是收集分布在不同机器的日志。收集器通常是按照应用（或主题）来分配收集任务单元，因此可以在etcd上创建一个以应用（主题）命名的目录P，并将这个应用（主题相关）的所有机器ip，以子目录的形式存储到目录P上，然后设置一个 etcd 递归的Watcher，递归式的监控应用（主题）目录下所有信息的变动。这样就实现了机器IP（消息）变动的时候，能够实时通知到收集器调整任务分配。</p>
+<h3 id="用户从集群中哪个节点读写数据？"><a href="#用户从集群中哪个节点读写数据？" class="headerlink" title="用户从集群中哪个节点读写数据？"></a>用户从集群中哪个节点读写数据？</h3><p>为了保证数据的强一致性，etcd集群中所有的数据流向都是一个方向，从 Leader （主节点）流向 Follower，也就是所有 Follower 的数据必须与 Leader 保持一致，如果不一致会被覆盖。</p>
+<p>简单点说就是，用户可以对etcd集群中的所有节点进行读写，读取非常简单因为每个节点保存的数据是强一致的。对于写入来说，etcd集群中的节点会选举出Leader节点，如果写入请求来自Leader节点即可直接写入然后Leader节点会把写入分发给所有Follower，如果写入请求来自其他Follower节点那么写入请求会给转发给Leader节点，由Leader节点写入之后再分发给集群上的所有其他节点。</p>
+<h4 id="如何选举Leader节点"><a href="#如何选举Leader节点" class="headerlink" title="如何选举Leader节点"></a>如何选举Leader节点</h4><p><strong>假设集群中有三个节点，集群启动之初节点中并没有被选举出的Leader。</strong></p>
+<ul>
+<li><p>Raft算法使用 <code>随机Timer</code> 来初始化Leader选举流程。比如说在上面三个节点上都运行了Timer（每个Timer的持续时间是随机的），第一个节点率先完成了Timer，随后它就会向其他两个节点发送成为Leader的请求，其他节点接收到请求后会以 <code>投票回应</code> 然后第一个节点被选举为Leader。</p>
+</li>
+<li><p>成为Leader后，该节点会 <code>以固定时间间隔向其他节点发送通知，确保自己仍是Leader。</code> 有些情况下当Follower们收不到Leader的通知后，比如说Leader节点宕机或者失去了连接，其他节点会重复之前选举过程选举出新的Leader。</p>
+</li>
 </ul>
-<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ol>
-<li>对常见的响应式布局方法（CSS 媒体查询、Flex 弹性布局、相对单位）有了更深的认识</li>
-<li>掌握并使用一些常用插件（如：OwlCarousel2.js，http-server等）</li>
-<li>学会解决IE一些兼容性问题（如：<code>html5shiv</code>：解决IE浏览器(IE6、IE7、IE8)不支持HTML5的问题；<br><code>respond</code>：使IE浏览器(IE6、IE7、IE8)支持媒体查询中的min-width和max-width）</li>
-<li>熟悉了自动化构建工具 Gulp 的基本流程</li>
-</ol>
+<h3 id="判断写入是否成功"><a href="#判断写入是否成功" class="headerlink" title="判断写入是否成功"></a>判断写入是否成功</h3><p>etcd认为写入请求被Leader节点处理并分发给了 <code>多数节点</code> 后，就是一个成功的写入。如何界定多数节点呢？假设总结点数是N，那么界定多数节点的公式是 <code>Quorum=N/2+1</code>。</p>
+<p><code>容错节点数</code>：集群中节点总数(Instances)对应的Quorum数量，用Instances减去Quorom就是集群中容错节点（允许出故障的节点）的数量。</p>
+<p>所以在集群中推荐的最少节点数量是3个，因为1和2个节点的容错节点数都是0，一旦有一个节点宕掉整个集群就不能正常工作了。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Instances    Quorum    Fault Toleran</div><div class="line"></div><div class="line"><span class="number">1</span>            <span class="number">1</span>/<span class="number">2</span>+<span class="number">1</span>=<span class="number">1</span>       <span class="number">1</span><span class="number">-1</span>=<span class="number">0</span></div><div class="line"><span class="number">2</span>            <span class="number">2</span>/<span class="number">2</span>+<span class="number">1</span>=<span class="number">2</span>       <span class="number">2</span><span class="number">-2</span>=<span class="number">0</span></div><div class="line"><span class="number">3</span>            <span class="number">3</span>/<span class="number">2</span>+<span class="number">1</span>=<span class="number">2</span>       <span class="number">3</span><span class="number">-2</span>=<span class="number">1</span></div><div class="line"><span class="number">4</span>               <span class="number">3</span>            <span class="number">1</span></div><div class="line"><span class="number">5</span>               <span class="number">3</span>            <span class="number">2</span></div><div class="line"><span class="number">6</span>               <span class="number">4</span>            <span class="number">2</span></div><div class="line"><span class="number">7</span>               <span class="number">4</span>            <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>如上所示：<strong>当决定集群中节点的数量时，强烈推荐奇数数量的节点。</strong> 例如：6个节点的集群它的容错能力并没有比5个节点的好，他们的容错节点数一样，一旦容错节点超过2后，由于Quorum节点数小于4整个集群也变为不可用的状态了。</p>
 
         </div>
 
@@ -221,12 +268,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-22T12:14:57.000Z" itemprop="dateUpdated">2020-05-22 20:14:57</time>
+    最后更新时间：<time datetime="2020-05-25T17:07:47.000Z" itemprop="dateUpdated">2020-05-26 01:07:47</time>
 </span><br>
 
 
         
-        原始文章链接：<a href="/2017/07/11/licaibao-responsive/" target="_blank" rel="external">https://pengfeidai.github.io/2017/07/11/licaibao-responsive/</a>
+        原始文章链接：<a href="/2020/05/12/etcd技术原理探究/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/</a>
         
     </div>
     <footer>
@@ -246,7 +293,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
 
 
             
@@ -256,7 +303,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&title=《响应式理财网站》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&title=《etcd技术原理探究》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -266,22 +313,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&title=《响应式理财网站》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&title=《etcd技术原理探究》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《响应式理财网站》 — Davis' Blog&url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《etcd技术原理探究》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -301,16 +348,16 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/07/11/响应式网页开发应注意的那些事儿/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">响应式网页开发你不知道的那些事</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/10/初识 etcd/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">初识etcd</h4>
+      </a>
+    </div>
   
 </nav>
 
@@ -444,7 +491,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&title=《响应式理财网站》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&title=《etcd技术原理探究》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -454,22 +501,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&title=《响应式理财网站》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&title=《etcd技术原理探究》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《响应式理财网站》 — Davis' Blog&url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《etcd技术原理探究》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2017/07/11/licaibao-responsive/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -480,7 +527,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS47DIBAFwNz/0p4DZExe03hhKK+iyMGUI7Xoz+cTX9fwyu+/u+fum8UXBgbGaxnJFnPA3frfn8eY8uvDwMA4gJE/fi6MJiF1/Nsfe8bAwMAYbiX/Jl8fAwMDo8OYO1DmB0cMDAyMThKbH/7G6ye1sgdzcQwMjBcyOiWzpz8/0t/AwMB4FeMqXtXVkvS12gz45ykYGBhbM/IAV00vq03QasDFwMA4h5EX9/NEtDrglfzqxzcYGBjHMKoJZDJmkYTs/PB3C8bAwNiaUa1ZVce/cl4nZGNgYOzNmNt6tUDWYUd7wMDA2JqxapBiLlwm1EIxDgMDY1NGdVuFbkO8iQUHUAwMjGMY+WGuP0gxN5QWVQ0xMDA2ZeQJZN4kyBPdahfydloEAwNjU0a1vJWkmvk6eTiebA9gYGBsxJhLRPPQOUauHSDDwMDYlVEt/Selt7m5j2qKi4GBcQ6jWsTPQ/DaBmchzcbAwNiOkd96Fa/OoTNvZGJgYGB0WgjV0dhW8wADA+MARn/pPODOvaCo3IaBgXEAo/+wuXbCshIbBgbGdoxVSenckS5Plcv/AwYGxkaMapjrtxjzsYy8FYGBgXECYy5Z7RTm8uZlUsjDwMA4h9EJfPmQRHn6I0diYGBgNBhJeF1wGMXAwMAIAmg/rc1T3wUBFwMD44WMarG+M0yWh9dHym0YGBgvZFQDZbJcuVgWv45WUxMDA+N9jD+A94mH7LgK4gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aQW7CQAwFUO5/6VbqppUqkm97DCxeVghSMm8qjY3txyO+vn6uv6//vvP/zv/X9bflz31sXHh4eHitpV8v63qJyVKuqddPfPZpspV4eHh4e7zJoTwJEsl2JNv99H08PDy8t/Ly476aBM8DDx4eHt5n8pJUePINSWKNh4eH9zm85DHVQmoSSJICxItqLXh4eHgxr9cAe+/r9f4eHh4eXqurfmoIYDJq8DW48PDw8DZ4k3S5FzwSfHUE4WbleHh4eAu85LA+VZzNw0Neqig33vDw8PDGvN4i5qMGc8aoAYaHh4e3xkuCRBJCEl7+Pfn4Ah4eHt4eLz/QTy13XjKONgIPDw9vjZcXTOflhl5Bthmi8PDw8BZ4efJ6nShPWmLVT5ONwMPDw9vgVQ/iPCTki+il3dFG4+Hh4a3xquWAXoNqkgonaT0eHh7ea3h5sypPnTfuzMscT+/Ew8PDO8TrHfH5Quc1kutyxs334+Hh4a3xkp/31YO+V7yIKs3ByAIeHh7eNq/Qeo8fn/zVpAQclTzw8PDwFnjzVHjyaXVwIQkGeHh4eNu8fCiqFzySwNBL08v/Nzw8PLxDvPwI7pUVqin7fFtv7sHDw8M7ykvaS3lZIW90VYcJmgUUPDw8vKO86ohqNfHtFRryIHSzuXh4eHgLvPyHfd6sqm5HL2wUCiJ4eHh4R3lJMt2j5sd6kspXCx94eHh4r+Hl6XKeiOdJcDOmTYau8PDw8Iq8Uy2uajmjV1bINwIPDw9vj9cbluo1tJJH7g0l4OHh4Z3l9YJB3tpPNqKHx8PDw3svLz/uJ639PMzkEezmfjw8PLwP41WT7GrTq5em31Sp8fDw8F7Iqw4HVAsc1SeO6ih4eHh4Y141Oa4+vjqOcCxQ4eHh4S3w5g2wvExQHUeoBomV/h4eHh7e7+tvZdZzqCwUwC8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

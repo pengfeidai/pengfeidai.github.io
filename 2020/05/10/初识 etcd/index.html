@@ -13,24 +13,24 @@
     
     
     
-    <title>安装etcd | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <title>初识etcd | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="Golang,etcd,分布式">
-    <meta name="description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 安装etcdet">
+    <meta name="description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 单机安装etcd">
 <meta name="keywords" content="Golang,etcd,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装etcd">
-<meta property="og:url" content="https://pengfeidai.github.io/2020/05/25/安装etcd/index.html">
+<meta property="og:title" content="初识etcd">
+<meta property="og:url" content="https://pengfeidai.github.io/2020/05/10/初识 etcd/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
-<meta property="og:description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 安装etcdet">
-<meta property="og:updated_time" content="2020-05-24T17:37:46.000Z">
+<meta property="og:description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 单机安装etcd">
+<meta property="og:updated_time" content="2020-05-25T17:07:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装etcd">
-<meta name="twitter:description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 安装etcdet">
+<meta name="twitter:title" content="初识etcd">
+<meta name="twitter:description" content="简介etcd 是一个 golang 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。 etcd基于 raft协议，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。 单机安装etcd">
     
         <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
     
@@ -121,7 +121,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">安装etcd</div>
+        <div class="flex-col header-title ellipsis">初识etcd</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -143,11 +143,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">安装etcd</h1>
+        <h1 class="title">初识etcd</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-05-25T14:52:28.000Z" itemprop="datePublished" class="page-time">
-  2020-05-25
+                <time datetime="2020-05-10T14:52:28.000Z" itemprop="datePublished" class="page-time">
+  2020-05-10
 </time>
 
 
@@ -166,17 +166,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装etcd"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装etcd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#systemd配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">systemd配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程访问"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">远程访问</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcdctl-常用命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">etcdctl 常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看版本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查看版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#COMMANDS"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">COMMANDS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看集群状态和节点"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">查看集群状态和节点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入数据"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">插入数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据key查询"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">根据key查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除一条数据"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">删除一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#批量获取目录下的内容"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">批量获取目录下的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#watch监听key"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">watch监听key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#租约（可以理解成定时器，把key绑定上之后，到时间了key就被删除了）"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">租约（可以理解成定时器，把key绑定上之后，到时间了key就被删除了）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#snapshot"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">snapshot</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访问控制相关"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">访问控制相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加用户"><span class="post-toc-number">2.11.1.</span> <span class="post-toc-text">添加用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加role"><span class="post-toc-number">2.11.2.</span> <span class="post-toc-text">添加role</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将用户加入角色中"><span class="post-toc-number">2.11.3.</span> <span class="post-toc-text">将用户加入角色中</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单机安装etcd"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">单机安装etcd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#systemd配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">systemd配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程访问"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">远程访问</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcdctl-常用命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">etcdctl 常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看版本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查看版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#COMMANDS"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">COMMANDS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看集群状态和节点"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">查看集群状态和节点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入数据"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">插入数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据key查询"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">根据key查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除一条数据"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">删除一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#批量获取目录下的内容"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">批量获取目录下的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#watch监听key"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">watch监听key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#租约（可以理解成定时器，把key绑定上之后，到时间了key就被删除了）"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">租约（可以理解成定时器，把key绑定上之后，到时间了key就被删除了）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#snapshot"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">snapshot</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访问控制相关"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">访问控制相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加用户"><span class="post-toc-number">2.11.1.</span> <span class="post-toc-text">添加用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加role"><span class="post-toc-number">2.11.2.</span> <span class="post-toc-text">添加role</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将用户加入角色中"><span class="post-toc-number">2.11.3.</span> <span class="post-toc-text">将用户加入角色中</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-安装etcd"
+<article id="post-初识 etcd"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">安装etcd</h1>
+        <h1 class="post-card-title">初识etcd</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-25 22:52:28" datetime="2020-05-25T14:52:28.000Z"  itemprop="datePublished">2020-05-25</time>
+            <time class="post-time" title="2020-05-10 22:52:28" datetime="2020-05-10T14:52:28.000Z"  itemprop="datePublished">2020-05-10</time>
 
             
 
@@ -191,7 +191,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>etcd</code> 是一个 <code>golang</code> 编写的分布式、高可用的一致性键值存储系统，用于提供可靠的分布式键值(key-value)存储、配置共享和服务发现等功能。etcd可以用于存储关键数据和实现分布式调度，在现代化的集群运行中能够起到关键性的作用。</p>
 <p>etcd基于 <code>raft协议</code>，通过复制日志文件的方式来保证数据的强一致性。在etcd之前，常用的是基于paxos协议的zookeeper。</p>
-<h3 id="安装etcd"><a href="#安装etcd" class="headerlink" title="安装etcd"></a>安装etcd</h3><p>etcd在生产环境中一般推荐集群方式部署。在这里，主要讲讲单节点安装和基本使用。</p>
+<h3 id="单机安装etcd"><a href="#单机安装etcd" class="headerlink" title="单机安装etcd"></a>单机安装etcd</h3><p>etcd在生产环境中一般推荐集群方式部署。在这里，主要讲讲单节点安装和基本使用。</p>
 <p><strong>CentOS</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y etcd</div></pre></td></tr></table></figure>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 设置开机自启动</div><div class="line"><span class="meta">$</span> systemctl enable etcd</div><div class="line"><span class="meta">#</span> 启动etcd</div><div class="line"><span class="meta">$</span> systemctl start etcd</div><div class="line"><span class="meta">#</span> 查看etcd运行状态</div><div class="line"><span class="meta">$</span> systemctl status etcd</div><div class="line"></div><div class="line">● etcd.service - Etcd Server</div><div class="line">   Loaded: loaded (/usr/lib/systemd/system/etcd.service; disabled; vendor preset: disabled)</div><div class="line">   Active: active (running) since Sun 2020-05-24 23:08:57 CST; 7s ago</div><div class="line"> Main PID: 20272 (etcd)</div><div class="line">    Tasks: 8</div><div class="line">   Memory: 10.0M</div><div class="line">   CGroup: /system.slice/etcd.service</div><div class="line">           └─20272 /usr/bin/etcd --name=default --data-dir=/var/lib/etcd/default.etcd --listen-client-urls=http://localhost:2379</div><div class="line"></div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: 8e9e05c52164694d received MsgVoteResp from 8e9e05c52164694d at term 2</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: 8e9e05c52164694d became leader at term 2</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: raft.node: 8e9e05c52164694d elected leader 8e9e05c52164694d at term 2</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: setting up the initial cluster version to 3.3</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: published &#123;Name:default ClientURLs:[http://localhost:2379]&#125; to cluster cdf818194e3a8c32</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: ready to serve client requests</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: serving insecure client requests on 127.0.0.1:2379, this is strongly discouraged!</div><div class="line">May 24 23:08:57 VM_0_3_centos systemd[1]: Started Etcd Server.</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: set the initial cluster version to 3.3</div><div class="line">May 24 23:08:57 VM_0_3_centos etcd[20272]: enabled capabilities for version 3.3</div></pre></td></tr></table></figure>
@@ -229,12 +229,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-24T17:37:46.000Z" itemprop="dateUpdated">2020-05-25 01:37:46</time>
+    最后更新时间：<time datetime="2020-05-25T17:07:41.000Z" itemprop="dateUpdated">2020-05-26 01:07:41</time>
 </span><br>
 
 
         
-        原始文章链接：<a href="/2020/05/25/安装etcd/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/25/安装etcd/</a>
+        原始文章链接：<a href="/2020/05/10/初识 etcd/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/10/初识 etcd/</a>
         
     </div>
     <footer>
@@ -264,7 +264,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/25/安装etcd/&title=《安装etcd》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&title=《初识etcd》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -274,22 +274,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/25/安装etcd/&title=《安装etcd》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&title=《初识etcd》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/25/安装etcd/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/10/初识 etcd/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《安装etcd》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/25/安装etcd/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初识etcd》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/25/安装etcd/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -309,12 +309,19 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/05/12/etcd技术原理探究/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">etcd技术原理探究</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/24/新机器nginx安装及其使用/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/05/新机器nginx安装及其使用/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">新机器nginx安装机器使用</h4>
       </a>
@@ -452,7 +459,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/25/安装etcd/&title=《安装etcd》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&title=《初识etcd》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -462,22 +469,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/25/安装etcd/&title=《安装etcd》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&title=《初识etcd》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/25/安装etcd/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/10/初识 etcd/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《安装etcd》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/25/安装etcd/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初识etcd》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/10/初识 etcd/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/25/安装etcd/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/10/初识 etcd/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -488,7 +495,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACN0lEQVR42u3aQZKDMAwF0dz/0sx2qhKc/hJMDXJ7RSUE/LxQbEmvFx7H2/j9+dn12a/en/z+q9cdQ4YMGY9lHMtBXrCeLqfy5fgwExkyZGzAIKGwc02msiZ9mbMMGTJkLLdrBxh8OyhDhgwZVwXcNDgSkgwZMmSsGeQQe23Wa/2EG8/iMmTIeCCDT+7vr2+pb8iQIeNRjCMc681cJ1jzIPvhLTJkyBjNSF+TFjvJMRgdUJfzkSFDxj4Mng5LSwW1UMtTcjJkyNiHwR9US3jxxjJe2jz935AhQ8YgBt/SkRauDrK2fZQhQ8ZujGsLk2kZkizo6bcyZMgYzeCH1U5aLS0h1BrFZMiQMZXRT7SlqbHWSp/dL0OGjG0YPCzyVFqtPBAn42TIkDGaQW7lAZcHU740cXFUhgwZ4xhpqbJWMOBNYMVGMRkyZIxmpKGWgGuNGhc0kMmQIWMoo1aM5PtNfgwOAuv7nTJkyNiAwRNnZFdGUnUdGOoZkSFDxiBGutWrlRD4c3j8/JI1lCFDxjhGbbq1sJsWRIPGDhkyZGzA4MGXTK6fjIuTgDJkyNiMkQZBDksTcEEKT4YMGUMZnc1csGkLa6pxwJUhQ8ZoRj9ac16tGNB/mgwZMmYw0kNp3Axxc/ZehgwZ+zB44OsHx84yxWdxGTJkbMlImyr4gfZLSO3EeBkyZGzG4ImztFyafnLj/4YMGTL+JYMXIDuf8GnxBg4ZMmTswKjtu2pFx3SZLi5qypAh43mMH0DvS6nA+yoOAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aMRLDIAwFUd//0k6bxni/sDNBrKtMQgyPQiOEjgM/5/AZj//+hoy5eucDjwwZMpZlkCVeTcAnHsPGn9H2yZAhYwPG1cTk1RyW/pesTYYMGTLGjNr49FcZMmTISBk8jPJv0nllyJCxJ4McYsnrxgkfP+6+eBaXIUPGggxedf/951fuN2TIkLEU4wwf/obatUFxVTJkyGjN4AEuhdUKdrX1yJAhYwcGCXy8uJYeXNMrB0SVIUNGI0atxMaL/rUQnG6TDBkyejP4ctNAWUsEa4dnGTJk7MNIWyLS+vzMGHQhKkOGjKaMtOhfG8OPuGlyefCILkOGjGUZafLHi258oXyWm/EyZMhozahdFvIJyMTpkZW3cciQIWN1RvpScrwkE6epZLFeKEOGjKaMNMnjPR21BDTuEJEhQ0ZTBk/70jJZeuglSepNz4gMGTJaM9KrxDSY8sXxo/WR7rEMGTJaMNLJeOk/vaoMLiRkyJDRmjG/rGdTxtpFpgwZMnZm8CBbDJGl4+5NgihDhozWDF64T9u80k0pbqUMGTI2YDybzKUXovy5nFeGDBlNGWf48N4GntLVAu5NLilDhoxGjDTMpQG0tpRxOpi2aMiQIaMHgwfZlFdLCslIGTJk7MmYb9gi6d1MIA6aLWTIkCGjVHRLs9H4XzJkyJCBGfOhln/zYsCVIUPGXzJqlwG89M+3LG3jkCFDxg6MmbyLbwS5npxpL5MhQ0ZTxgclt/oIARpG9gAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
