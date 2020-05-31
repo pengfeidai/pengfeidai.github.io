@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengfeidai.github.io/"/>
-  <updated>2020-05-26T15:00:07.000Z</updated>
+  <updated>2020-05-31T15:21:32.000Z</updated>
   <id>https://pengfeidai.github.io/</id>
   
   <author>
@@ -14,6 +14,121 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Protobuf生成Go代码</title>
+    <link href="https://pengfeidai.github.io/2020/05/31/Protobuf%E7%94%9F%E6%88%90Go%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97/"/>
+    <id>https://pengfeidai.github.io/2020/05/31/Protobuf生成Go代码指南/</id>
+    <published>2020-05-31T13:58:21.000Z</published>
+    <updated>2020-05-31T15:21:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Protobuf简介"><a href="#Protobuf简介" class="headerlink" title="Protobuf简介"></a>Protobuf简介</h2><p>Protobuf是Protocol Buffers的简称，由Google公司开发的一种数据描述语言，用于描述一种轻便高效的结构化数据存储格式，它可用于结构化数据串行化，或者说序列化。它的设计非常适用于在网络通讯中的数据载体，很适合做数据存储或 RPC 数据交换格式，它序列化出来的数据量少再加上以 K-V 的方式来存储数据，对消息的版本兼容性非常强，可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。开发者可以通过Protobuf附带的工具生成代码并实现将结构化数据序列化的功能。</p>
+<p>Protobuf中最基本的数据单元是message，是类似Go语言中结构体的存在。在message中可以嵌套message或其它的基础数据类型的成员。</p>
+<h2 id="protoc安装"><a href="#protoc安装" class="headerlink" title="protoc安装"></a>protoc安装</h2><p>到 <a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">https://github.com/google/protobuf/releases</a> 下载对应的buf，然后进行编译后，使用 <code>protoc --version</code> 能查看对应版本，说明安装成功。</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>第一步：if zsh <code>vim ~/.zshrc</code>; if bash <code>vim ~/.bash_profile</code><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export GOPATH="/Users/zl/go"</div><div class="line">export GOBIN="/Users/zl/go/bin"</div><div class="line">export PATH="$PATH:$GOPATH:$GOBIN"</div></pre></td></tr></table></figure></p>
+<p>第二步：<code>source ~/.zshrc</code> || <code>source ~/.bash_profile</code></p>
+<p>第三步: 查看环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $PATH</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 以上配置具体路径 <code>GOPATH</code> 和 <code>GOBIN</code> 根实际填写即可，可使用<code>go env</code>查看。</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>Protobuf核心的工具集是C++语言开发的，官方的protoc编译器中并不支持Go语言，需要安装插件才能生成Go代码。用如下命令安装：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> get github.com/golang/protobuf/protoc-gen-<span class="keyword">go</span></div></pre></td></tr></table></figure>
+<p>它提供了一个 <code>protoc-gen-go</code> 二进制文件，当编译器调用时传递了<code>--go_out</code> 命令行标志时 <code>protoc</code> 就会使用它。–go_out代表输出的扩展名为 <code>.pb.go</code> 的文件。编译器会为每个.proto文件生成一个单独的源代码文件。</p>
+<p><strong>注意：</strong> proto路径（使用–proto_path或-I命令行标志指定）将替换为输出路径（使用–go_out标志指定）。</p>
+<p><strong>扩展:</strong></p>
+<p><code>go-micro</code> 是go语言中一个很好的微服务框架，功能完善。关于 <code>micro</code> 后面再做详细介绍。它也有个相对应的插件：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> get github.com/micro/protoc-gen-micro</div></pre></td></tr></table></figure>
+<h2 id="定义proto文件"><a href="#定义proto文件" class="headerlink" title="定义proto文件"></a>定义proto文件</h2><p>先在 <code>proto</code> 目录下新建一个 <code>hello.proto</code> 文件：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">syntax = <span class="string">"proto3"</span>;</div><div class="line"></div><div class="line">message HelloRequest &#123;</div><div class="line">	<span class="keyword">string</span> name = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message HelloResponse &#123;</div><div class="line">	<span class="keyword">string</span> greeting = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">service Greeter &#123;</div><div class="line">	rpc Hello(HelloRequest) returns (HelloResponse) &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="生成原型"><a href="#生成原型" class="headerlink" title="生成原型"></a>生成原型</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protoc --proto_path=. --go_out=. *<span class="comment">/*.proto</span></div></pre></td></tr></table></figure>
+<p>编译器会读取proto目录下所有后缀名为 <code>.proto</code>的文件，这将会生成一个输出文件 <code>product.pb.go</code>。</p>
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><h3 id="默认规则"><a href="#默认规则" class="headerlink" title="默认规则"></a>默认规则</h3><p>如果一个.proto文件中有包声明，生成的源代码将会使用它来作为Go的包名，如果.proto的包名中有 <code>.</code> 在Go包名中会将 <code>.</code> 转换为 <code>_</code>。举例来说proto包名 <code>example.hello</code> 将会生成Go包名<code>example_hello</code>。</p>
+<h3 id="指定包名"><a href="#指定包名" class="headerlink" title="指定包名"></a>指定包名</h3><p>在.proto文件中可以使用option <code>go_package</code> 指令来覆盖上面默认生成Go包名的规则。比如说包含如下指令的一个.proto文件：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> example.hello;</div><div class="line">option go_package = <span class="string">"proto;hello"</span>;</div></pre></td></tr></table></figure>
+<p><code>&quot;proto;hello&quot;</code>：proto表示目录，<code>hello</code> 则是生成的Go源代码的包名是。</p>
+<h3 id="不指定包名"><a href="#不指定包名" class="headerlink" title="不指定包名"></a>不指定包名</h3><p>如果一个.proto文件中不包含package声明，生成的源代码将会使用.proto文件的文件名(去掉扩展名)作为Go包名，.会被首先转换为_。如：<code>hello.proto</code> 文件默认生成源文件的包名为 <code>hello</code>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Protobuf简介&quot;&gt;&lt;a href=&quot;#Protobuf简介&quot; class=&quot;headerlink&quot; title=&quot;Protobuf简介&quot;&gt;&lt;/a&gt;Protobuf简介&lt;/h2&gt;&lt;p&gt;Protobuf是Protocol Buffers的简称，由Google公司
+    
+    </summary>
+    
+    
+      <category term="Go" scheme="https://pengfeidai.github.io/tags/Go/"/>
+    
+      <category term="Protobuf" scheme="https://pengfeidai.github.io/tags/Protobuf/"/>
+    
+      <category term="RPC" scheme="https://pengfeidai.github.io/tags/RPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>micro微服务</title>
+    <link href="https://pengfeidai.github.io/2020/05/30/micro%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://pengfeidai.github.io/2020/05/30/micro微服务/</id>
+    <published>2020-05-30T14:52:28.000Z</published>
+    <updated>2020-05-31T13:33:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="docker安装consul"><a href="#docker安装consul" class="headerlink" title="docker安装consul"></a>docker安装consul</h4><ul>
+<li><code>-server</code>：以服务端方式启动</li>
+<li><code>-bootstrap</code>：指定自己为leader，不需要选举</li>
+<li><code>-ui</code>：启动内置管理web界面</li>
+<li><code>-client</code>：指定客户端可以访问的ip。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 安装</div><div class="line">docker pull consul</div><div class="line"><span class="meta"></span></div><div class="line"># 启动</div><div class="line">docker run -d --name=consul -p 8500:8500 consul agent -server -bootstrap -ui -client 0.0.0.0</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;docker安装consul&quot;&gt;&lt;a href=&quot;#docker安装consul&quot; class=&quot;headerlink&quot; title=&quot;docker安装consul&quot;&gt;&lt;/a&gt;docker安装consul&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-server&lt;/c
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
+    
+      <category term="Gin" scheme="https://pengfeidai.github.io/tags/Gin/"/>
+    
+      <category term="micro" scheme="https://pengfeidai.github.io/tags/micro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Golang构建gRPC服务</title>
+    <link href="https://pengfeidai.github.io/2020/05/24/%E4%BD%BF%E7%94%A8Golang%E6%9E%84%E5%BB%BAgRPC%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://pengfeidai.github.io/2020/05/24/使用Golang构建gRPC服务/</id>
+    <published>2020-05-24T14:52:28.000Z</published>
+    <updated>2020-05-31T13:34:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本教程提供了Go使用gRPC的基础教程</p>
+<p>在教程中你将会学到如何：</p>
+<ul>
+<li>在 <code>.proto</code> 文件中定义一个服务。</li>
+<li>使用protocol buffer编译器生成客户端和服务端代码。</li>
+<li>使用gRPC的Go API为你的服务写一个客户端和服务器。</li>
+</ul>
+<h3 id="为什么使用gRPC"><a href="#为什么使用gRPC" class="headerlink" title="为什么使用gRPC"></a>为什么使用gRPC</h3><p>借助gRPC，我们可以在 .proto 文件中定义我们的服务，并以gRPC支持的任何语言来实现客户端和服务器，客户端和服务器又可以在从服务器到你自己的平板电脑的各种环境中运行-gRPC还会为你解决所有不同语言和环境之间通信的复杂性。我们还获得了使用protocol buffer的所有优点，包括<strong>有效的序列化（速度和体积两方面都比JSON更有效率）；简单的IDL（接口定义语言）和轻松的接口更新。</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本教程提供了Go使用gRPC的基础教程&lt;/p&gt;
+&lt;p&gt;在教程中你将会学到如何：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;.proto&lt;/code&gt; 文件中定义一个服务。&lt;/li&gt;
+&lt;li&gt;使用protocol buffer编译器生成客户端和服务端代码。&lt;/li&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
+    
+      <category term="gPRC" scheme="https://pengfeidai.github.io/tags/gPRC/"/>
+    
+  </entry>
   
   <entry>
     <title>Golang中etcd使用教程</title>
