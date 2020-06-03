@@ -230,6 +230,43 @@
   </entry>
   
   <entry>
+    <title>Galang常用包整理</title>
+    <link href="https://pengfeidai.github.io/2020/05/12/Galang%E5%B8%B8%E7%94%A8%E5%8C%85%E6%95%B4%E7%90%86/"/>
+    <id>https://pengfeidai.github.io/2020/05/12/Galang常用包整理/</id>
+    <published>2020-05-12T14:52:28.000Z</published>
+    <updated>2020-06-03T14:19:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="godoc"><a href="#godoc" class="headerlink" title="godoc"></a>godoc</h3><p><a href="https://www.godoc.org" target="_blank" rel="external">godoc</a></p>
+<h3 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h3><ul>
+<li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="external">gin</a></li>
+<li><a href="https://github.com/pengfeidai/beego" target="_blank" rel="external">beego</a></li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><a href="https://github.com/jinzhu/gorm" target="_blank" rel="external">mysql</a></li>
+<li><a href="https://www.godoc.org/gopkg.in/mgo.v2" target="_blank" rel="external">momgo</a></li>
+<li><a href="https://github.com/go-redis/redis" target="_blank" rel="external">redis</a></li>
+</ul>
+<h3 id="微服务框架"><a href="#微服务框架" class="headerlink" title="微服务框架"></a>微服务框架</h3><ul>
+<li><a href="https://github.com/micro" target="_blank" rel="external">micro</a></li>
+</ul>
+<h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><ul>
+<li><a href="https://github.com/golang/protobuf" target="_blank" rel="external">protobuf</a></li>
+<li><a href="github.com/sirupsen/logrus">logrus</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;godoc&quot;&gt;&lt;a href=&quot;#godoc&quot; class=&quot;headerlink&quot; title=&quot;godoc&quot;&gt;&lt;/a&gt;godoc&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.godoc.org&quot; target=&quot;_blank&quot; rel=&quot;exter
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
+    
+  </entry>
+  
+  <entry>
     <title>etcd技术原理探究</title>
     <link href="https://pengfeidai.github.io/2020/05/12/etcd%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/"/>
     <id>https://pengfeidai.github.io/2020/05/12/etcd技术原理探究/</id>
@@ -319,42 +356,6 @@
       <category term="etcd" scheme="https://pengfeidai.github.io/tags/etcd/"/>
     
       <category term="分布式" scheme="https://pengfeidai.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Galang常用包整理</title>
-    <link href="https://pengfeidai.github.io/2020/05/12/Galang%E5%B8%B8%E7%94%A8%E5%8C%85%E6%95%B4%E7%90%86/"/>
-    <id>https://pengfeidai.github.io/2020/05/12/Galang常用包整理/</id>
-    <published>2020-05-12T14:52:28.000Z</published>
-    <updated>2020-05-31T15:34:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="godoc"><a href="#godoc" class="headerlink" title="godoc"></a>godoc</h3><p><a href="https://www.godoc.org" target="_blank" rel="external">godoc</a></p>
-<h3 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h3><ul>
-<li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="external">gin</a></li>
-<li><a href="https://github.com/pengfeidai/beego" target="_blank" rel="external">beego</a></li>
-</ul>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><a href="https://github.com/jinzhu/gorm" target="_blank" rel="external">mysql</a></li>
-<li><a href="https://www.godoc.org/gopkg.in/mgo.v2" target="_blank" rel="external">momgo</a></li>
-<li><a href="https://github.com/go-redis/redis" target="_blank" rel="external">redis</a></li>
-</ul>
-<h3 id="微服务框架"><a href="#微服务框架" class="headerlink" title="微服务框架"></a>微服务框架</h3><ul>
-<li><a href="https://github.com/micro" target="_blank" rel="external">micro</a></li>
-</ul>
-<h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><ul>
-<li>pro</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;godoc&quot;&gt;&lt;a href=&quot;#godoc&quot; class=&quot;headerlink&quot; title=&quot;godoc&quot;&gt;&lt;/a&gt;godoc&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.godoc.org&quot; target=&quot;_blank&quot; rel=&quot;exter
-    
-    </summary>
-    
-    
-      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
     
   </entry>
   
@@ -1270,9 +1271,9 @@
     
       <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
-      <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
-    
       <category term="ES6" scheme="https://pengfeidai.github.io/tags/ES6/"/>
+    
+      <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
     
   </entry>
   
