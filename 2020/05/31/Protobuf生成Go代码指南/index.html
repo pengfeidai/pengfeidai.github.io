@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://pengfeidai.github.io/2020/05/31/Protobuf生成Go代码指南/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
 <meta property="og:description" content="Protobuf简介Protobuf是Protocol Buffers的简称，由Google公司开发的一种数据描述语言，用于描述一种轻便高效的结构化数据存储格式，它可用于结构化数据串行化，或者说序列化。它的设计非常适用于在网络通讯中的数据载体，很适合做数据存储或 RPC 数据交换格式，它序列化出来的数据量少再加上以 K-V 的方式来存储数据，对消息的版本兼容性非常强，可用于通讯协议、数据存储等领域">
-<meta property="og:updated_time" content="2020-05-31T15:33:57.000Z">
+<meta property="og:updated_time" content="2020-06-03T17:24:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Protobuf生成Go代码">
 <meta name="twitter:description" content="Protobuf简介Protobuf是Protocol Buffers的简称，由Google公司开发的一种数据描述语言，用于描述一种轻便高效的结构化数据存储格式，它可用于结构化数据串行化，或者说序列化。它的设计非常适用于在网络通讯中的数据载体，很适合做数据存储或 RPC 数据交换格式，它序列化出来的数据量少再加上以 K-V 的方式来存储数据，对消息的版本兼容性非常强，可用于通讯协议、数据存储等领域">
@@ -166,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Protobuf简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Protobuf简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#protoc安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">protoc安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">环境变量配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译器"><span class="post-toc-number">4.</span> <span class="post-toc-text">编译器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义proto文件"><span class="post-toc-number">5.</span> <span class="post-toc-text">定义proto文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生成原型"><span class="post-toc-number">6.</span> <span class="post-toc-text">生成原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包"><span class="post-toc-number">7.</span> <span class="post-toc-text">包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#默认规则"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">默认规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指定包名"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">指定包名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不指定包名"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">不指定包名</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Protobuf简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Protobuf简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#protoc安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">protoc安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">环境变量配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译器"><span class="post-toc-number">4.</span> <span class="post-toc-text">编译器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义proto文件"><span class="post-toc-number">5.</span> <span class="post-toc-text">定义proto文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生成原型"><span class="post-toc-number">6.</span> <span class="post-toc-text">生成原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包"><span class="post-toc-number">7.</span> <span class="post-toc-text">包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#默认规则"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">默认规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指定包名"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">指定包名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不指定包名"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">不指定包名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import其他proto"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">import其他proto</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -213,14 +213,14 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> example.hello;</div><div class="line">option go_package = <span class="string">"proto;hello"</span>;</div></pre></td></tr></table></figure>
 <p><code>&quot;proto;hello&quot;</code>：proto表示目录，<code>hello</code> 则是生成的Go源代码的包名是。</p>
 <h3 id="不指定包名"><a href="#不指定包名" class="headerlink" title="不指定包名"></a>不指定包名</h3><p>如果一个.proto文件中不包含package声明，生成的源代码将会使用.proto文件的文件名(去掉扩展名)作为Go包名，.会被首先转换为_。如：<code>hello.proto</code> 文件默认生成源文件的包名为 <code>hello</code>。</p>
-
+<h3 id="import其他proto"><a href="#import其他proto" class="headerlink" title="import其他proto"></a>import其他proto</h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-31T15:33:57.000Z" itemprop="dateUpdated">2020-05-31 23:33:57</time>
+    最后更新时间：<time datetime="2020-06-03T17:24:43.000Z" itemprop="dateUpdated">2020-06-04 01:24:43</time>
 </span><br>
 
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengfeidai.github.io/"/>
-  <updated>2020-05-31T15:33:57.000Z</updated>
+  <updated>2020-06-03T17:24:43.000Z</updated>
   <id>https://pengfeidai.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://pengfeidai.github.io/2020/05/31/Protobuf%E7%94%9F%E6%88%90Go%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97/"/>
     <id>https://pengfeidai.github.io/2020/05/31/Protobuf生成Go代码指南/</id>
     <published>2020-05-31T13:58:21.000Z</published>
-    <updated>2020-05-31T15:33:57.000Z</updated>
+    <updated>2020-06-03T17:24:43.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Protobuf简介"><a href="#Protobuf简介" class="headerlink" title="Protobuf简介"></a>Protobuf简介</h2><p>Protobuf是Protocol Buffers的简称，由Google公司开发的一种数据描述语言，用于描述一种轻便高效的结构化数据存储格式，它可用于结构化数据串行化，或者说序列化。它的设计非常适用于在网络通讯中的数据载体，很适合做数据存储或 RPC 数据交换格式，它序列化出来的数据量少再加上以 K-V 的方式来存储数据，对消息的版本兼容性非常强，可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。开发者可以通过Protobuf附带的工具生成代码并实现将结构化数据序列化的功能。</p>
 <p>Protobuf中最基本的数据单元是message，是类似Go语言中结构体的存在。在message中可以嵌套message或其它的基础数据类型的成员。</p>
@@ -46,7 +46,7 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> example.hello;</div><div class="line">option go_package = <span class="string">"proto;hello"</span>;</div></pre></td></tr></table></figure>
 <p><code>&quot;proto;hello&quot;</code>：proto表示目录，<code>hello</code> 则是生成的Go源代码的包名是。</p>
 <h3 id="不指定包名"><a href="#不指定包名" class="headerlink" title="不指定包名"></a>不指定包名</h3><p>如果一个.proto文件中不包含package声明，生成的源代码将会使用.proto文件的文件名(去掉扩展名)作为Go包名，.会被首先转换为_。如：<code>hello.proto</code> 文件默认生成源文件的包名为 <code>hello</code>。</p>
-]]></content>
+<h3 id="import其他proto"><a href="#import其他proto" class="headerlink" title="import其他proto"></a>import其他proto</h3>]]></content>
     
     <summary type="html">
     
@@ -234,7 +234,7 @@
     <link href="https://pengfeidai.github.io/2020/05/12/Galang%E5%B8%B8%E7%94%A8%E5%8C%85%E6%95%B4%E7%90%86/"/>
     <id>https://pengfeidai.github.io/2020/05/12/Galang常用包整理/</id>
     <published>2020-05-12T14:52:28.000Z</published>
-    <updated>2020-06-03T14:19:04.000Z</updated>
+    <updated>2020-06-03T14:20:05.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="godoc"><a href="#godoc" class="headerlink" title="godoc"></a>godoc</h3><p><a href="https://www.godoc.org" target="_blank" rel="external">godoc</a></p>
 <h3 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h3><ul>
