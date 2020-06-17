@@ -13,22 +13,26 @@
     
     
     
-    <title>标签: Golang | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <title>使用Golang构建gRPC服务 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="undefined">
-    <meta name="description" content="欢迎来到没事放放牛的个人博客！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Davis&#39; Blog">
-<meta property="og:url" content="https://pengfeidai.github.io/tags/Golang/index.html">
+    <meta name="keywords" content="Golang,etcd,分布式">
+    <meta name="description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta name="keywords" content="Golang,etcd,分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Golang构建gRPC服务">
+<meta property="og:url" content="https://pengfeidai.github.io/2020/05/24/etcd核心原理/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
-<meta property="og:description" content="欢迎来到没事放放牛的个人博客！">
+<meta property="og:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta property="og:image" content="http://150.158.113.204:9000/etcd.jpg">
+<meta property="og:updated_time" content="2020-06-17T14:03:32.042Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Davis&#39; Blog">
-<meta name="twitter:description" content="欢迎来到没事放放牛的个人博客！">
+<meta name="twitter:title" content="使用Golang构建gRPC服务">
+<meta name="twitter:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
+<meta name="twitter:image" content="http://150.158.113.204:9000/etcd.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
     
@@ -73,7 +77,7 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect active">
+            <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
@@ -119,7 +123,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">标签: Golang</div>
+        <div class="flex-col header-title ellipsis">使用Golang构建gRPC服务</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -138,361 +142,254 @@
         
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">标签: Golang</h1>
+        <h1 class="title">使用Golang构建gRPC服务</h1>
         <h5 class="subtitle">
+            
+                <time datetime="2020-05-24T14:52:28.000Z" itemprop="datePublished" class="page-time">
+  2020-05-24
+</time>
+
+
             
         </h5>
     </div>
 
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
-        
-
-            <a href="/tags/Javascript/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">Javascript</a>
-
-        
-
-            <a href="/tags/ES6/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">ES6</a>
-
-        
-
-            <a href="/tags/Golang/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">Golang</a>
-
-        
-
-            <a href="/tags/oop/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">oop</a>
-
-        
-
-            <a href="/tags/设计模式/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">设计模式</a>
-
-        
-
-            <a href="/tags/Node-js/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Node.js</a>
-
-        
-
-            <a href="/tags/MongoDB/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">MongoDB</a>
-
-        
-
-            <a href="/tags/mongoose/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">mongoose</a>
-
-        
-
-            <a href="/tags/Go/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Go</a>
-
-        
-
-            <a href="/tags/Protobuf/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Protobuf</a>
-
-        
-
-            <a href="/tags/RPC/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">RPC</a>
-
-        
-
-            <a href="/tags/Vue/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Vue</a>
-
-        
-
-            <a href="/tags/Carousel/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Carousel</a>
-
-        
-
-            <a href="/tags/CSS3/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">CSS3</a>
-
-        
-
-            <a href="/tags/etcd/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">etcd</a>
-
-        
-
-            <a href="/tags/分布式/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">分布式</a>
-
-        
-
-            <a href="/tags/Gin/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">Gin</a>
-
-        
-
-            <a href="/tags/micro/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">micro</a>
-
-        
-
-            <a href="/tags/gPRC/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">gPRC</a>
-
-        
-
-            <a href="/tags/HTML/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">HTML</a>
-
-        
-
-            <a href="/tags/CSS/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">CSS</a>
-
-        
-
-            <a href="/tags/gulp/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">gulp</a>
-
-        
-
-            <a href="/tags/响应式网站/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">响应式网站</a>
-
-        
-
-            <a href="/tags/nginx/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">nginx</a>
-
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" onclick="BLOG.tabBar(this)" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 
 </header>
 
-<div class="container body-wrap fade">
+
+<div class="container body-wrap">
     
-            <div class="waterfall">
-          
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-30 22:52:28" datetime="2020-05-30T14:52:28.000Z"  itemprop="datePublished">2020-05-30</time>
-
-      
-
-
-    </div>
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcd简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">etcd简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">存储特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#etcd应用场景"><span class="post-toc-number">3.</span> <span class="post-toc-text">etcd应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务发现（Service-Discovery）"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">服务发现（Service Discovery）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#消息发布与订阅"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">消息发布与订阅</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
     
+<article id="post-etcd核心原理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用Golang构建gRPC服务</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-05-24 22:52:28" datetime="2020-05-24T14:52:28.000Z"  itemprop="datePublished">2020-05-24</time>
+
+            
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/30/micro微服务/">micro微服务</a>
-    </h3>
-  
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
 
 
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="etcd简介"><a href="#etcd简介" class="headerlink" title="etcd简介"></a>etcd简介</h2><p>etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 <code>raft协议</code> 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。</p>
+<p>主要具有以下几个特点：</p>
+<ul>
+<li>简单：安装配置简单，易于部署，易使用。基于 HTTP+JSON 的 API 让你用 curl 就可以轻松使用。</li>
+<li>安全：支持 SSL 证书验证。</li>
+<li>键值对存储：将数据存储在分层组织的目录中，如同在标准文件系统中。</li>
+<li>监测变更：监测特定的键或目录以进行更改，并对值的更改做出反应。</li>
+<li>快速：根据官方提供的 benchmark 数据，单实例支持每秒 2k+ 读操作。</li>
+<li>可靠：采用raft算法，实现分布式系统数据的可用性和一致性。</li>
+</ul>
+<h2 id="存储特点"><a href="#存储特点" class="headerlink" title="存储特点"></a>存储特点</h2><p>etcd 是一个 <strong>键值存储</strong> 的组件，其他的应用都是基于其键值存储的功能展开。etcd 的存储有如下特点：</p>
+<ul>
+<li>采用kv型数据存储，一般情况下比关系型数据库快。</li>
+<li>支持动态存储(内存)以及静态存储(磁盘)。</li>
+<li>分布式存储，可集成为多节点集群。</li>
+<li>存储方式，采用类似目录结构。<ul>
+<li>只有叶子节点才能真正存储数据，相当于文件。</li>
+<li>叶子节点的父节点一定是目录，目录不能存储数据。</li>
+</ul>
+</li>
+</ul>
+<h2 id="etcd应用场景"><a href="#etcd应用场景" class="headerlink" title="etcd应用场景"></a>etcd应用场景</h2><p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该 <strong>尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</strong></p>
+<h3 id="服务发现（Service-Discovery）"><a href="#服务发现（Service-Discovery）" class="headerlink" title="服务发现（Service Discovery）"></a>服务发现（Service Discovery）</h3><p>服务发现要解决的是分布式系统中最常见的问题之一，即在同一个分布式集群中的进程或服务，要如何才能找到对方并建立连接。本质上来说，服务发现就是想要了解集群中是否有进程在监听 udp 或 tcp 端口，并且通过名字就可以查找和连接。</p>
+<p>要解决服务发现的问题，需要具备下面三种必备属性：</p>
+<ol>
+<li><strong>一个强一致性、高可用的服务存储目录。</strong> 基于Ralf算法的etcd天生就是这样一个强一致性、高可用的服务存储目录。</li>
+<li><strong>一种注册服务和监控服务健康状态的机制。</strong> 用户可以在etcd中注册服务，并且对注册的服务配置 <code>key TTL</code>，定时保持服务的心跳以达到监控健康状态的效果。</li>
+<li><strong>一种查找和连接服务的机制。</strong> 通过在 etcd 指定的主题（由服务名称构成的服务目录）下注册的服务也能在对应的主题下查找到。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://150.158.113.204:9000/etcd.jpg" alt="images" title="">
+                </div>
+                <div class="image-caption">images</div>
+            </figure>
+<h3 id="消息发布与订阅"><a href="#消息发布与订阅" class="headerlink" title="消息发布与订阅"></a>消息发布与订阅</h3><p>在分布式系统中，最适用的一种组件间通信方式就是消息发布与订阅。即构建一个配置共享中心，数据提供者在这个配置中心发布消息，而消息使用者则订阅他们关心的主题，一旦主题有消息发布，就会实时通知订阅者。通过这种方式可以做到分布式系统配置的集中式管理与动态更新。</p>
 
-    
-    <div class="post-footer">
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gin/">Gin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/micro/">micro</a></li></ul>
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-17T14:03:32.042Z" itemprop="dateUpdated">2020-06-17 22:03:32</time>
+</span><br>
 
+
+        
+        原始文章链接：<a href="/2020/05/24/etcd核心原理/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/24/etcd核心原理/</a>
+        
     </div>
-    
-  </article>
+    <footer>
+        <a href="https://pengfeidai.github.io">
+            <img src="/img/avatar.jpg" alt="没事放放牛">
+            没事放放牛
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
 </div>
 
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-24 22:52:28" datetime="2020-05-24T14:52:28.000Z"  itemprop="datePublished">2020-05-24</time>
-
-      
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/24/etcd核心原理/">使用Golang构建gRPC服务</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
+        <div class="post-footer">
+            
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
 
-    </div>
+
+            
+<div class="page-share-wrap">
     
-  </article>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Golang构建gRPC服务》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
 
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-24 22:52:28" datetime="2020-05-24T14:52:28.000Z"  itemprop="datePublished">2020-05-24</time>
-
-      
 
 
+        </div>
     </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/05/30/micro微服务/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">micro微服务</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/24/使用Golang构建gRPC服务/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用Golang构建gRPC服务</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
     
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/24/使用Golang构建gRPC服务/">使用Golang构建gRPC服务</a>
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2138373"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬~
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+    <div class="reward-content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gPRC/">gPRC</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
         
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-13 22:52:28" datetime="2020-05-13T14:52:28.000Z"  itemprop="datePublished">2020-05-13</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/13/golang中etcd使用/">Golang中etcd使用教程</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-12 22:52:28" datetime="2020-05-12T14:52:28.000Z"  itemprop="datePublished">2020-05-12</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/12/Galang常用包整理/">Galang常用包整理</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-12 22:52:28" datetime="2020-05-12T14:52:28.000Z"  itemprop="datePublished">2020-05-12</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/12/etcd技术原理探究/">etcd技术原理探究</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-10 22:52:28" datetime="2020-05-10T14:52:28.000Z"  itemprop="datePublished">2020-05-10</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/10/初识 etcd/">初识etcd</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
             </div>
+        </label>
         
-    
+    </div>
 </div>
 
+
+
+</div>
 
         <!-- <footer class="footer">
     <div class="top">
@@ -568,7 +465,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/tags/Golang/&title=Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -578,22 +475,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/tags/Golang/&title=Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/tags/Golang/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Davis' Blog&url=https://pengfeidai.github.io/tags/Golang/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Golang构建gRPC服务》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/tags/Golang/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -604,7 +501,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aQXKDMAwF0Nz/0vQAKeRLwg7tPK8yhZrnjcb69usVj+NtvD99fzOZ87Vi4OLijrnH5cgRZ0/P5rn+++kXcXFxN3KTz0yqSv77gw0XF/fB3OTpdSnExcX9T9x8g3K9PcLFxX0+N9+mJP+bRCrLezVcXNwBN08p1/1eku/i4uK2uEdxJO1NtUgVvo6Li7uFmxeU6mKq7VPyXVxc3D3cvF3JtybX8cfoqgcuLu6XuPn1iB6oF7yeFjJcXNzF3Lxs5eHpJK35ZQZcXNyvcgudU3z9otdERYUMFxf3Vm5ehqrEyRFpNAMuLu4ybrVpmYBuOLDBxcXdyO2FIEnLlBy05KEMLi7uTm5+QJJftsij0mbdxcXFXcZdMV0erxSi0nWrx8XFPXmzF5jmzU/1WOXD4nFxcR/ArZawalmszoyLi7uTmxyTVD/fu4Tx4U1cXNzF3KM4JoeyybJvO43BxcUdcCdXIiYtTTVmLS8GFxd3zK1uVpKmqHdYG4UvuLi4G7l50FndBhX6sF6vhouL+wDufA+VLxgXF/evcKublXkIcsMWBxcXt8VNmp9eOJLPGZVRXFzcLdxqKale1MhbqZvzXVxc3A73B7YhAS/KhQzYAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAxF0e5/0+60QRv5PlIuEOpqFKSOreMBK36+vvC6fizy13ffvPstecqGJUOGjI9lXMuVbjSlks/rvcmQIeMcBgmF/Jrf13de1vq5MmTIkLHeVrrFNaz2+mTIkCHjiWvIQVCGDBkyaoe29a07wbcTymXIkHECg1fd///zI/0NGTJkfBTjChdpCaThtbaTl6fIkCFjNKP2mLTpWEtl4+EPGTJkDGW8SwhJuri+hiecZFzj5hsZMmSMZtTK9+lGa68sDdkyZMiYyuDB9LmgyZPhm6OhDBkyhjJ2pZ1p0Z+X84JAL0OGjKEMHvJIKOQvgt8BFeNkyJBxMKN2+AtKY41k+OWzDBkyDmDwoLm+adr4rM19oVxchgwZgxg8/KXHvvRoyMM0Cs0yZMgYx+i0BzimE9xRmJYhQ8YxjLR9yFuVxUMeT6RlyJBxAIM3F1EJ7OEU96Y9IEOGjKGM2uZqo1181CyeGZEhQ8ZQRvqzNLzy1kI/3ZUhQ8ZUBgmRabGe37PWZvjjGxkyZBzA6LQz08EIApYhQ4aMdcBd/6zWNqgV8uJhCxkyZIxjXOHqDGHUmppx/i1DhoxxDL7S4yAvpe1qSMiQIWM2Y++YRZqy8sNl64AoQ4aMEYw08O3aRPofYPPMiAwZMkYzSIMzbSqko2NBf1WGDBlHMnaVw24ak/gFyZAh4wQGbwZ0RivSQtsj5TYZMmR8IGPXuavfSOgU8mTIkDGU8Q1gqUHP9RLDwgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -612,7 +509,7 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 </script>
