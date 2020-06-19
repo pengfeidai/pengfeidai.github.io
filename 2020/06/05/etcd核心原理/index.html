@@ -13,7 +13,7 @@
     
     
     
-    <title>使用Golang构建gRPC服务 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <title>etcd核心原理 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -23,14 +23,14 @@
     <meta name="description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
 <meta name="keywords" content="Golang,etcd,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Golang构建gRPC服务">
-<meta property="og:url" content="https://pengfeidai.github.io/2020/05/24/etcd核心原理/index.html">
+<meta property="og:title" content="etcd核心原理">
+<meta property="og:url" content="https://pengfeidai.github.io/2020/06/05/etcd核心原理/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
 <meta property="og:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
 <meta property="og:image" content="http://150.158.113.204:9000/etcd.jpg">
-<meta property="og:updated_time" content="2020-06-17T14:03:32.042Z">
+<meta property="og:updated_time" content="2020-06-17T14:04:33.170Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Golang构建gRPC服务">
+<meta name="twitter:title" content="etcd核心原理">
 <meta name="twitter:description" content="etcd简介etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 raft协议 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。 主要具有以下几个特点：  简单：安装配置简单，易于">
 <meta name="twitter:image" content="http://150.158.113.204:9000/etcd.jpg">
     
@@ -123,7 +123,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">使用Golang构建gRPC服务</div>
+        <div class="flex-col header-title ellipsis">etcd核心原理</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -145,11 +145,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">使用Golang构建gRPC服务</h1>
+        <h1 class="title">etcd核心原理</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-05-24T14:52:28.000Z" itemprop="datePublished" class="page-time">
-  2020-05-24
+                <time datetime="2020-06-05T14:52:28.000Z" itemprop="datePublished" class="page-time">
+  2020-06-05
 </time>
 
 
@@ -176,9 +176,9 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">使用Golang构建gRPC服务</h1>
+        <h1 class="post-card-title">etcd核心原理</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-24 22:52:28" datetime="2020-05-24T14:52:28.000Z"  itemprop="datePublished">2020-05-24</time>
+            <time class="post-time" title="2020-06-05 22:52:28" datetime="2020-06-05T14:52:28.000Z"  itemprop="datePublished">2020-06-05</time>
 
             
 
@@ -235,12 +235,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-06-17T14:03:32.042Z" itemprop="dateUpdated">2020-06-17 22:03:32</time>
+    最后更新时间：<time datetime="2020-06-17T14:04:33.170Z" itemprop="dateUpdated">2020-06-17 22:04:33</time>
 </span><br>
 
 
         
-        原始文章链接：<a href="/2020/05/24/etcd核心原理/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/24/etcd核心原理/</a>
+        原始文章链接：<a href="/2020/06/05/etcd核心原理/" target="_blank" rel="external">https://pengfeidai.github.io/2020/06/05/etcd核心原理/</a>
         
     </div>
     <footer>
@@ -270,7 +270,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&title=《etcd核心原理》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -280,22 +280,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&title=《etcd核心原理》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/06/05/etcd核心原理/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Golang构建gRPC服务》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《etcd核心原理》 — Davis' Blog&url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -315,21 +315,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/05/30/micro微服务/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">micro微服务</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/24/使用Golang构建gRPC服务/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/31/Protobuf生成Go代码指南/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">使用Golang构建gRPC服务</h4>
+        <h4 class="title">Protobuf生成Go代码</h4>
       </a>
     </div>
   
@@ -465,7 +458,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&title=《etcd核心原理》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -475,22 +468,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&title=《使用Golang构建gRPC服务》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&title=《etcd核心原理》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/06/05/etcd核心原理/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Golang构建gRPC服务》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《etcd核心原理》 — Davis' Blog&url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/24/etcd核心原理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/06/05/etcd核心原理/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -501,7 +494,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAxF0e5/0+60QRv5PlIuEOpqFKSOreMBK36+vvC6fizy13ffvPstecqGJUOGjI9lXMuVbjSlks/rvcmQIeMcBgmF/Jrf13de1vq5MmTIkLHeVrrFNaz2+mTIkCHjiWvIQVCGDBkyaoe29a07wbcTymXIkHECg1fd///zI/0NGTJkfBTjChdpCaThtbaTl6fIkCFjNKP2mLTpWEtl4+EPGTJkDGW8SwhJuri+hiecZFzj5hsZMmSMZtTK9+lGa68sDdkyZMiYyuDB9LmgyZPhm6OhDBkyhjJ2pZ1p0Z+X84JAL0OGjKEMHvJIKOQvgt8BFeNkyJBxMKN2+AtKY41k+OWzDBkyDmDwoLm+adr4rM19oVxchgwZgxg8/KXHvvRoyMM0Cs0yZMgYx+i0BzimE9xRmJYhQ8YxjLR9yFuVxUMeT6RlyJBxAIM3F1EJ7OEU96Y9IEOGjKGM2uZqo1181CyeGZEhQ8ZQRvqzNLzy1kI/3ZUhQ8ZUBgmRabGe37PWZvjjGxkyZBzA6LQz08EIApYhQ4aMdcBd/6zWNqgV8uJhCxkyZIxjXOHqDGHUmppx/i1DhoxxDL7S4yAvpe1qSMiQIWM2Y++YRZqy8sNl64AoQ4aMEYw08O3aRPofYPPMiAwZMkYzSIMzbSqko2NBf1WGDBlHMnaVw24ak/gFyZAh4wQGbwZ0RivSQtsj5TYZMmR8IGPXuavfSOgU8mTIkDGU8Q1gqUHP9RLDwgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aO3KDQBAFQN//0nJqB6D3ZpFdLE1E2ZLYJpia39dXfL1+XMl/j/5y9N3kKRdcGBgYt2W8Tq/2oC01uT8/GwYGxnMYSSic3a+/rPOzYWBgYCRHPD9oDmufhYGBgTE7elum/lvAxcDAuCEjD5dHoXP2azn7slocAwPjhoy86/739x+Zb2BgYNyK8SqvZCTQhtfZSX49BQMDY2vG7DFJs2ylWJ2dBwMDY1fGUUGYN9FWfiFfC3vzFwwMjK0Z+ZdXDjp7ZW3IxsDA2JUxW5u4NmgW7/s8NcTAwNiUMVvqmh2oHXAOk04MDIztGOfhLE8K2xZbcsRiQQ0DA+MBjDaNK8aK8RJYkgge3mNgYDyAkRelyefzlHG291XX4hgYGDdnzAaTbTk6Wx2rG20YGBhbM9pEcNbub5t0eXKJgYGxN6MtOPOmfz7gbNc1ogwXAwNjI8asKZ837vNGW1viRuUrBgbGdoxPDDLbUWX+WvMwjYGBsTcjSebacDxL+C4YMGBgYNyckYTIlYI2D6/Jazp8QRgYGA9gzJKz2WJEPgrFwMDAyJtlswJ1ZdmiLW4xMDB2ZcxaZrOFsNlQM6JiYGBszVhpuuVBdn2pYuXXMDAw9mCsBNC2iZ804NrPYGBgPIcxC3ztMPKqUQQGBgbGehsuHxLMktE3GSUGBgbGaP0rf3oybLgs4GJgYNyK0YbOttHfkurmHQYGxtaMlbxrfZDQkpaGmhgYGPdjfAP4dkHPuRzDogAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

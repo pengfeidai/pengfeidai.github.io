@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengfeidai.github.io/"/>
-  <updated>2020-06-03T17:24:43.000Z</updated>
+  <updated>2020-06-17T14:04:33.170Z</updated>
   <id>https://pengfeidai.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>etcd核心原理</title>
+    <link href="https://pengfeidai.github.io/2020/06/05/etcd%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/"/>
+    <id>https://pengfeidai.github.io/2020/06/05/etcd核心原理/</id>
+    <published>2020-06-05T14:52:28.000Z</published>
+    <updated>2020-06-17T14:04:33.170Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="etcd简介"><a href="#etcd简介" class="headerlink" title="etcd简介"></a>etcd简介</h2><p>etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 <code>raft协议</code> 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。</p>
+<p>主要具有以下几个特点：</p>
+<ul>
+<li>简单：安装配置简单，易于部署，易使用。基于 HTTP+JSON 的 API 让你用 curl 就可以轻松使用。</li>
+<li>安全：支持 SSL 证书验证。</li>
+<li>键值对存储：将数据存储在分层组织的目录中，如同在标准文件系统中。</li>
+<li>监测变更：监测特定的键或目录以进行更改，并对值的更改做出反应。</li>
+<li>快速：根据官方提供的 benchmark 数据，单实例支持每秒 2k+ 读操作。</li>
+<li>可靠：采用raft算法，实现分布式系统数据的可用性和一致性。</li>
+</ul>
+<h2 id="存储特点"><a href="#存储特点" class="headerlink" title="存储特点"></a>存储特点</h2><p>etcd 是一个 <strong>键值存储</strong> 的组件，其他的应用都是基于其键值存储的功能展开。etcd 的存储有如下特点：</p>
+<ul>
+<li>采用kv型数据存储，一般情况下比关系型数据库快。</li>
+<li>支持动态存储(内存)以及静态存储(磁盘)。</li>
+<li>分布式存储，可集成为多节点集群。</li>
+<li>存储方式，采用类似目录结构。<ul>
+<li>只有叶子节点才能真正存储数据，相当于文件。</li>
+<li>叶子节点的父节点一定是目录，目录不能存储数据。</li>
+</ul>
+</li>
+</ul>
+<h2 id="etcd应用场景"><a href="#etcd应用场景" class="headerlink" title="etcd应用场景"></a>etcd应用场景</h2><p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该 <strong>尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</strong></p>
+<h3 id="服务发现（Service-Discovery）"><a href="#服务发现（Service-Discovery）" class="headerlink" title="服务发现（Service Discovery）"></a>服务发现（Service Discovery）</h3><p>服务发现要解决的是分布式系统中最常见的问题之一，即在同一个分布式集群中的进程或服务，要如何才能找到对方并建立连接。本质上来说，服务发现就是想要了解集群中是否有进程在监听 udp 或 tcp 端口，并且通过名字就可以查找和连接。</p>
+<p>要解决服务发现的问题，需要具备下面三种必备属性：</p>
+<ol>
+<li><strong>一个强一致性、高可用的服务存储目录。</strong> 基于Ralf算法的etcd天生就是这样一个强一致性、高可用的服务存储目录。</li>
+<li><strong>一种注册服务和监控服务健康状态的机制。</strong> 用户可以在etcd中注册服务，并且对注册的服务配置 <code>key TTL</code>，定时保持服务的心跳以达到监控健康状态的效果。</li>
+<li><strong>一种查找和连接服务的机制。</strong> 通过在 etcd 指定的主题（由服务名称构成的服务目录）下注册的服务也能在对应的主题下查找到。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://150.158.113.204:9000/etcd.jpg" alt="images" title="">
+                </div>
+                <div class="image-caption">images</div>
+            </figure>
+<h3 id="消息发布与订阅"><a href="#消息发布与订阅" class="headerlink" title="消息发布与订阅"></a>消息发布与订阅</h3><p>在分布式系统中，最适用的一种组件间通信方式就是消息发布与订阅。即构建一个配置共享中心，数据提供者在这个配置中心发布消息，而消息使用者则订阅他们关心的主题，一旦主题有消息发布，就会实时通知订阅者。通过这种方式可以做到分布式系统配置的集中式管理与动态更新。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;etcd简介&quot;&gt;&lt;a href=&quot;#etcd简介&quot; class=&quot;headerlink&quot; title=&quot;etcd简介&quot;&gt;&lt;/a&gt;etcd简介&lt;/h2&gt;&lt;p&gt;etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
+    
+      <category term="etcd" scheme="https://pengfeidai.github.io/tags/etcd/"/>
+    
+      <category term="分布式" scheme="https://pengfeidai.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Protobuf生成Go代码</title>
@@ -92,67 +153,6 @@
       <category term="Gin" scheme="https://pengfeidai.github.io/tags/Gin/"/>
     
       <category term="micro" scheme="https://pengfeidai.github.io/tags/micro/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Golang构建gRPC服务</title>
-    <link href="https://pengfeidai.github.io/2020/05/24/etcd%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/"/>
-    <id>https://pengfeidai.github.io/2020/05/24/etcd核心原理/</id>
-    <published>2020-05-24T14:52:28.000Z</published>
-    <updated>2020-06-17T14:03:32.042Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="etcd简介"><a href="#etcd简介" class="headerlink" title="etcd简介"></a>etcd简介</h2><p>etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。在很多分布式系统架构中得到了广泛的应用，它内部采用 <code>raft协议</code> 作为一致性算法，基于Go语言实现。其主要功能有服务注册与发现、消息发布与订阅、负载均衡、分布式通知与协调、分布式锁、分布式队列、集群监控与 leader 选举等。</p>
-<p>主要具有以下几个特点：</p>
-<ul>
-<li>简单：安装配置简单，易于部署，易使用。基于 HTTP+JSON 的 API 让你用 curl 就可以轻松使用。</li>
-<li>安全：支持 SSL 证书验证。</li>
-<li>键值对存储：将数据存储在分层组织的目录中，如同在标准文件系统中。</li>
-<li>监测变更：监测特定的键或目录以进行更改，并对值的更改做出反应。</li>
-<li>快速：根据官方提供的 benchmark 数据，单实例支持每秒 2k+ 读操作。</li>
-<li>可靠：采用raft算法，实现分布式系统数据的可用性和一致性。</li>
-</ul>
-<h2 id="存储特点"><a href="#存储特点" class="headerlink" title="存储特点"></a>存储特点</h2><p>etcd 是一个 <strong>键值存储</strong> 的组件，其他的应用都是基于其键值存储的功能展开。etcd 的存储有如下特点：</p>
-<ul>
-<li>采用kv型数据存储，一般情况下比关系型数据库快。</li>
-<li>支持动态存储(内存)以及静态存储(磁盘)。</li>
-<li>分布式存储，可集成为多节点集群。</li>
-<li>存储方式，采用类似目录结构。<ul>
-<li>只有叶子节点才能真正存储数据，相当于文件。</li>
-<li>叶子节点的父节点一定是目录，目录不能存储数据。</li>
-</ul>
-</li>
-</ul>
-<h2 id="etcd应用场景"><a href="#etcd应用场景" class="headerlink" title="etcd应用场景"></a>etcd应用场景</h2><p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该 <strong>尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</strong></p>
-<h3 id="服务发现（Service-Discovery）"><a href="#服务发现（Service-Discovery）" class="headerlink" title="服务发现（Service Discovery）"></a>服务发现（Service Discovery）</h3><p>服务发现要解决的是分布式系统中最常见的问题之一，即在同一个分布式集群中的进程或服务，要如何才能找到对方并建立连接。本质上来说，服务发现就是想要了解集群中是否有进程在监听 udp 或 tcp 端口，并且通过名字就可以查找和连接。</p>
-<p>要解决服务发现的问题，需要具备下面三种必备属性：</p>
-<ol>
-<li><strong>一个强一致性、高可用的服务存储目录。</strong> 基于Ralf算法的etcd天生就是这样一个强一致性、高可用的服务存储目录。</li>
-<li><strong>一种注册服务和监控服务健康状态的机制。</strong> 用户可以在etcd中注册服务，并且对注册的服务配置 <code>key TTL</code>，定时保持服务的心跳以达到监控健康状态的效果。</li>
-<li><strong>一种查找和连接服务的机制。</strong> 通过在 etcd 指定的主题（由服务名称构成的服务目录）下注册的服务也能在对应的主题下查找到。</li>
-</ol>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://150.158.113.204:9000/etcd.jpg" alt="images" title="">
-                </div>
-                <div class="image-caption">images</div>
-            </figure>
-<h3 id="消息发布与订阅"><a href="#消息发布与订阅" class="headerlink" title="消息发布与订阅"></a>消息发布与订阅</h3><p>在分布式系统中，最适用的一种组件间通信方式就是消息发布与订阅。即构建一个配置共享中心，数据提供者在这个配置中心发布消息，而消息使用者则订阅他们关心的主题，一旦主题有消息发布，就会实时通知订阅者。通过这种方式可以做到分布式系统配置的集中式管理与动态更新。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;etcd简介&quot;&gt;&lt;a href=&quot;#etcd简介&quot; class=&quot;headerlink&quot; title=&quot;etcd简介&quot;&gt;&lt;/a&gt;etcd简介&lt;/h2&gt;&lt;p&gt;etcd 是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。
-    
-    </summary>
-    
-    
-      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
-    
-      <category term="etcd" scheme="https://pengfeidai.github.io/tags/etcd/"/>
-    
-      <category term="分布式" scheme="https://pengfeidai.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
