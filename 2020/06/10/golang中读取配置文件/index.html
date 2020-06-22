@@ -13,24 +13,24 @@
     
     
     
-    <title>Galang常用包整理 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
+    <title>Galang中读取配置文件 | Davis&#39; Blog | 专注于Golang、Node.js技术</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Golang">
-    <meta name="description" content="godocgodoc 开发框架 gin beego  数据库 mysql momgo redis  微服务框架 micro  工具类 protobuf logrus yaml">
-<meta name="keywords" content="Golang">
+    <meta name="keywords" content="Golang,yaml">
+    <meta name="description" content="常见配置文件格式日常开发中读取配置文件包含以下几种格式：  json 格式字符串 K=V 键值对 xml 文件 yaml 格式文件 toml 格式文件  由于我在平时对yaml格式配置比较钟爱，下面我主要介绍 yaml 格式配置文件的使用方式 包1go get gopkg.in/yaml.v2 yaml示例1234567891011server:  port: 9060  mode: &apos;relea">
+<meta name="keywords" content="Golang,yaml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Galang常用包整理">
-<meta property="og:url" content="https://pengfeidai.github.io/2020/05/12/Galang常用包整理/index.html">
+<meta property="og:title" content="Galang中读取配置文件">
+<meta property="og:url" content="https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
-<meta property="og:description" content="godocgodoc 开发框架 gin beego  数据库 mysql momgo redis  微服务框架 micro  工具类 protobuf logrus yaml">
-<meta property="og:updated_time" content="2020-06-22T14:26:41.075Z">
+<meta property="og:description" content="常见配置文件格式日常开发中读取配置文件包含以下几种格式：  json 格式字符串 K=V 键值对 xml 文件 yaml 格式文件 toml 格式文件  由于我在平时对yaml格式配置比较钟爱，下面我主要介绍 yaml 格式配置文件的使用方式 包1go get gopkg.in/yaml.v2 yaml示例1234567891011server:  port: 9060  mode: &apos;relea">
+<meta property="og:updated_time" content="2020-06-22T15:02:43.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Galang常用包整理">
-<meta name="twitter:description" content="godocgodoc 开发框架 gin beego  数据库 mysql momgo redis  微服务框架 micro  工具类 protobuf logrus yaml">
+<meta name="twitter:title" content="Galang中读取配置文件">
+<meta name="twitter:description" content="常见配置文件格式日常开发中读取配置文件包含以下几种格式：  json 格式字符串 K=V 键值对 xml 文件 yaml 格式文件 toml 格式文件  由于我在平时对yaml格式配置比较钟爱，下面我主要介绍 yaml 格式配置文件的使用方式 包1go get gopkg.in/yaml.v2 yaml示例1234567891011server:  port: 9060  mode: &apos;relea">
     
         <link rel="alternate" type="application/atom+xml" title="Davis&#39; Blog" href="/atom.xml">
     
@@ -121,7 +121,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Galang常用包整理</div>
+        <div class="flex-col header-title ellipsis">Galang中读取配置文件</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -143,11 +143,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Galang常用包整理</h1>
+        <h1 class="title">Galang中读取配置文件</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-05-12T14:52:28.000Z" itemprop="datePublished" class="page-time">
-  2020-05-12
+                <time datetime="2020-06-10T14:52:28.000Z" itemprop="datePublished" class="page-time">
+  2020-06-10
 </time>
 
 
@@ -166,17 +166,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#godoc"><span class="post-toc-number">1.</span> <span class="post-toc-text">godoc</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开发框架"><span class="post-toc-number">2.</span> <span class="post-toc-text">开发框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#微服务框架"><span class="post-toc-number">4.</span> <span class="post-toc-text">微服务框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工具类"><span class="post-toc-number">5.</span> <span class="post-toc-text">工具类</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见配置文件格式"><span class="post-toc-number">1.</span> <span class="post-toc-text">常见配置文件格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包"><span class="post-toc-number">2.</span> <span class="post-toc-text">包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yaml示例"><span class="post-toc-number">3.</span> <span class="post-toc-text">yaml示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始版（config-config-go）"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">初始版（config/config.go）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进阶版（使用flag命令行自定义配置文件路径）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">进阶版（使用flag命令行自定义配置文件路径）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进阶版（环境变量）"><span class="post-toc-number">4.</span> <span class="post-toc-text">进阶版（环境变量）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通常我的配置文件目录结构如下："><span class="post-toc-number">4.1.</span> <span class="post-toc-text">通常我的配置文件目录结构如下：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#config-config-dev-yaml文件样例："><span class="post-toc-number">4.2.</span> <span class="post-toc-text">config/config.dev.yaml文件样例：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-os-ExpandEnv-在给定的字符串中扩展环境变量："><span class="post-toc-number">4.3.</span> <span class="post-toc-text">使用 os.ExpandEnv 在给定的字符串中扩展环境变量：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体用法请参考github"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">具体用法请参考github</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-Galang常用包整理"
+<article id="post-golang中读取配置文件"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Galang常用包整理</h1>
+        <h1 class="post-card-title">Galang中读取配置文件</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-12 22:52:28" datetime="2020-05-12T14:52:28.000Z"  itemprop="datePublished">2020-05-12</time>
+            <time class="post-time" title="2020-06-10 22:52:28" datetime="2020-06-10T14:52:28.000Z"  itemprop="datePublished">2020-06-10</time>
 
             
 
@@ -189,37 +189,36 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="godoc"><a href="#godoc" class="headerlink" title="godoc"></a>godoc</h3><p><a href="https://www.godoc.org" target="_blank" rel="external">godoc</a></p>
-<h3 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h3><ul>
-<li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="external">gin</a></li>
-<li><a href="https://github.com/pengfeidai/beego" target="_blank" rel="external">beego</a></li>
+            <h2 id="常见配置文件格式"><a href="#常见配置文件格式" class="headerlink" title="常见配置文件格式"></a>常见配置文件格式</h2><p>日常开发中读取配置文件包含以下几种格式：</p>
+<ul>
+<li>json 格式字符串</li>
+<li>K=V 键值对</li>
+<li>xml 文件</li>
+<li>yaml 格式文件</li>
+<li>toml 格式文件</li>
 </ul>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><a href="https://github.com/jinzhu/gorm" target="_blank" rel="external">mysql</a></li>
-<li><a href="https://www.godoc.org/gopkg.in/mgo.v2" target="_blank" rel="external">momgo</a></li>
-<li><a href="https://github.com/go-redis/redis" target="_blank" rel="external">redis</a></li>
-</ul>
-<h3 id="微服务框架"><a href="#微服务框架" class="headerlink" title="微服务框架"></a>微服务框架</h3><ul>
-<li><a href="https://github.com/micro" target="_blank" rel="external">micro</a></li>
-</ul>
-<h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><ul>
-<li><a href="https://github.com/golang/protobuf" target="_blank" rel="external">protobuf</a></li>
-<li><a href="github.com/sirupsen/logrus">logrus</a></li>
-<li><a href="gopkg.in/yaml.v2">yaml</a></li>
-</ul>
-
+<p><strong>由于我在平时对yaml格式配置比较钟爱，下面我主要介绍 <code>yaml</code> 格式配置文件的使用方式</strong></p>
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> get gopkg.in/yaml.v2</div></pre></td></tr></table></figure>
+<h2 id="yaml示例"><a href="#yaml示例" class="headerlink" title="yaml示例"></a>yaml示例</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  port:</span> <span class="number">9060</span></div><div class="line"><span class="attr">  mode:</span> <span class="string">'release'</span></div><div class="line"></div><div class="line"><span class="attr">mysql:</span></div><div class="line"><span class="attr">  user:</span> <span class="string">root</span></div><div class="line"><span class="attr">  password:</span> <span class="string">'123456'</span></div><div class="line"><span class="attr">  path:</span> <span class="string">'127.0.0.1:3306'</span></div><div class="line"><span class="attr">  database:</span> <span class="string">'test'</span></div><div class="line"><span class="attr">  config:</span> <span class="string">'charset=utf8&amp;parseTime=True&amp;loc=Local'</span></div><div class="line"><span class="attr">  driver:</span> <span class="string">'mysql'</span></div></pre></td></tr></table></figure>
+<h3 id="初始版（config-config-go）"><a href="#初始版（config-config-go）" class="headerlink" title="初始版（config/config.go）"></a>初始版（config/config.go）</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> config</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"flag"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"io/ioutil"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line"></div><div class="line">	<span class="string">"gopkg.in/yaml.v2"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> Yaml <span class="keyword">struct</span> &#123;</div><div class="line">	Server  <span class="string">`yaml:"server"`</span></div><div class="line">	Mysql   <span class="string">`yaml:"mysql"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> &#123;</div><div class="line">	Port      <span class="keyword">int</span>    <span class="string">`yaml:"port"`</span></div><div class="line">	Mode      <span class="keyword">string</span> <span class="string">`yaml:"mode"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Mysql <span class="keyword">struct</span> &#123;</div><div class="line">	User         <span class="keyword">string</span> <span class="string">`yaml:"user"`</span></div><div class="line">	Password     <span class="keyword">string</span> <span class="string">`yaml:"password"`</span></div><div class="line">	Path         <span class="keyword">string</span> <span class="string">`yaml:"path"`</span></div><div class="line">	Database     <span class="keyword">string</span> <span class="string">`yaml:"database"`</span></div><div class="line">	Config       <span class="keyword">string</span> <span class="string">`yaml:"config"`</span></div><div class="line">	Driver       <span class="keyword">string</span> <span class="string">`yaml:"driver"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Conf *Yaml</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">  <span class="keyword">const</span> defaultConfigFile = <span class="string">"app/config/config.yaml"</span></div><div class="line">	c := &amp;Yaml&#123;&#125;</div><div class="line">	yamlConf, err := ioutil.ReadFile(*configFile)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="built_in">panic</span>(fmt.Errorf(<span class="string">"get yamlConf error: %s"</span>, err))</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	err = yaml.Unmarshal(yamlConf, c)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatalf(<span class="string">"config Init Unmarshal: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	log.Println(<span class="string">"config yamlFile load Init success."</span>)</div><div class="line">	Conf = c</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="进阶版（使用flag命令行自定义配置文件路径）"><a href="#进阶版（使用flag命令行自定义配置文件路径）" class="headerlink" title="进阶版（使用flag命令行自定义配置文件路径）"></a>进阶版（使用flag命令行自定义配置文件路径）</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> config</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"flag"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"io/ioutil"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line"></div><div class="line">	<span class="string">"gopkg.in/yaml.v2"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> Yaml <span class="keyword">struct</span> &#123;</div><div class="line">	Server  <span class="string">`yaml:"server"`</span></div><div class="line">	Mysql   <span class="string">`yaml:"mysql"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> &#123;</div><div class="line">	Port      <span class="keyword">int</span>    <span class="string">`yaml:"port"`</span></div><div class="line">	Mode      <span class="keyword">string</span> <span class="string">`yaml:"mode"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Mysql <span class="keyword">struct</span> &#123;</div><div class="line">	User         <span class="keyword">string</span> <span class="string">`yaml:"user"`</span></div><div class="line">	Password     <span class="keyword">string</span> <span class="string">`yaml:"password"`</span></div><div class="line">	Path         <span class="keyword">string</span> <span class="string">`yaml:"path"`</span></div><div class="line">	Database     <span class="keyword">string</span> <span class="string">`yaml:"database"`</span></div><div class="line">	Config       <span class="keyword">string</span> <span class="string">`yaml:"config"`</span></div><div class="line">	Driver       <span class="keyword">string</span> <span class="string">`yaml:"driver"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Conf *Yaml</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">  <span class="keyword">var</span> defaultConfigFile = <span class="string">"app/config/config.yaml"</span></div><div class="line">  <span class="comment">// 命令行通过增加c参数路径来覆盖默认路径，若不传，则使用默认</span></div><div class="line">  configFile := flag.String(<span class="string">"c"</span>, defaultConfigFile, <span class="string">"help config path"</span>)</div><div class="line">  <span class="comment">// 解析命令行参数</span></div><div class="line">  flag.Parse()</div><div class="line"></div><div class="line">	c := &amp;Yaml&#123;&#125;</div><div class="line">	yamlConf, err := ioutil.ReadFile(*configFile)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="built_in">panic</span>(fmt.Errorf(<span class="string">"get yamlConf error: %s"</span>, err))</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	err = yaml.Unmarshal(yamlConf, c)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatalf(<span class="string">"config Init Unmarshal: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	log.Println(<span class="string">"config yamlFile load Init success."</span>)</div><div class="line">	Conf = c</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="进阶版（环境变量）"><a href="#进阶版（环境变量）" class="headerlink" title="进阶版（环境变量）"></a>进阶版（环境变量）</h2><h3 id="通常我的配置文件目录结构如下："><a href="#通常我的配置文件目录结构如下：" class="headerlink" title="通常我的配置文件目录结构如下："></a>通常我的配置文件目录结构如下：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gin-app-strat</div><div class="line">├── app</div><div class="line">|    ├── ... </div><div class="line">|    ├── config</div><div class="line">|    |     ├── config.local.yaml</div><div class="line">|    |     ├── config.dev.yaml</div><div class="line">|    |     ├── config.prod.yaml</div><div class="line">|    |     └── config.<span class="keyword">go</span></div><div class="line">|    ├── ...</div></pre></td></tr></table></figure>
+<h3 id="config-config-dev-yaml文件样例："><a href="#config-config-dev-yaml文件样例：" class="headerlink" title="config/config.dev.yaml文件样例："></a>config/config.dev.yaml文件样例：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  port:</span> <span class="string">$&#123;SERVER_PORT&#125;</span></div><div class="line"><span class="attr">  mode:</span> <span class="string">$&#123;SERVER_MODE&#125;</span></div><div class="line"></div><div class="line"><span class="attr">mysql:</span></div><div class="line"><span class="attr">  user:</span> <span class="string">$&#123;MYSQL_USER&#125;</span></div><div class="line"><span class="attr">  password:</span> <span class="string">$&#123;MYSQL_password&#125;</span></div><div class="line"><span class="attr">  path:</span> <span class="string">$&#123;MYSQL_PATH&#125;</span></div><div class="line"><span class="attr">  database:</span> <span class="string">$&#123;MYSQL_DB&#125;</span></div><div class="line"><span class="attr">  config:</span> <span class="string">'charset=utf8&amp;parseTime=True&amp;loc=Local'</span></div><div class="line"><span class="attr">  driver:</span> <span class="string">'mysql'</span></div></pre></td></tr></table></figure>
+<h3 id="使用-os-ExpandEnv-在给定的字符串中扩展环境变量："><a href="#使用-os-ExpandEnv-在给定的字符串中扩展环境变量：" class="headerlink" title="使用 os.ExpandEnv 在给定的字符串中扩展环境变量："></a>使用 <code>os.ExpandEnv</code> 在给定的字符串中扩展环境变量：</h3><p>我们只需要在环境变量中加入 yaml 中 <code>${}</code> 里面的内容，就可以在运行时读取相应配置。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> config</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"flag"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"io/ioutil"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line"></div><div class="line">	<span class="string">"gopkg.in/yaml.v2"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> Yaml <span class="keyword">struct</span> &#123;</div><div class="line">	Server  <span class="string">`yaml:"server"`</span></div><div class="line">	Mysql   <span class="string">`yaml:"mysql"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> &#123;</div><div class="line">	Port      <span class="keyword">int</span>    <span class="string">`yaml:"port"`</span></div><div class="line">	Mode      <span class="keyword">string</span> <span class="string">`yaml:"mode"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Mysql <span class="keyword">struct</span> &#123;</div><div class="line">	User         <span class="keyword">string</span> <span class="string">`yaml:"user"`</span></div><div class="line">	Password     <span class="keyword">string</span> <span class="string">`yaml:"password"`</span></div><div class="line">	Path         <span class="keyword">string</span> <span class="string">`yaml:"path"`</span></div><div class="line">	Database     <span class="keyword">string</span> <span class="string">`yaml:"database"`</span></div><div class="line">	Config       <span class="keyword">string</span> <span class="string">`yaml:"config"`</span></div><div class="line">	Driver       <span class="keyword">string</span> <span class="string">`yaml:"driver"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Conf *Yaml</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">  <span class="keyword">var</span> defaultConfigFile = fmt.Sprintf(<span class="string">"app/config/config.%s.yaml"</span>, os.Getenv(<span class="string">"SERVER_ENV"</span>))</div><div class="line">	yamlConf, err := ioutil.ReadFile(*configFile)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="built_in">panic</span>(fmt.Errorf(<span class="string">"get yamlConf error: %s"</span>, err))</div><div class="line">	&#125;</div><div class="line">  yamlConf = []<span class="keyword">byte</span>(os.ExpandEnv(<span class="keyword">string</span>(yamlConf)))</div><div class="line">	c := &amp;Yaml&#123;&#125;</div><div class="line">	err = yaml.Unmarshal(yamlConf, c)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatalf(<span class="string">"config Init Unmarshal: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	log.Println(<span class="string">"config yamlFile load Init success."</span>)</div><div class="line">	Conf = c</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="具体用法请参考github"><a href="#具体用法请参考github" class="headerlink" title="具体用法请参考github"></a>具体用法请参考<a href="https://github.com/pengfeidai/gin-app-start" target="_blank" rel="external">github</a></h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-06-22T14:26:41.075Z" itemprop="dateUpdated">2020-06-22 22:26:41</time>
+    最后更新时间：<time datetime="2020-06-22T15:02:43.552Z" itemprop="dateUpdated">2020-06-22 23:02:43</time>
 </span><br>
 
 
         
-        原始文章链接：<a href="/2020/05/12/Galang常用包整理/" target="_blank" rel="external">https://pengfeidai.github.io/2020/05/12/Galang常用包整理/</a>
+        原始文章链接：<a href="/2020/06/10/golang中读取配置文件/" target="_blank" rel="external">https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/</a>
         
     </div>
     <footer>
@@ -239,7 +238,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yaml/">yaml</a></li></ul>
 
 
             
@@ -249,7 +248,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&title=《Galang常用包整理》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&title=《Galang中读取配置文件》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -259,22 +258,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&title=《Galang常用包整理》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&title=《Galang中读取配置文件》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Galang常用包整理》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Galang中读取配置文件》 — Davis' Blog&url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -294,21 +293,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/05/13/golang中etcd使用/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Golang中etcd使用教程</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/12/etcd技术原理探究/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/05/etcd核心原理/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">etcd技术原理探究</h4>
+        <h4 class="title">etcd核心原理</h4>
       </a>
     </div>
   
@@ -444,7 +436,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&title=《Galang常用包整理》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&title=《Galang中读取配置文件》 — Davis' Blog&pic=https://pengfeidai.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -454,22 +446,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&title=《Galang常用包整理》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&title=《Galang中读取配置文件》 — Davis' Blog&source=欢迎来到没事放放牛的个人博客！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Galang常用包整理》 — Davis' Blog&url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/&via=https://pengfeidai.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Galang中读取配置文件》 — Davis' Blog&url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/&via=https://pengfeidai.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/05/12/Galang常用包整理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://pengfeidai.github.io/2020/06/10/golang中读取配置文件/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -480,7 +472,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3a22rDQAxF0fz/T7tQ+lAIjveR4kCkPU8lF9srhcOMpMcDr+N3nb1y/FvPrzy/S771uGPJkCHjaxnHy/WakT5K+i55NhkyZOxhvA5ZcoOzb9Uw/NlkyJAhg1z6XZtCGTJkyHhv4JLbk3c7kS1DhoxtDHJp/lhpHKdgGTJkbGOkjYFP/n1jf0OGDBlfwjjClW4TeWTXnufvCjJkyBjNIOUzUtDnW7d0LIPgZciQsYERF7Zwq4Bs8tIoj/8nMmTIGMHox2Vn8Iv/cBdXkCFDxlBGeqSssdMwjYt9MmTIGM0gNXY+VFFrSdYaohfBLUOGjEGM+5qOdxTgTsNahgwZKxm1qYY0jnnIXuBlyJAxmsEPq7XGAD92dkJZhgwZGxjpmEVaXOswSJTLkCFjM4NvAXk7k5NaYxwyZMgYxKgdMmsjXKhwVhsgkyFDxhpGGri1Ylw/rE9bmDJkyBjKiGcxwuIaPyR3jr4yZMjYxqgNTKRjGWlRj8NkyJAxj1E7mvIiWqdhGUS2DBkyFjDIRq22BUzB/DgtQ4aMPYw0dtN47TRE42OwDBkyhjKOcPHNIv8VyeH54keUIUPGaAZfaQ0vHZ7ggS5DhoydDD4W1mfwKOctBBkyZOxh8JAlt+9sDdMWqQwZMmTUmpSdrV4a9zJkyJDBGwC1MVayrUThLkOGjAUMcohNP9Oh8hEQGTJkbGD0D5C8ANcp5KVNUxkyZIxg/AAL6kHPeaFEpQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3asXYqMQwEUP7/p/Oa13ECM5JNKO5WnA0Y3S2wM9LjEV8/T9fz/fydz/fz73rcuPDw8PDWpSeM5Cs3DyJ5/bpmPDw8vNu8pLjkoSRfnxed1/PrfTw8PLyv4SVL5w/ldQ358RoPDw/vO3nJ6/ZAnG82eHh4eN/Dy5duE9T2CL5ZDQ8PD+8zvFmhf/v6Sn8PDw8Pb91VnwWvSRSb35/V+X8dPDw8vAu8NqLNf6Znh+n8U3mdeHh4eGd5syb9LK5N/pqvH1WIh4eHd4GXD1HN4olkgKAd5FqlKXh4eHhr3qz1lQcK7WOqxwJeHsrx8PDw7vHaSGJz+D4LG3bt8PDw8A4NDbRBatKyylduP5VvbHh4eHg3ePlC+1A1h0W9u2TzwMPDw7vAa4OJ/RYyGwtowxE8PDy8G7xZeymPffejWrNxBDw8PLx7vPx4vT/sFrlIcBAfPkQ8PDy8j/BOjVUlK78ZBSjfg4eHh/d5XhtJ5IfjlpQ/7ouJCx4eHt4oDmg3gE1ZLThKrPHw8PDWvCRU3SBvxLXFdoWHh4d3gdduADfigyRQSOKGYq/Dw8PDW/Bm7f/NiMDsaN5ms3h4eHj3eHlDaxOnto3/PFyO6sfDw8O7wNs0+/M2WDuCMNts3mwPeHh4eId4Ret9lnaMjukJMqocDw8P7xpv1tZKGvybWOFA4IuHh4d3jddS81GDGebUhoSHh4d3lvdTXnlEOxuQ2mwzv86U4eHh4R3ltT++7TF3Bps12B6bCw8PD6/kzTaDvKGVINsxrKK1hoeHh3eNlzfGTrWv8lCjDSPw8PDwvo3XFrEPO/Lo9k0DDA8PD++PeLNId5aRzB4KHh4e3md47cDTpq01i33z4BgPDw/vNq/9hz8vIl+njR4O9PTw8PDwJrx/8GAr8GjzrW8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
