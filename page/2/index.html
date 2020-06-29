@@ -209,6 +209,55 @@ Fields：使用空白分割字符串。FieldsFunc：根据传入的函数分割�
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-defer语句的三种机制"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-04-16 22:33:25" datetime="2019-04-16T14:33:25.000Z"  itemprop="datePublished">2019-04-16</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/04/16/defer语句的三种机制/">defer 语句的三种机制</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        堆上分配Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：
+
+在 defer 语句的位置插入 runtime.deferproc，当被执行时，延迟调用会被保存为一个 _defer 记录，并将被延迟调用的入口地址及其参数复制保存，存入 Goroutine 的调用链表中。
+
+在函数返回之前的位置插入 runtime.deferreturn，当被...
+    
+
+        <a href="/2019/04/16/defer语句的三种机制/" class="post-more waves-effect waves-button">
+            【阅读全文】
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-array"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -613,61 +662,12 @@ BabelBabel是一个广泛使用的ES...
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-响应式网页开发应注意的那些事儿"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-07-11 22:52:28" datetime="2017-07-11T14:52:28.000Z"  itemprop="datePublished">2017-07-11</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/07/11/响应式网页开发应注意的那些事儿/">响应式网页开发你不知道的那些事</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        简介响应式网页设计通过使用弹性网格和布局、响应式图片、CSS media query等技术手段，使页面能够自动切换分辨率、图片尺寸及相关脚本功能，以适应不同设备，来满足用户在各种设备环境下的需求。响应式网页设计就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。
-
-                
-                    
-                   ...
-    
-
-        <a href="/2017/07/11/响应式网页开发应注意的那些事儿/" class="post-more waves-effect waves-button">
-            【阅读全文】
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式网站/">响应式网站</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </div>
 </nav>
 

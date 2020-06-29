@@ -658,6 +658,49 @@
   </entry>
   
   <entry>
+    <title>defer 语句的三种机制</title>
+    <link href="https://pengfeidai.github.io/2019/04/16/defer%E8%AF%AD%E5%8F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%9C%BA%E5%88%B6/"/>
+    <id>https://pengfeidai.github.io/2019/04/16/defer语句的三种机制/</id>
+    <published>2019-04-16T14:33:25.000Z</published>
+    <updated>2020-06-29T15:18:32.202Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="堆上分配"><a href="#堆上分配" class="headerlink" title="堆上分配"></a>堆上分配</h2><p>Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：</p>
+<ol>
+<li><p>在 defer 语句的位置插入 <code>runtime.deferproc</code>，当被执行时，延迟调用会被保存为一个 <code>_defer</code> 记录，并将被延迟调用的入口地址及其参数复制保存，存入 Goroutine 的调用链表中。</p>
+</li>
+<li><p>在函数返回之前的位置插入 <code>runtime.deferreturn</code>，当被执行时，会将延迟调用从 Goroutine 链表中取出并执行，多个延迟调用则以 <code>jmpdefer</code> 尾递归调用方式连续执行。 </p>
+</li>
+</ol>
+<p><strong>这种机制的主要性能问题存在于每个 defer 语句产生记录时的内存分配，以及记录参数和完成调用时参数移动的系统调用开销。</strong></p>
+<h2 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h2><p>Go 1.13 版本新加入 <code>deferprocStack</code> 实现了在栈上分配的形式来取代 deferproc，相比堆上分配，栈上分配在函数返回后 _defer 便得到释放，省去了内存分配时产生的性能开销，只需适当维护 _defer 的链表即可。</p>
+<p><strong>不过在 defer 语句出现在了循环语句里，或者无法执行更高阶的编译器优化时，亦或者同一个函数中使用了过多的 defer 时，依然会使用 deferproc。</strong></p>
+<h2 id="开放编码"><a href="#开放编码" class="headerlink" title="开放编码"></a>开放编码</h2><p>Go 1.14 版本继续加入了 <code>开发编码（open coded）</code>，该机制会将延迟调用直接插入函数返回之前，省去了运行时的 deferproc 或 deferprocStack 操作，在运行时的 deferreturn 也不会进行尾递归调用，而是直接 <code>在一个循环中遍历所有延迟函数执行</code>。</p>
+<p>限制条件：</p>
+<ul>
+<li>没有禁用编译器优化，即没有设置 -gcflags “-N”；</li>
+<li>函数内 defer 的数量不超过 8 个，且返回语句与延迟语句个数的乘积不超过 15；</li>
+<li>defer 不是在循环语句中。</li>
+</ul>
+<p>该机制还引入了一种元素 —— <code>延迟比特（defer bit）</code>，用于运行时记录每个 defer 是否被执行（尤其是在条件判断分支中的 defer），从而便于判断最后的延迟调用该执行哪些函数。</p>
+<p><strong>延迟比特的原理</strong>： 同一个函数内每出现一个 defer 都会为其分配 1 个比特，如果被执行到则设为 1，否则设为 0，当到达函数返回之前需要判断延迟调用时，则用掩码判断每个位置的比特，若为 1 则调用延迟函数，否则跳过。</p>
+<p>为了轻量，官方将延迟比特限制为 1 个字节，即 8 个比特，这就是为什么不能超过 8 个 defer 的原因，若超过依然会选择堆栈分配，但显然大部分情况不会超过 8 个。</p>
+<p>代码演示：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">deferBits = <span class="number">0</span>  <span class="comment">// 延迟比特初始值 00000000</span></div><div class="line"></div><div class="line">deferBits |= <span class="number">1</span>&lt;&lt;<span class="number">0</span>  <span class="comment">// 执行第一个 defer，设置为 00000001</span></div><div class="line">_f1 = f1  <span class="comment">// 延迟函数</span></div><div class="line">_a1 = a1  <span class="comment">// 延迟函数的参数</span></div><div class="line"><span class="keyword">if</span> cond &#123;</div><div class="line">    <span class="comment">// 如果第二个 defer 被执行，则设置为 00000011，否则依然为 00000001</span></div><div class="line">    deferBits |= <span class="number">1</span>&lt;&lt;<span class="number">1</span></div><div class="line">    _f2 = f2</div><div class="line">    _a2 = a2</div><div class="line">&#125;</div><div class="line">...</div><div class="line">exit:</div><div class="line"><span class="comment">// 函数返回之前，倒序检查延迟比特，通过掩码逐位进行与运算，来判断是否调用函数</span></div><div class="line"></div><div class="line"><span class="comment">// 假如 deferBits 为 00000011，则 00000011 &amp; 00000010 != 0，因此调用 f2</span></div><div class="line"><span class="comment">// 否则 00000001 &amp; 00000010 == 0，不调用 f2</span></div><div class="line"><span class="keyword">if</span> deferBits &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span> != <span class="number">0</span> &#123;</div><div class="line">    deferBits &amp;^= <span class="number">1</span>&lt;&lt;<span class="number">1</span>  <span class="comment">// 移位为下次判断准备</span></div><div class="line">    _f2(_a2)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 同理，由于 00000001 &amp; 00000001 != 0，调用 f1</span></div><div class="line"><span class="keyword">if</span> deferBits &amp;&amp; <span class="number">1</span>&lt;&lt;<span class="number">0</span> != <span class="number">0</span> &#123;</div><div class="line">    deferBits &amp;^= <span class="number">1</span>&lt;&lt;<span class="number">0</span></div><div class="line">    _f1(_a1)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;堆上分配&quot;&gt;&lt;a href=&quot;#堆上分配&quot; class=&quot;headerlink&quot; title=&quot;堆上分配&quot;&gt;&lt;/a&gt;堆上分配&lt;/h2&gt;&lt;p&gt;Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://pengfeidai.github.io/tags/Golang/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript数组方法总结</title>
     <link href="https://pengfeidai.github.io/2017/09/20/array/"/>
     <id>https://pengfeidai.github.io/2017/09/20/array/</id>
@@ -1468,120 +1511,6 @@
       <category term="ES6" scheme="https://pengfeidai.github.io/tags/ES6/"/>
     
       <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>响应式网页开发你不知道的那些事</title>
-    <link href="https://pengfeidai.github.io/2017/07/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
-    <id>https://pengfeidai.github.io/2017/07/11/响应式网页开发应注意的那些事儿/</id>
-    <published>2017-07-11T14:52:28.000Z</published>
-    <updated>2020-05-22T12:14:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>响应式网页设计通过使用弹性网格和布局、响应式图片、CSS media query等技术手段，使页面能够自动切换分辨率、图片尺寸及相关脚本功能，以适应不同设备，来满足用户在各种设备环境下的需求。响应式网页设计就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.sc.chinaz.com/upload/2014/11/21/2014112117164334.gif" alt="alt text" title="image">
-                </div>
-                <div class="image-caption">image</div>
-            </figure>
-<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><h3 id="什么是媒体查询"><a href="#什么是媒体查询" class="headerlink" title="什么是媒体查询"></a>什么是媒体查询</h3><p>媒体查询可以让我们根据设备显示器的特性（如视口宽度、屏幕比例、设备方向：横向或纵向）为其设定CSS样式，媒体查询由媒体类型和一个或多个检测媒体特性的条件表达式组成。媒体查询中可用于检测的媒体特性有 width 、 height 和 color （等）。使用媒体查询，可以在不改变页面内容的情况下，为特定的一些输出设备定制显示效果。</p>
-<h3 id="如何在CSS文件中引入媒体查询"><a href="#如何在CSS文件中引入媒体查询" class="headerlink" title="如何在CSS文件中引入媒体查询"></a>如何在CSS文件中引入媒体查询</h3><p>媒体查询写在CSS样式代码的最后，CSS是层叠样式表，在同一特殊性下，靠后的的样式会重叠前面的样式。</p>
-<h3 id="怎样使用media"><a href="#怎样使用media" class="headerlink" title="怎样使用media"></a>怎样使用media</h3><p>第一步：需要在html文档中添加以下代码，用来兼容移动设备的显示效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>width=device-width:宽度等于当前设备的宽度</li>
-<li>initial-scale=1：初始的缩放比例（默认为1）</li>
-<li>minimum-scale=1：允许用户缩放到得最小比例（默认为1）</li>
-<li>maximum-scale=1：允许用户缩放到得最大比例（默认为1）</li>
-<li>user-scalable=no：用户不能手动缩放</li>
-</ul>
-<p>第二步：怎样在CSS文件中写CSS响应式媒体查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  font-size: 1.6rem;</div><div class="line">  background: #f7f7f7;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media only screen and (max-width: 50em) &#123;</div><div class="line">  body &#123;</div><div class="line">    font-size: 1.2rem;</div><div class="line">    background: #fff;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@media only screen and (min-width: 30.0625em) and (max-width:50em)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">@media only screen and (max-width: 30em) &#123;</div><div class="line">   body &#123;</div><div class="line">     font-size: 1.0rem;</div><div class="line">     background: #999;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>在不同宽度下，改变背景颜色和字体大小</li>
-</ul>
-<h3 id="兼容性解决"><a href="#兼容性解决" class="headerlink" title="兼容性解决"></a>兼容性解决</h3><p>部分IE浏览器(IE9以下)，不支持 html5 和媒体查询。需要在 html 文档 <code>&lt;head&gt;&lt;/head&gt;</code>标签中添加以下代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if lt IE 9]&gt;</div><div class="line">    &lt;script src=&quot;https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure></p>
-<p>html5shiv：解决IE浏览器(IE6、IE7、IE8)不支持HTML5的问题<br>respond：使IE浏览器(IE6、IE7、IE8)支持媒体查询中的min-width和max-width</p>
-<h2 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h2><p><code>px</code>: 像素，1个px相当于一个像素</p>
-<p><code>em</code>: 元素字体高度，相对参照物为父元素的 font-size。em 的值并不固定，会继承父元素的字体大小</p>
-<p><code>rem</code>: 元素字体高度，相对参照物为根元素 html,相于参照固定不变。目前，除 IE9 以下版本，所有浏览器均已支持rem</p>
-<p><strong>注意：</strong></p>
-<ol>
-<li>若rem没有在根元素（html字体）指定参照值，那浏览器默认1 rem就是16px,若rem有指定值，则1rem就是等于指定值 。</li>
-<li>html设置为62.5%或者10px时会失效，是因为小于12px或者75%的字体大小不支持换算。这可能与有些浏览器不支持12px以下的大小有关。所以，使用rem单位，html的字体默认字体大小必须设置为12px或以上。若小于12px则浏览器换算时自动默认字体为12px。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line">  font-size: 62.5%;   /* 10÷16=62.5% */</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">  font-size:1.2rem ;  /* 12÷10=1.2 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在响应式网页开发中，我们会更多的使用到 rem，而对 px的适应基本很少。</p>
-<h2 id="响应式广告"><a href="#响应式广告" class="headerlink" title="响应式广告"></a>响应式广告</h2><p>现在大部分的网页都会有一个滚动广告(轮播图)，一个好的广告滚动组件支持：</p>
-<ol>
-<li>支持不同的图片数量</li>
-<li>支持响应式</li>
-<li>具有良好的兼容性</li>
-</ol>
-<p>现在网上滚动广告组件非常多，在这里我只推荐两种 <a href="https://owlcarousel2.github.io/OwlCarousel2/index.html" target="_blank" rel="external">Owl Carousel 2</a>和 <a href="http://demo.jb51.net/js/myfocus/" target="_blank" rel="external">myfocus</a>，非常轻量，使用文档非常齐全。这里，主要讲一下 <a href="https://owlcarousel2.github.io/OwlCarousel2/index.html" target="_blank" rel="external">Owl Carousel 2</a>的用法。</p>
-<p>Owl Carousel 2 下载之后的目录结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Owlcarousel2/</div><div class="line">├── assets/</div><div class="line">│   ├── owl.carousel.css</div><div class="line">│   ├── owl.carousel.min.css   // 主样式文件</div><div class="line">│   ├── owl.theme.default.css</div><div class="line">│   ├── owl.theme.default.min.css  // 皮肤样式文件</div><div class="line">│   ├── owl.theme.green.css</div><div class="line">│   ├── owl.theme.green.min.css</div><div class="line">│   └── owl.video.play.png</div><div class="line">│</div><div class="line">├── owl.carousel.js</div><div class="line">├── owl.carousel.min.js</div><div class="line">├── LICENSE-MIT</div><div class="line">└── README.md</div></pre></td></tr></table></figure>
-<p>html结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;ad&quot;&gt;</div><div class="line">   &lt;div class=&quot;owl-carousel owl-theme&quot;&gt;</div><div class="line">      &lt;div class=&quot;item&quot;&gt;</div><div class="line">         &lt;img src=&quot;img/ad001.png&quot; alt=&quot;&quot;&gt;   //  图片尺寸480*480</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div class=&quot;item&quot;&gt;</div><div class="line">         &lt;img src=&quot;img/ad002.png&quot; alt=&quot;&quot;&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div class=&quot;item&quot;&gt;</div><div class="line">         &lt;img src=&quot;img/ad003.png&quot; alt=&quot;&quot;&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>在html文件中引入css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;OwlCarousel2/assets/owl.carousel.min.css&quot;&gt;</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;OwlCarousel2/assets/owl.theme.default.min.css&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>在html文件中引入js:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;OwlCarousel2/owl.carousel.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>main文件自己定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()&#123;</div><div class="line">  $(&quot;.owl-carousel&quot;).owlCarousel(&#123;</div><div class="line">    items: 1,     // 一屏看到的图片数量</div><div class="line">    loop: true,   // 循环滚动</div><div class="line">    autoplay: true,   // 自动播放</div><div class="line">    autoplayTimeout: 3000,   // 时间间隔</div><div class="line">    autoplayHoverPause: true    //鼠标放在图片上暂停滚动</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>当然现在滚动效果就已经完成了。不过还有一个问题，当屏幕尺寸放大或缩小时，始终都是480尺寸的图片，看起来就是不爽，那么如何能实现让图片在不同设备下自动切换成我们想要的尺寸呢？那么下面就需要用到响应式图片~</p>
-<h2 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h2><h3 id="js和服务端控制"><a href="#js和服务端控制" class="headerlink" title="js和服务端控制"></a>js和服务端控制</h3><p>提前在图片库准备三张480、800、1600尺寸的图片。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">    function makeImageResponsive()&#123;</div><div class="line">        var img = $(&apos;.cotent img&apos;);</div><div class="line">        var width = $(window).width();</div><div class="line">        if(width &lt;= 480)&#123;</div><div class="line">            img.attr(&apos;src&apos;, &apos;480.png&apos;);</div><div class="line">        &#125;else if(width &lt;= 800)&#123;</div><div class="line">            img.attr(&apos;src&apos;, &apos;800.png&apos;);</div><div class="line">        &#125;else&#123;</div><div class="line">            img.attr(&apos;src&apos;, &apos;1600.png&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">$(window).on(&apos;resize load&apos;, makeImageResponsive);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h3 id="srcset属性"><a href="#srcset属性" class="headerlink" title="srcset属性"></a>srcset属性</h3><p>通过 srcset 指定给 <img> 标签所有图片源的信息。然后使用逗号分隔列出一个从小到大的图片源列表。每个图片源后可以跟w描述符或者x描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;img/480.png&quot; srcset=&quot;img/480.png 480w,img/800.png 800w, img/1600.png 1600w alt=&quot;&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>如果浏览器支持 srcset 则会根据屏幕宽度采用最佳的图片，否则直接下载 src 属性内的图像。</p>
-<h3 id="picture属性"><a href="#picture属性" class="headerlink" title="picture属性"></a>picture属性</h3><p>picture是html5新属性，可以放置多个source标签，以指定不同的图像文件名，进而根据不同的条件进行加载。<br>由于现在很多浏览器对于picture这个标签还不支持，所以我们需要引用<a href="http://scottjehl.github.io/picturefill/" target="_blank" rel="external">picturefill.js</a>来解决。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"> &lt;div class=&quot;owl-carousel owl-theme&quot;&gt;</div><div class="line">    &lt;div class=&quot;item&quot;&gt;</div><div class="line">        &lt;picture&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad001-l.png&quot; media=&quot;(min-width: 50em)&quot;&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad001-m.png&quot; media=&quot;(min-width: 30em)&quot;&gt;</div><div class="line">            &lt;img srcset=&quot;img/ad001.png&quot; alt=&quot;&quot;&gt;</div><div class="line">        &lt;/picture&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;item&quot;&gt;</div><div class="line">        &lt;picture&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad002-l.png&quot; media=&quot;(min-width: 50em)&quot;&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad002-m.png&quot; media=&quot;(min-width: 30em)&quot;&gt;</div><div class="line">            &lt;img srcset=&quot;img/ad002.png&quot; alt=&quot;&quot;&gt;</div><div class="line">        &lt;/picture&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">   &lt;div class=&quot;item&quot;&gt;</div><div class="line">        &lt;picture&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad003-l.png&quot; media=&quot;(min-width: 50em)&quot;&gt;</div><div class="line">            &lt;source srcset=&quot;img/ad003-m.png&quot; media=&quot;(min-width: 30em)&quot;&gt;</div><div class="line">            &lt;img srcset=&quot;img/ad003.png&quot; alt=&quot;&quot;&gt;</div><div class="line">        &lt;/picture&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;!-- 在 body 末尾引入--&gt;</div><div class="line">&lt;script src=&quot;js/vendor/picturefill.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>在大于800px的时候，展示ad00x-l这个large图片。在大于480px的时候，展示ad00x-m这个medium图片。否则，展示ad00x小图片。完美解决图片响应式问题，极力推荐这种方法。</p>
-<h2 id="打包发布"><a href="#打包发布" class="headerlink" title="打包发布"></a>打包发布</h2><p>当所有的代码完成之后，我们的网站就可以发布了，在发布之前我们还可以对代码进行优化：</p>
-<ul>
-<li>压缩</li>
-<li>合并</li>
-<li>增加版本号</li>
-</ul>
-<p>在线压缩:(<a href="https://javascript-minifier.com/" target="_blank" rel="external">https://javascript-minifier.com/</a>)</p>
-<p>工具打包：</p>
-<ul>
-<li>Grunt：自动化构建工具</li>
-<li>Gulp：自动化构建工具</li>
-<li>Webpack:静态资源打包工具</li>
-</ul>
-<p>3个主流工具我就不详细一 一介绍了。这里，主要使用 <a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp</a> 来打包发布，首先来安装gulp。</p>
-<p><strong>第一步：安装Nodejs</strong></p>
-<p>在 Node.js 官网：<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a> 下载安装包</p>
-<p>保持默认设置即可，一路Next，安装很快就结束了。</p>
-<p>然后打开命令提示符，输入 <code>node -v</code>、<code>npm -v</code>，出现版本号则说明 Node.js 环境配置成功，第一步完成！！！</p>
-<p><strong>第二步：安装Git</strong></p>
-<p>在 Git 官网：<a href="https://git-scm.com/" target="_blank" rel="external">https://git-scm.com/</a> 下载安装包</p>
-<p>安装完成后，桌面右键，打开 Git Bush Here，输入 <code>git --version</code>，出现版本号则说明 Git 环境配置成功，第二步完成！！！</p>
-<p><strong>第三步：安装Gulp(全局)</strong></p>
-<p>桌面右键，打开 Git Bush Here，输入<code>npm install gulp -g</code></p>
-<p>安装完成后，同样输入 <code>gulp -v</code>，出现版本号则说明，则说明安装成功。</p>
-<p><strong>第四步：作为项目的开发依赖（devDependencies）安装</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev gulp</div></pre></td></tr></table></figure></p>
-<p><strong>第五步：在项目根目录下创建一个名为 gulpfile.js 的文件，并且新建一个 dist 文件夹，用于存放压缩后的文件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line">var rev = require(&apos;gulp-rev&apos;);</div><div class="line">var revReplace = require(&apos;gulp-rev-replace&apos;);</div><div class="line">var useref = require(&apos;gulp-useref&apos;);</div><div class="line">var filter = require(&apos;gulp-filter&apos;);</div><div class="line">var uglify = require(&apos;gulp-uglify&apos;);</div><div class="line">var csso = require(&apos;gulp-csso&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;default&apos;, function() &#123;</div><div class="line">    var jsFilter = filter(&apos;**/*.js&apos;, &#123;restore: true&#125;);</div><div class="line">    var cssFilter = filter(&apos;**/*.css&apos;, &#123;restore: true&#125;);</div><div class="line">    var indexHtmlFilter = filter([&apos;**/*&apos;, &apos;!**/index.html&apos;], &#123;restore: true&#125;);</div><div class="line"></div><div class="line">    return gulp.src(&apos;src/index.html&apos;)</div><div class="line">        .pipe(useref())</div><div class="line">        .pipe(jsFilter)</div><div class="line">        .pipe(uglify())</div><div class="line">        .pipe(jsFilter.restore)</div><div class="line">        .pipe(cssFilter)</div><div class="line">        .pipe(csso())</div><div class="line">        .pipe(cssFilter.restore)</div><div class="line">        .pipe(indexHtmlFilter)</div><div class="line">        .pipe(rev())</div><div class="line">        .pipe(indexHtmlFilter.restore)</div><div class="line">        .pipe(revReplace())</div><div class="line">        .pipe(gulp.dest(&apos;dist&apos;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p><strong>第六步：安装以上需要的gulp插件：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp gulp-rev gulp-rev-replace gulp-useref gulp-filter gulp-filter gulp-uglify  gulp-csso --save-dev</div></pre></td></tr></table></figure></p>
-<p><strong>第七步：将 htlm 中需要打包合并的文件添加注释</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!-- build:css css/combined.css --&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/normalize.css&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;js/vendor/OwlCarousel2/assets/owl.carousel.min.css&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;js/vendor/OwlCarousel2/assets/owl.theme.default.min.css&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/main.css&quot;&gt;</div><div class="line">&lt;!-- endbuild --&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;!-- build:js js/combined.js --&gt;</div><div class="line">&lt;script src=&quot;js/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/vendor/OwlCarousel2/owl.carousel.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/vendor/picturefill.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;!-- endbuild --&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>第八步：执行gulp</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp</div></pre></td></tr></table></figure></p>
-<p>执行gulp之后，你会在新建的 dist 文件夹中看到打包生成的文件，目录如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dist/</div><div class="line">├── css/</div><div class="line">│   ├──combined-3f8e363e08.css   //  打包合并后的css文件</div><div class="line">│   └──combined-56ca943019.css</div><div class="line">├── img/</div><div class="line">├── js/</div><div class="line">│   └── combined-7762fa2c22.js   //  打包合并后的js文件</div><div class="line">└── index.html</div></pre></td></tr></table></figure></p>
-<p>这时候 css, js 文件都被压缩合并成了一个文件，看起来更加轻量。如果你修改了源代码中的内容，只需再次执行<code>gulp</code> ，则会生成另一个心得css或js文件，版本号会更新，不会覆盖之前的文件。如上面生成新的 <code>combined-56ca943019.css</code> 文件，也保留之前的 <code>combined-3f8e363e08.css</code>。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇文章包含了响应式网站开发中常见的问题及解决方案，希望对热爱前端开发的同学有所帮助，能让你们在以后的响应式开发中少走弯路。</p>
-<p>在线演示：<a href="http://https://pengfeidai.github.io/responsive-lichaibao/dist/index" target="_blank" rel="external">http://https://pengfeidai.github.io/responsive-lichaibao/dist/index</a></p>
-<p>项目源码：<a href="https://github.com/pengfeidai/responsive-lichaibao" target="_blank" rel="external">https://github.com/pengfeidai/responsive-lichaibao</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;响应式网页设计通过使用弹性网格和布局、响应式图片、CSS media query等技术手段，使页面能够自动切换分辨率、图片尺寸及相关脚本功能
-    
-    </summary>
-    
-    
-      <category term="HTML" scheme="https://pengfeidai.github.io/tags/HTML/"/>
-    
-      <category term="CSS" scheme="https://pengfeidai.github.io/tags/CSS/"/>
-    
-      <category term="gulp" scheme="https://pengfeidai.github.io/tags/gulp/"/>
-    
-      <category term="响应式网站" scheme="https://pengfeidai.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
