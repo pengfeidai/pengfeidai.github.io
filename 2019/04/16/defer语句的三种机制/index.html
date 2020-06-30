@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://pengfeidai.github.io/2019/04/16/defer语句的三种机制/index.html">
 <meta property="og:site_name" content="Davis&#39; Blog">
 <meta property="og:description" content="堆上分配Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：  在 defer 语句的位置插入 runtime.deferproc，当被执行时，延迟调用会被保存为一个 _defer 记录，并将被延迟调用的入口地址及其参数复制保存，存入 Goroutine 的调用链表中。  在函数返回之前的位置插入 runtime.deferreturn，当被执行时">
-<meta property="og:updated_time" content="2020-06-29T15:18:32.202Z">
+<meta property="og:updated_time" content="2020-06-29T15:22:18.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="defer 语句的三种机制">
 <meta name="twitter:description" content="堆上分配Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：  在 defer 语句的位置插入 runtime.deferproc，当被执行时，延迟调用会被保存为一个 _defer 记录，并将被延迟调用的入口地址及其参数复制保存，存入 Goroutine 的调用链表中。  在函数返回之前的位置插入 runtime.deferreturn，当被执行时">
@@ -217,7 +217,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-06-29T15:18:32.202Z" itemprop="dateUpdated">2020-06-29 23:18:32</time>
+    最后更新时间：<time datetime="2020-06-29T15:22:18.178Z" itemprop="dateUpdated">2020-06-29 23:22:18</time>
 </span><br>
 
 

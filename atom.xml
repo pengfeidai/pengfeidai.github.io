@@ -662,7 +662,7 @@
     <link href="https://pengfeidai.github.io/2019/04/16/defer%E8%AF%AD%E5%8F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%9C%BA%E5%88%B6/"/>
     <id>https://pengfeidai.github.io/2019/04/16/defer语句的三种机制/</id>
     <published>2019-04-16T14:33:25.000Z</published>
-    <updated>2020-06-29T15:18:32.202Z</updated>
+    <updated>2020-06-29T15:22:18.178Z</updated>
     
     <content type="html"><![CDATA[<h2 id="堆上分配"><a href="#堆上分配" class="headerlink" title="堆上分配"></a>堆上分配</h2><p>Golang 1.13 之前的版本中，所有 defer 都是在堆上分配，该机制在编译时会进行两个步骤：</p>
 <ol>
