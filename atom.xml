@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pengfeidai.github.io/"/>
-  <updated>2020-08-14T10:39:36.949Z</updated>
+  <updated>2020-08-16T14:39:20.681Z</updated>
   <id>https://pengfeidai.github.io/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用strapi快速搭建一个后端服务</title>
+    <link href="https://pengfeidai.github.io/2020/08/16/%E4%BD%BF%E7%94%A8strapi%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://pengfeidai.github.io/2020/08/16/使用strapi快速搭建一个后端服务/</id>
+    <published>2020-08-16T14:52:28.000Z</published>
+    <updated>2020-08-16T14:39:20.681Z</updated>
+    
+    <content type="html"><![CDATA[<p>文档地址：<a href="https://strapi.io/documentation/v3.x/getting-started/introduction.html" target="_blank" rel="external">https://strapi.io/documentation/v3.x/getting-started/introduction.html</a></p>
+<p>一款基于 koa 的 Headless CMS 框架。</p>
+<h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><ul>
+<li><p><strong>现代化管理面板</strong>：优雅、完全可定制、完全可扩展的管理面板。</p>
+</li>
+<li><p><strong>默认安全</strong>：可重用策略、CSRF、CORS、P3P、Xframe、XSS 等等。</p>
+</li>
+<li><p><strong>插件化</strong>：可在几秒钟内安装身份验证系统、内容管理、自定义插件等等。</p>
+</li>
+<li><p><strong>极速</strong>：基于 Node.js，Strapi 表现惊人。</p>
+</li>
+<li><p><strong>前端多框架支持</strong>: 可使用任何前端框架（React、Vue、Angular等）、移动应用，甚至是物联网。</p>
+</li>
+<li><p><strong>强大的 CLI</strong>：脚手架项目和 API 不停机操作 。</p>
+</li>
+<li><p><strong>支持多种数据库</strong>：快速体验版默认使用SQLite，还支持MySQL、Mongo、Postgres。</p>
+</li>
+</ul>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 快速</span></div><div class="line">yarn create strapi-app strapi-demo --quickstart</div><div class="line"></div><div class="line"><span class="comment">// 自定义配置，如数据库选择</span></div><div class="line">yarn create strapi-app strapi-demo</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文档地址：&lt;a href=&quot;https://strapi.io/documentation/v3.x/getting-started/introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://strapi.io/do
+    
+    </summary>
+    
+    
+      <category term="Node.js" scheme="https://pengfeidai.github.io/tags/Node-js/"/>
+    
+      <category term="Strapi" scheme="https://pengfeidai.github.io/tags/Strapi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>分布式ID生成策略</title>
     <link href="https://pengfeidai.github.io/2020/08/05/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5/"/>
     <id>https://pengfeidai.github.io/2020/08/05/分布式ID生成策略/</id>
     <published>2020-08-05T14:52:28.000Z</published>
-    <updated>2020-08-14T10:39:36.949Z</updated>
+    <updated>2020-08-14T10:41:00.908Z</updated>
     
     <content type="html"><![CDATA[<p><strong>要求： </strong></p>
 <ul>
@@ -1474,40 +1515,6 @@
       <category term="Javascript" scheme="https://pengfeidai.github.io/tags/Javascript/"/>
     
       <category term="oop" scheme="https://pengfeidai.github.io/tags/oop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue实现轮播图组件</title>
-    <link href="https://pengfeidai.github.io/2017/07/22/Vue-Carousel/"/>
-    <id>https://pengfeidai.github.io/2017/07/22/Vue-Carousel/</id>
-    <published>2017-07-22T13:37:50.000Z</published>
-    <updated>2020-05-22T12:14:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>最近在学习 Vue，看到大多数项目首页都有轮播效果，然后自己也是做了一个轮播图，希望分享给大家。</p>
-<h2 id="主要技术"><a href="#主要技术" class="headerlink" title="主要技术"></a>主要技术</h2><ol>
-<li>v-if: 条件渲染</li>
-<li>v-for：列表渲染</li>
-<li>v-bind：属性绑定</li>
-<li>transition: 过渡效果</li>
-<li>组件交互: 父组件通过 props 将数据传递给子组件</li>
-</ol>
-<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><p>轮播图中，它显示的那张图片在浏览器中可以看到有dom元素。隐藏的是没有dom元素的。所以如果显示一张图片，实际上，轮播列表中只有一个元素是存在的，其他的都被删掉了。按照这个思路，就很简单了。想要轮播，设置：enter：右边→enter-to：正常位置，并且过渡完成→leave：正常位置→leave-to：左边，并且过渡完成。</p>
-<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2><p>👉<a href="http://https://pengfeidai.github.io/Carousel/" target="_blank" rel="external">http://https://pengfeidai.github.io/Carousel/</a></p>
-<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>项目源码：👉<a href="https://github.com/pengfeidai/Carousel" target="_blank" rel="external">https://github.com/pengfeidai/Carousel</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;最近在学习 Vue，看到大多数项目首页都有轮播效果，然后自己也是做了一个轮播图，希望分享给大家。&lt;/p&gt;
-&lt;h2 id=&quot;主要技术&quot;&gt;&lt;a 
-    
-    </summary>
-    
-    
-      <category term="Vue" scheme="https://pengfeidai.github.io/tags/Vue/"/>
-    
-      <category term="Carousel" scheme="https://pengfeidai.github.io/tags/Carousel/"/>
     
   </entry>
   
